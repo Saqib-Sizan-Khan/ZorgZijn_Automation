@@ -46,9 +46,9 @@ public class NotificationCRUD_Operation {
         driver.findElement(By.id("Titel")).sendKeys("Automation Notification");
         driver.findElement(By.xpath("//div[@class='ck ck-editor__main']/div")).sendKeys("This is a automation text");
 
-//        WebElement fileInput = driver.findElement(By.xpath("//label[@class='relative']"));
-//        ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", fileInput);
-//        fileInput.sendKeys("C:\\Users\\ssk12\\Downloads\\lorem_Ipsum.pdf");
+        //WebElement fileInput = driver.findElement(By.xpath("//label[@class='relative']"));
+        //((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", fileInput);
+        //fileInput.sendKeys("C:\\Users\\ssk12\\Downloads\\lorem_Ipsum.pdf");
         Thread.sleep(2000);
 
         driver.findElement(By.xpath("//form/div/button[1]")).click();
@@ -63,13 +63,31 @@ public class NotificationCRUD_Operation {
 
         //Confirm notification
         driver.findElement(By.xpath("//submit-button/button")).click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
-        //See notification details
+        //See notification details 1
         driver.findElement(By.xpath("//div[2]/div[2]/div[1]")).click();
+        Thread.sleep(3000);
+
+        driver.findElement(By.xpath("//div[2]/button")).click();
+        Thread.sleep(3000);
+
+        //See notification details 2
+        driver.findElement(By.xpath("//div[2]/div[1]/div[4]/button/span[3]")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)")).click();
         Thread.sleep(2000);
 
         driver.findElement(By.xpath("//div[2]/button")).click();
+        Thread.sleep(2000);
+
+        //Delete notification
+        driver.findElement(By.xpath("//div[2]/div[1]/div[4]/button/span[3]")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)")).click();
+        Thread.sleep(2000);
+
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
         Thread.sleep(2000);
     }
 
