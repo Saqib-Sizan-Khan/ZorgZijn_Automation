@@ -55,9 +55,10 @@ public class NotificationCRUD_Operation {
         Thread.sleep(2000);
 
         driver.findElement(By.xpath("//li[2]//input")).click();
+        Thread.sleep(1000);
+
+        driver.findElement(By.xpath("//submit-button/button")).click();
         Thread.sleep(2000);
-
-
     }
 
     @AfterTest
