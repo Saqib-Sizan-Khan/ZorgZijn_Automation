@@ -1,34 +1,9 @@
 package com.zorgzijn.testng;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class NotificationAutomation {
-    WebDriver driver;
-    String baseUrl = "https://zorgzijn-dev.acegreen.nl";
-
-    @BeforeTest
-    public void setup() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
-
-    @Test(priority = 1)
-    public void login() throws InterruptedException {
-        driver.get(baseUrl + "/auth/login");
-        Thread.sleep(2000);
-
-        driver.findElement(By.id("E-mailadres")).sendKeys("ssk123098@gmail.com");
-        driver.findElement(By.id("Wachtwoord")).sendKeys("Sizan@1999");
-        driver.findElement(By.id("remember")).click();
-        Thread.sleep(2000);
-    }
+public class NotificationAutomation extends LoginAutomation {
 
     @Test(priority = 2, dependsOnMethods = "login")
     public void navigateToNotificationTab() throws InterruptedException {
@@ -104,8 +79,4 @@ public class NotificationAutomation {
         Thread.sleep(2000);
     }
 
-    @AfterTest
-    public void terminate() {
-        driver.quit();
-    }
 }
