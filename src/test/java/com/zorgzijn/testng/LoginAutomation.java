@@ -13,5 +13,8 @@ public class LoginAutomation extends AutomationSetupClass {
         driver.findElement(By.id("Wachtwoord")).sendKeys("Sizan@1999");
         driver.findElement(By.id("remember")).click();
         Thread.sleep(2000);
+
+        driver.findElement(By.xpath("//button")).click();
+        Thread.sleep(3000);
     }
 }
