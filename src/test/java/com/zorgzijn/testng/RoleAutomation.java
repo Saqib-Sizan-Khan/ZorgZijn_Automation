@@ -4,168 +4,131 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class RoleAutomation extends AutomationSetupClass {
+
+    private void clickElement(By locator) throws InterruptedException {
+        driver.findElement(locator).click();
+        Thread.sleep(1500);
+    }
+
+    private void sendKeysToElement(By locator, String keys) throws InterruptedException {
+        WebElement element = driver.findElement(locator);
+        element.clear();
+        element.sendKeys(keys);
+        Thread.sleep(1500);
+    }
+
 
     @Test(priority = 1)
     public void login() throws InterruptedException {
         driver.get(baseUrl + "/auth/login");
         Thread.sleep(2000);
 
-        // Enter login credentials
-        driver.findElement(By.id("E-mailadres")).sendKeys("ssk123098@gmail.com");
-        driver.findElement(By.id("Wachtwoord")).sendKeys("Sizan@1999");
-        driver.findElement(By.id("remember")).click();
-        Thread.sleep(2000);
+        sendKeysToElement(By.id("E-mailadres"), "ssk123098@gmail.com");
+        sendKeysToElement(By.id("Wachtwoord"), "Sizan@1999");
+        clickElement(By.id("remember"));
 
         // Submit the login form
-        driver.findElement(By.xpath("//button")).click();
-        Thread.sleep(3000);
+        clickElement(By.xpath("//button"));
     }
 
     @Test(priority = 2, dependsOnMethods = "login")
     public void navigateToRoleTab() throws InterruptedException {
-        // Open the Role tab
-        driver.findElement(By.xpath("//li[7]/a")).click();
-        Thread.sleep(3000);
+        clickElement(By.xpath("//li[7]/a"));
+    }
+
+    private void openRoleForm(boolean close, boolean cancel) throws InterruptedException {
+        clickElement(By.xpath("//button"));
+
+        if (close) {
+            WebElement closeButton = driver.findElements(By.cssSelector("form div button")).get(0);
+            closeButton.click();
+        } else if (cancel) {
+            WebElement cancelButton = driver.findElements(By.cssSelector("form div button")).get(2);
+            cancelButton.click();
+        }
+        Thread.sleep(1500);
     }
 
     @Test(priority = 3, dependsOnMethods = "navigateToRoleTab")
     public void createRole() throws InterruptedException {
-        WebElement createRoleButton = driver.findElement(By.xpath("//button"));
+        openRoleForm(true, false);
+        openRoleForm(false, true);
 
-        // Open the Create Role form
-        createRoleButton.click();
-        Thread.sleep(2000);
+        openRoleForm(false, false);
 
-        // Test the close button
-        WebElement closeButton = driver.findElements(By.cssSelector("form div button")).get(0);
-        closeButton.click();
-        Thread.sleep(2000);
+        sendKeysToElement(By.xpath("//div/div/input"), "Automation Role");
 
-        // Reopen the form and test the cancel button
-        createRoleButton.click();
-        Thread.sleep(2000);
-        WebElement cancelButton = driver.findElements(By.cssSelector("form div button")).get(2);
-        cancelButton.click();
-        Thread.sleep(2000);
-
-        // Reopen the form and fill it out
-        createRoleButton.click();
-        Thread.sleep(2000);
-
-        // Fill in the Role Name
-        driver.findElement(By.xpath("//div/div/input")).sendKeys("Automation Role");
-        Thread.sleep(2000);
-
-        // Select access permissions
-        driver.findElement(By.xpath("//li[1]/div/input")).click();
-        driver.findElement(By.xpath("//li[3]/div/input")).click();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("//li[5]/div/input")).click();
-        driver.findElement(By.xpath("//li[7]/div/input")).click();
-        Thread.sleep(2000);
+        // Select specific permissions
+        clickElement(By.xpath("//li[1]/div/input"));
+        clickElement(By.xpath("//li[3]/div/input"));
+        clickElement(By.xpath("//li[5]/div/input"));
+        clickElement(By.xpath("//li[7]/div/input"));
 
         // Submit the form
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-        Thread.sleep(2000);
+        clickElement(By.xpath("//button[@type='submit']"));
     }
 
     @Test(priority = 4, dependsOnMethods = "createRole")
     public void searchRole() throws InterruptedException {
-        WebElement searchField = driver.findElement(By.xpath("//input[@type='search']"));
-
-        // Search for a role by name
-        searchField.sendKeys("Automation");
-        Thread.sleep(3000);
+        sendKeysToElement(By.xpath("//input[@type='search']"), "Automation");
+        Thread.sleep(3000); // Simulate search delay
 
         // Clear the search field
-        searchField.sendKeys("");
-        Thread.sleep(3000);
+        driver.findElement(By.xpath("//input[@type='search']")).clear();
+        Thread.sleep(2000);
     }
 
     @Test(priority = 5, dependsOnMethods = "searchRole")
     public void modifyRole() throws InterruptedException {
-        // Open the menu for the first role
-        driver.findElement(By.xpath("//div[2]/div/button")).click();
-        Thread.sleep(2000);
+        clickElement(By.xpath("//div[2]/div/button"));
+        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)"));
 
-        // Select the Edit option
-        driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)")).click();
-        Thread.sleep(2000);
+        sendKeysToElement(By.xpath("//div/div/input"), "Role Automation");
 
-        // Modify the Role Name
-        WebElement roleName = driver.findElement(By.xpath("//div/div/input"));
-        roleName.clear();
-        roleName.sendKeys("Role Automation");
-        Thread.sleep(2000);
+        // Update permissions
+        clickElement(By.xpath("//li[2]/div/input"));
+        clickElement(By.xpath("//li[4]/div/input"));
+        clickElement(By.xpath("//li[5]/div/input"));
+        clickElement(By.xpath("//li[7]/div/input"));
 
-        // Update access permissions
-        driver.findElement(By.xpath("//li[2]/div/input")).click();
-        driver.findElement(By.xpath("//li[4]/div/input")).click();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("//li[5]/div/input")).click();
-        driver.findElement(By.xpath("//li[7]/div/input")).click();
-        Thread.sleep(2000);
-
-        // Submit the changes
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-        Thread.sleep(2000);
+        // Submit changes
+        clickElement(By.xpath("//button[@type='submit']"));
     }
 
     @Test(priority = 6, dependsOnMethods = "modifyRole")
     public void giveRoleAllAccess() throws InterruptedException {
-        // Open the menu for the first role
-        driver.findElement(By.xpath("//div[2]/div/button")).click();
-        Thread.sleep(2000);
+        clickElement(By.xpath("//div[2]/div/button"));
+        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)"));
 
-        // Select the Edit option
-        driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)")).click();
-        Thread.sleep(2000);
+        sendKeysToElement(By.xpath("//div/div/input"), "Role Automation with all access");
 
-        // Modify the Role Name
-        WebElement roleName = driver.findElement(By.xpath("//div/div/input"));
-        roleName.clear();
-        roleName.sendKeys("Role Automation with all access");
-        Thread.sleep(2000);
+        // Grant all permissions
+        clickElement(By.id("ALL"));
 
-        // Update access permissions
-        driver.findElement(By.id("ALL")).click();
-        Thread.sleep(2000);
+        // Submit changes
+        clickElement(By.xpath("//button[@type='submit']"));
+    }
 
-        // Submit the changes
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-        Thread.sleep(2000);
+    private void openDeleteDialog() throws InterruptedException {
+        clickElement(By.xpath("//div[2]/div/button"));
+        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)"));
     }
 
     @Test(priority = 7, dependsOnMethods = "giveRoleAllAccess")
     public void deleteRole() throws InterruptedException {
-        WebElement menuButton = driver.findElement(By.xpath("//div[2]/div/button"));
-
-        // Open the menu and select the Delete option
-        menuButton.click();
-        Thread.sleep(2000);
-        WebElement deleteOption = driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)"));
-        deleteOption.click();
-        Thread.sleep(2000);
-
         // Cancel the delete action
-        driver.findElement(By.xpath("//div[2]/div/div/div[1]/button")).click();
-        Thread.sleep(2000);
+        openDeleteDialog();
+        clickElement(By.xpath("//div[2]/div/div/div[1]/button"));
 
-        // Retry delete and confirm with different options
-        menuButton.click();
-        Thread.sleep(2000);
-        deleteOption.click();
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("//div[2]/div/div/div[3]/button[2]")).click();
-        Thread.sleep(2000);
+        //Close the delete action
+        openDeleteDialog();
+        clickElement(By.xpath("//div[2]/div/div/div[3]/button[2]"));
 
-        // Final delete confirmation
-        menuButton.click();
-        Thread.sleep(2000);
-        deleteOption.click();
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-        Thread.sleep(2000);
+        // Confirm the delete action
+        openDeleteDialog();
+        clickElement(By.xpath("//button[@type='submit']"));
     }
 }
