@@ -11,22 +11,22 @@ public class RoleAutomation extends AutomationSetupClass {
         driver.get(baseUrl + "/auth/login");
         Thread.sleep(2000);
 
-        // Enter login credentials and submit
+        // Enter login credentials
         driver.findElement(By.id("E-mailadres")).sendKeys("ssk123098@gmail.com");
         driver.findElement(By.id("Wachtwoord")).sendKeys("Sizan@1999");
         driver.findElement(By.id("remember")).click();
         Thread.sleep(2000);
 
-        // Click the login button
+        // Submit the login form
         driver.findElement(By.xpath("//button")).click();
         Thread.sleep(3000);
     }
 
     @Test(priority = 2, dependsOnMethods = "login")
     public void navigateToRoleTab() throws InterruptedException {
-        // Navigate to the Role tab
+        // Open the Role tab
         driver.findElement(By.xpath("//li[7]/a")).click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 
     @Test(priority = 3, dependsOnMethods = "navigateToRoleTab")
@@ -49,13 +49,15 @@ public class RoleAutomation extends AutomationSetupClass {
         cancelButton.click();
         Thread.sleep(2000);
 
-        // Reopen the form and complete the Profile Type creation
+        // Reopen the form and fill it out
         createRoleButton.click();
         Thread.sleep(2000);
 
-        // Fill out the form
+        // Fill in the Role Name
         driver.findElement(By.xpath("//div/div/input")).sendKeys("Automation Role");
+        Thread.sleep(2000);
 
+        // Select access permissions
         driver.findElement(By.xpath("//li[1]/div/input")).click();
         driver.findElement(By.xpath("//li[3]/div/input")).click();
         Thread.sleep(1000);
@@ -70,21 +72,20 @@ public class RoleAutomation extends AutomationSetupClass {
 
     @Test(priority = 4, dependsOnMethods = "createRole")
     public void searchRole() throws InterruptedException {
-
         WebElement searchField = driver.findElement(By.xpath("//input[@type='search']"));
 
-        //Search by Role name
+        // Search for a role by name
         searchField.sendKeys("Automation");
         Thread.sleep(3000);
 
-        //Clear search field
-        searchField.clear();
-        Thread.sleep(2000);
+        // Clear the search field
+        searchField.sendKeys("");
+        Thread.sleep(3000);
     }
 
     @Test(priority = 5, dependsOnMethods = "searchRole")
     public void modifyRole() throws InterruptedException {
-        // Open the menu for the first Role
+        // Open the menu for the first role
         driver.findElement(By.xpath("//div[2]/div/button")).click();
         Thread.sleep(2000);
 
@@ -96,8 +97,9 @@ public class RoleAutomation extends AutomationSetupClass {
         WebElement roleName = driver.findElement(By.xpath("//div/div/input"));
         roleName.clear();
         roleName.sendKeys("Role Automation");
+        Thread.sleep(2000);
 
-        //Change the Role Access
+        // Update access permissions
         driver.findElement(By.xpath("//li[2]/div/input")).click();
         driver.findElement(By.xpath("//li[4]/div/input")).click();
         Thread.sleep(1000);
@@ -105,40 +107,65 @@ public class RoleAutomation extends AutomationSetupClass {
         driver.findElement(By.xpath("//li[7]/div/input")).click();
         Thread.sleep(2000);
 
-        // Submit the updated Role
+        // Submit the changes
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         Thread.sleep(2000);
     }
-//
-//    @Test(priority = 5, dependsOnMethods = "modifyProfileType")
-//    public void deleteProfileType() throws InterruptedException {
-//        WebElement menuButton = driver.findElement(By.xpath("//td/button"));
-//
-//        // Open the menu and select the Delete option
-//        menuButton.click();
-//        Thread.sleep(2000);
-//        WebElement deleteOption = driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)"));
-//        deleteOption.click();
-//        Thread.sleep(2000);
-//
-//        // Cancel the delete action
-//        driver.findElement(By.xpath("//div[2]/div/div/div[1]/button")).click();
-//        Thread.sleep(2000);
-//
-//        // Reattempt delete and confirm using alternative options
-//        menuButton.click();
-//        Thread.sleep(2000);
-//        deleteOption.click();
-//        Thread.sleep(2000);
-//        driver.findElement(By.xpath("//div[2]/div/div/div[3]/button[2]")).click();
-//        Thread.sleep(2000);
-//
-//        // Final delete confirmation
-//        menuButton.click();
-//        Thread.sleep(2000);
-//        deleteOption.click();
-//        Thread.sleep(2000);
-//        driver.findElement(By.xpath("//button[@type='submit']")).click();
-//        Thread.sleep(2000);
-//    }
+
+    @Test(priority = 6, dependsOnMethods = "modifyRole")
+    public void giveRoleAllAccess() throws InterruptedException {
+        // Open the menu for the first role
+        driver.findElement(By.xpath("//div[2]/div/button")).click();
+        Thread.sleep(2000);
+
+        // Select the Edit option
+        driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)")).click();
+        Thread.sleep(2000);
+
+        // Modify the Role Name
+        WebElement roleName = driver.findElement(By.xpath("//div/div/input"));
+        roleName.clear();
+        roleName.sendKeys("Role Automation with all access");
+        Thread.sleep(2000);
+
+        // Update access permissions
+        driver.findElement(By.id("ALL")).click();
+        Thread.sleep(2000);
+
+        // Submit the changes
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 7, dependsOnMethods = "giveRoleAllAccess")
+    public void deleteRole() throws InterruptedException {
+        WebElement menuButton = driver.findElement(By.xpath("//div[2]/div/button"));
+
+        // Open the menu and select the Delete option
+        menuButton.click();
+        Thread.sleep(2000);
+        WebElement deleteOption = driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)"));
+        deleteOption.click();
+        Thread.sleep(2000);
+
+        // Cancel the delete action
+        driver.findElement(By.xpath("//div[2]/div/div/div[1]/button")).click();
+        Thread.sleep(2000);
+
+        // Retry delete and confirm with different options
+        menuButton.click();
+        Thread.sleep(2000);
+        deleteOption.click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//div[2]/div/div/div[3]/button[2]")).click();
+        Thread.sleep(2000);
+
+        // Final delete confirmation
+        menuButton.click();
+        Thread.sleep(2000);
+        deleteOption.click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        Thread.sleep(2000);
+    }
 }
