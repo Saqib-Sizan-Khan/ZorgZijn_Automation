@@ -68,32 +68,47 @@ public class RoleAutomation extends AutomationSetupClass {
         Thread.sleep(2000);
     }
 
-//    @Test(priority = 4, dependsOnMethods = "createRole")
-//    public void modifyProfileType() throws InterruptedException {
-//        // Open the menu for the first profile type
-//        driver.findElement(By.xpath("//td/button")).click();
-//        Thread.sleep(2000);
-//
-//        // Select the Edit option
-//        driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)")).click();
-//        Thread.sleep(2000);
-//
-//        // Modify the Profile Name
-//        WebElement profileName = driver.findElement(By.xpath("//input"));
-//        profileName.clear();
-//        profileName.sendKeys("Profile Automation");
-//        Thread.sleep(2000);
-//
-//        // Modify the Profile Category
-//        driver.findElement(By.tagName("mat-select")).click();
-//        Thread.sleep(1000);
-//        driver.findElement(By.xpath("//mat-option[1]")).click();
-//        Thread.sleep(2000);
-//
-//        // Submit the updated Profile Type
-//        driver.findElement(By.xpath("//button[@type='submit']")).click();
-//        Thread.sleep(2000);
-//    }
+    @Test(priority = 4, dependsOnMethods = "createRole")
+    public void searchRole() throws InterruptedException {
+
+        WebElement searchField = driver.findElement(By.xpath("//input[@type='search']"));
+
+        //Search by Role name
+        searchField.sendKeys("Automation");
+        Thread.sleep(3000);
+
+        //Clear search field
+        searchField.clear();
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 5, dependsOnMethods = "searchRole")
+    public void modifyRole() throws InterruptedException {
+        // Open the menu for the first Role
+        driver.findElement(By.xpath("//div[2]/div/button")).click();
+        Thread.sleep(2000);
+
+        // Select the Edit option
+        driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)")).click();
+        Thread.sleep(2000);
+
+        // Modify the Role Name
+        WebElement roleName = driver.findElement(By.xpath("//div/div/input"));
+        roleName.clear();
+        roleName.sendKeys("Role Automation");
+
+        //Change the Role Access
+        driver.findElement(By.xpath("//li[2]/div/input")).click();
+        driver.findElement(By.xpath("//li[4]/div/input")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//li[5]/div/input")).click();
+        driver.findElement(By.xpath("//li[7]/div/input")).click();
+        Thread.sleep(2000);
+
+        // Submit the updated Role
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        Thread.sleep(2000);
+    }
 //
 //    @Test(priority = 5, dependsOnMethods = "modifyProfileType")
 //    public void deleteProfileType() throws InterruptedException {
