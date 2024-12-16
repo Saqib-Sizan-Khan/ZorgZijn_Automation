@@ -36,7 +36,7 @@ public class PlanningAutomation extends AutomationSetupClass {
     @Test(priority = 2, dependsOnMethods = "login")
     public void navigateToPlanningTab() throws InterruptedException {
         clickElement(By.xpath("//div/a[2]"));
-        Thread.sleep(4000);
+        Thread.sleep(5000);
     }
 
     private void openServiceForm(boolean close, boolean cancel) throws InterruptedException {
@@ -45,57 +45,42 @@ public class PlanningAutomation extends AutomationSetupClass {
         if (close) {
             clickElement(By.xpath("//div[2]/div/button"));
         } else if (cancel) {
-            WebElement cancelButton = driver.findElements(By.cssSelector("form div button")).get(2);
-            cancelButton.click();
+            clickElement(By.xpath("//form/div/button[2]"));
         }
-        Thread.sleep(1500);
     }
 
     @Test(priority = 3, dependsOnMethods = "navigateToPlanningTab")
     public void createService() throws InterruptedException {
+        //Check cancel and close button
         openServiceForm(true, false);
         openServiceForm(false, true);
 
+        //Give input for creating service
         openServiceForm(false, false);
+        clickElement(By.tagName("mat-select"));
+        clickElement(By.xpath("//mat-option[5]"));
+        sendKeysToElement(By.tagName("textarea"), "This is an automated text");
 
-//        sendKeysToElement(By.xpath("//div/div/input"), "Automation Role");
-//
-//        // Select specific permissions
-//        clickElement(By.xpath("//li[1]/div/input"));
-//        clickElement(By.xpath("//li[3]/div/input"));
-//        clickElement(By.xpath("//li[5]/div/input"));
-//        clickElement(By.xpath("//li[7]/div/input"));
-//
-//        // Submit the form
-//        clickElement(By.xpath("//button[@type='submit']"));
+        //Submit form create the service
+        clickElement(By.xpath("//form/div/button[1]"));
     }
-//
-//    @Test(priority = 4, dependsOnMethods = "createRole")
-//    public void searchRole() throws InterruptedException {
-//        sendKeysToElement(By.xpath("//input[@type='search']"), "Automation");
-//        Thread.sleep(3000); // Simulate search delay
-//
-//        // Clear the search field
-//        driver.findElement(By.xpath("//input[@type='search']")).clear();
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 5, dependsOnMethods = "searchRole")
-//    public void modifyRole() throws InterruptedException {
-//        clickElement(By.xpath("//div[2]/div/button"));
-//        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)"));
-//
-//        sendKeysToElement(By.xpath("//div/div/input"), "Role Automation");
-//
-//        // Update permissions
-//        clickElement(By.xpath("//li[2]/div/input"));
-//        clickElement(By.xpath("//li[4]/div/input"));
-//        clickElement(By.xpath("//li[5]/div/input"));
-//        clickElement(By.xpath("//li[7]/div/input"));
-//
-//        // Submit changes
-//        clickElement(By.xpath("//button[@type='submit']"));
-//    }
+
+    @Test(priority = 5, dependsOnMethods = "createService")
+    public void modifyService() throws InterruptedException {
+        clickElement(By.xpath("//div[2]/div/button"));
+        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)"));
+
+        sendKeysToElement(By.xpath("//div/div/input"), "Role Automation");
+
+        // Update permissions
+        clickElement(By.xpath("//li[2]/div/input"));
+        clickElement(By.xpath("//li[4]/div/input"));
+        clickElement(By.xpath("//li[5]/div/input"));
+        clickElement(By.xpath("//li[7]/div/input"));
+
+        // Submit changes
+        clickElement(By.xpath("//button[@type='submit']"));
+    }
 //
 //    @Test(priority = 6, dependsOnMethods = "modifyRole")
 //    public void giveRoleAllAccess() throws InterruptedException {
