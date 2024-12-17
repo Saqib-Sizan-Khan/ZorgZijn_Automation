@@ -52,8 +52,8 @@ public class PlanningAutomation extends AutomationSetupClass {
     @Test(priority = 3, dependsOnMethods = "navigateToPlanningTab")
     public void createService() throws InterruptedException {
         //Check cancel and close button
-        openServiceForm(true, false);
-        openServiceForm(false, true);
+//        openServiceForm(true, false);
+//        openServiceForm(false, true);
 
         //Give input for creating service
         openServiceForm(false, false);
@@ -65,54 +65,49 @@ public class PlanningAutomation extends AutomationSetupClass {
         clickElement(By.xpath("//form/div/button[1]"));
     }
 
-    @Test(priority = 5, dependsOnMethods = "createService")
+    @Test(priority = 4, dependsOnMethods = "createService")
     public void modifyService() throws InterruptedException {
-        clickElement(By.xpath("//div[2]/div/button"));
-        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)"));
 
-        sendKeysToElement(By.xpath("//div/div/input"), "Role Automation");
+        //Open the modify service form
+        clickElement(By.xpath("//tbody/div[1]/tr[3]/td[2]//button"));
+        clickElement(By.cssSelector(".mat-mdc-menu-content button:nth-of-type(1)"));
 
-        // Update permissions
-        clickElement(By.xpath("//li[2]/div/input"));
-        clickElement(By.xpath("//li[4]/div/input"));
-        clickElement(By.xpath("//li[5]/div/input"));
-        clickElement(By.xpath("//li[7]/div/input"));
+        //Modify service info
+        sendKeysToElement(By.id("Titel"), "Modified Automated Service");
+        sendKeysToElement(By.tagName("textarea"), "The text is modified by selenium");
+        clickElement(By.xpath("//color-picker/div/div[9]"));
+        sendKeysToElement(By.id("Datum"), "18/12/2024");
 
         // Submit changes
         clickElement(By.xpath("//button[@type='submit']"));
     }
-//
-//    @Test(priority = 6, dependsOnMethods = "modifyRole")
-//    public void giveRoleAllAccess() throws InterruptedException {
-//        clickElement(By.xpath("//div[2]/div/button"));
-//        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)"));
-//
-//        sendKeysToElement(By.xpath("//div/div/input"), "Role Automation with all access");
-//
-//        // Grant all permissions
-//        clickElement(By.id("ALL"));
-//
-//        // Submit changes
-//        clickElement(By.xpath("//button[@type='submit']"));
-//    }
-//
-//    private void openDeleteDialog() throws InterruptedException {
-//        clickElement(By.xpath("//div[2]/div/button"));
-//        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)"));
-//    }
-//
-//    @Test(priority = 7, dependsOnMethods = "giveRoleAllAccess")
-//    public void deleteRole() throws InterruptedException {
-//        // Cancel the delete action
-//        openDeleteDialog();
-//        clickElement(By.xpath("//div[2]/div/div/div[1]/button"));
-//
-//        //Close the delete action
-//        openDeleteDialog();
-//        clickElement(By.xpath("//div[2]/div/div/div[3]/button[2]"));
-//
-//        // Confirm the delete action
-//        openDeleteDialog();
-//        clickElement(By.xpath("//button[@type='submit']"));
-//    }
+
+    @Test(priority = 5, dependsOnMethods = "modifyService")
+    public void modifyService2() throws InterruptedException {
+
+        //Open the modify service form
+        clickElement(By.xpath("//tbody/div[1]/tr[3]/td[4]//button"));
+        clickElement(By.cssSelector(".mat-mdc-menu-content button:nth-of-type(1)"));
+
+        //Modify service info
+        sendKeysToElement(By.xpath("//color-picker/div[2]//input[2]"),"#02e8cd");
+        sendKeysToElement(By.id("Pauze"), "50");
+
+//        sendKeysToElement(By.id("Starttijd"), "11:00 P");
+//        sendKeysToElement(By.id("Eindtijd"), "8:00 A");
+
+        // Submit changes
+        clickElement(By.xpath("//button[@type='submit']"));
+    }
+
+    @Test(priority = 6, dependsOnMethods = "modifyService2")
+    public void deleteService() throws InterruptedException {
+
+        //Open the delete confirmation dialog
+        clickElement(By.xpath("//tbody/div[1]/tr[3]/td[4]//button"));
+        clickElement(By.cssSelector(".mat-mdc-menu-content button:nth-of-type(2)"));
+
+        // Confirm Delete
+        clickElement(By.xpath("//button[@type='submit']"));
+    }
 }
