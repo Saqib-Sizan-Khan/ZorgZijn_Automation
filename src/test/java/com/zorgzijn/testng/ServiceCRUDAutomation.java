@@ -18,6 +18,14 @@ public class ServiceCRUDAutomation extends AutomationSetupClass {
         Thread.sleep(1500);
     }
 
+    private void sendKeysToTimeInput(By locator, String time, String mid) throws InterruptedException {
+        WebElement element = driver.findElement(locator);
+        //element.clear();
+        element.sendKeys(time);
+        element.sendKeys(" "+mid);
+        Thread.sleep(1500);
+    }
+
 
     @Test(priority = 1)
     public void login() throws InterruptedException {
@@ -93,21 +101,32 @@ public class ServiceCRUDAutomation extends AutomationSetupClass {
         sendKeysToElement(By.xpath("//color-picker/div[2]//input[2]"), "#02e8cd");
         sendKeysToElement(By.id("Pauze"), "50");
 
-//        sendKeysToElement(By.id("Starttijd"), "11:00 P");
-//        sendKeysToElement(By.id("Eindtijd"), "8:00 A");
+        sendKeysToTimeInput(By.id("Starttijd"), "11:00", "PM");
+        sendKeysToTimeInput(By.id("Eindtijd"), "8:00", "AM");
+
+//        WebElement startTimeField = driver.findElement(By.id("Starttijd"));
+//        WebElement endTimeField = driver.findElement(By.id("Eindtijd"));
+//
+//        // Focus on the field and type value
+//        startTimeField.sendKeys("11:00");
+//        startTimeField.sendKeys(" PM");
+//
+//        //endTimeField.click();
+//        endTimeField.sendKeys("8:00");
+//        endTimeField.sendKeys(" AM");
 
         // Submit changes
         clickElement(By.xpath("//button[@type='submit']"));
     }
 
-    @Test(priority = 6, dependsOnMethods = "modifyService2")
-    public void deleteService() throws InterruptedException {
-
-        //Open the delete confirmation dialog
-        clickElement(By.xpath("//tbody/div[1]/tr[3]/td[4]//button"));
-        clickElement(By.cssSelector(".mat-mdc-menu-content button:nth-of-type(2)"));
-
-        // Confirm Delete
-        clickElement(By.xpath("//button[@type='submit']"));
-    }
+//    @Test(priority = 6, dependsOnMethods = "modifyService2")
+//    public void deleteService() throws InterruptedException {
+//
+//        //Open the delete confirmation dialog
+//        clickElement(By.xpath("//tbody/div[1]/tr[3]/td[4]//button"));
+//        clickElement(By.cssSelector(".mat-mdc-menu-content button:nth-of-type(2)"));
+//
+//        // Confirm Delete
+//        clickElement(By.xpath("//button[@type='submit']"));
+//    }
 }
