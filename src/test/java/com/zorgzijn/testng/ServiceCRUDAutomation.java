@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-public class PlanningAutomation extends AutomationSetupClass {
+public class ServiceCRUDAutomation extends AutomationSetupClass {
 
     private void clickElement(By locator) throws InterruptedException {
         driver.findElement(locator).click();
@@ -90,7 +90,7 @@ public class PlanningAutomation extends AutomationSetupClass {
         clickElement(By.cssSelector(".mat-mdc-menu-content button:nth-of-type(1)"));
 
         //Modify service info
-        sendKeysToElement(By.xpath("//color-picker/div[2]//input[2]"),"#02e8cd");
+        sendKeysToElement(By.xpath("//color-picker/div[2]//input[2]"), "#02e8cd");
         sendKeysToElement(By.id("Pauze"), "50");
 
 //        sendKeysToElement(By.id("Starttijd"), "11:00 P");
