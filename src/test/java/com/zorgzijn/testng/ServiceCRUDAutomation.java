@@ -104,29 +104,18 @@ public class ServiceCRUDAutomation extends AutomationSetupClass {
         sendKeysToTimeInput(By.id("Starttijd"), "11:00", "PM");
         sendKeysToTimeInput(By.id("Eindtijd"), "8:00", "AM");
 
-//        WebElement startTimeField = driver.findElement(By.id("Starttijd"));
-//        WebElement endTimeField = driver.findElement(By.id("Eindtijd"));
-//
-//        // Focus on the field and type value
-//        startTimeField.sendKeys("11:00");
-//        startTimeField.sendKeys(" PM");
-//
-//        //endTimeField.click();
-//        endTimeField.sendKeys("8:00");
-//        endTimeField.sendKeys(" AM");
-
         // Submit changes
         clickElement(By.xpath("//button[@type='submit']"));
     }
 
-//    @Test(priority = 6, dependsOnMethods = "modifyService2")
-//    public void deleteService() throws InterruptedException {
-//
-//        //Open the delete confirmation dialog
-//        clickElement(By.xpath("//tbody/div[1]/tr[3]/td[4]//button"));
-//        clickElement(By.cssSelector(".mat-mdc-menu-content button:nth-of-type(2)"));
-//
-//        // Confirm Delete
-//        clickElement(By.xpath("//button[@type='submit']"));
-//    }
+    @Test(priority = 6, dependsOnMethods = "modifyService2")
+    public void deleteService() throws InterruptedException {
+
+        //Open the delete confirmation dialog
+        clickElement(By.xpath("//tbody/div[1]/tr[3]/td[4]//button"));
+        clickElement(By.cssSelector(".mat-mdc-menu-content button:nth-of-type(2)"));
+
+        // Confirm Delete
+        clickElement(By.xpath("//button[@type='submit']"));
+    }
 }
