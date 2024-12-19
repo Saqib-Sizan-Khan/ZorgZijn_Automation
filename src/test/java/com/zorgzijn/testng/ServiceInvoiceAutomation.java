@@ -6,13 +6,13 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class ServiceRegisterAutomation extends AutomationSetupClass {
+public class ServiceInvoiceAutomation extends AutomationSetupClass {
 
     private static final int SHORT_WAIT = 1500;
     private static final int LONG_WAIT = 2000;
 
-    int tableRowPosition = 4;
-    String employeeName = "Ella Victoria Rogers";
+    int tableRowPosition = 9;
+    String employeeName = "Jewel Chowdhury MR Chowdhury";
 
 
     private void clickElement(By locator) throws InterruptedException {
@@ -56,11 +56,12 @@ public class ServiceRegisterAutomation extends AutomationSetupClass {
         // Open service creation form
         clickElement(By.xpath("//tbody/div[1]/tr["+ tableRowPosition +"]/td[4]"));
         clickElement(By.tagName("mat-select"));
-        clickElement(By.xpath("//mat-option[5]"));
+        clickElement(By.xpath("//mat-option[2]"));
         sendKeysToElement(By.tagName("textarea"), "This is an automated text");
 
         // Submit form to create the service
         clickElement(By.xpath("//form/div/button[1]"));
+        Thread.sleep(SHORT_WAIT);
     }
 
     @Test(priority = 4, dependsOnMethods = "createService")
@@ -73,8 +74,20 @@ public class ServiceRegisterAutomation extends AutomationSetupClass {
         // Change date
         clickElement(By.xpath("//button[1]"));
 
-        // Register the service
-        clickElement(By.xpath("//tr[2]//button[2]"));
+        // Find and select employee checkbox
+        List<WebElement> rows = driver.findElements(By.xpath("//tbody/tr"));
+
+        for (WebElement row : rows) {
+            WebElement nameCell = row.findElement(By.xpath(".//td[1]"));
+
+            if (nameCell.getText().equalsIgnoreCase(employeeName)) {
+                // Register the service
+                WebElement checkbox = row.findElement(By.xpath(".//button[2]"));
+                checkbox.click();
+                break;
+            }
+        }
+        Thread.sleep(LONG_WAIT);
     }
 
     @Test(priority = 6, dependsOnMethods = "registerService")
