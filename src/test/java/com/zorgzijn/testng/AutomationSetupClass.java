@@ -7,7 +7,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 public abstract class AutomationSetupClass {
-    WebDriver driver;
+    static WebDriver driver;
     String baseUrl = "https://zorgzijn-dev.acegreen.nl";
 
     @BeforeTest
