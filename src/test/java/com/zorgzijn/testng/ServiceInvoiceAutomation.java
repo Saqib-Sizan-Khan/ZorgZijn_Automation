@@ -11,8 +11,9 @@ public class ServiceInvoiceAutomation extends AutomationSetupClass {
     private static final int SHORT_WAIT = 1500;
     private static final int LONG_WAIT = 2000;
 
-    int tableRowPosition = 9;
-    String employeeName = "Jewel Chowdhury MR Chowdhury";
+    int tableRowPosition = 4;
+    int tableColumnPosition = 5;
+    String employeeName = "Ella Victoria Rogers";
 
 
     private void clickElement(By locator) throws InterruptedException {
@@ -54,7 +55,7 @@ public class ServiceInvoiceAutomation extends AutomationSetupClass {
     @Test(priority = 3, dependsOnMethods = "navigateToPlanningTab")
     public void createService() throws InterruptedException {
         // Open service creation form
-        clickElement(By.xpath("//tbody/div[1]/tr["+ tableRowPosition +"]/td[4]"));
+        clickElement(By.xpath("//tbody/div[1]/tr["+ tableRowPosition +"]/td["+ tableColumnPosition +"]"));
         clickElement(By.tagName("mat-select"));
         clickElement(By.xpath("//mat-option[2]"));
         sendKeysToElement(By.tagName("textarea"), "This is an automated text");
@@ -73,6 +74,7 @@ public class ServiceInvoiceAutomation extends AutomationSetupClass {
     public void registerService() throws InterruptedException {
         // Change date
         clickElement(By.xpath("//button[1]"));
+        Thread.sleep(SHORT_WAIT);
 
         // Find and select employee checkbox
         List<WebElement> rows = driver.findElements(By.xpath("//tbody/tr"));
