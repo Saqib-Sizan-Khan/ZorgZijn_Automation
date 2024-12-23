@@ -3,10 +3,6 @@ package com.zorgzijn.testng;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
-import java.util.Random;
-
 public class PerformAction extends AutomationSetupClass {
     private static final int SHORT_WAIT = 1500;
     private static final int LONG_WAIT = 2000;
