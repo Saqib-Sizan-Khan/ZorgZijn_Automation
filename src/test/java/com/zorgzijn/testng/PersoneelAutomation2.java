@@ -9,22 +9,12 @@ public class PersoneelAutomation2 extends AutomationSetupClass {
 
     @Test(priority = 1)
     public void login() throws InterruptedException {
-        driver.get(baseUrl + "/auth/login");
-        PerformAction.waitForPageLoad();
-
-        PerformAction.sendKeysToElement(By.id("E-mailadres"), "ssk123098@gmail.com");
-        PerformAction.sendKeysToElement(By.id("Wachtwoord"), "Sizan@1999");
-        PerformAction.clickElement(By.id("remember"));
-
-        // Submit the login form
-        PerformAction.clickElement(By.xpath("//button"));
-        PerformAction.waitForPageLoad();
+        baseLogin();
     }
 
     @Test(priority = 2, dependsOnMethods = "login")
     public void navigateToPersoneelTab() throws InterruptedException {
-        PerformAction.clickElement(By.xpath("//div/a[5]"));
-        PerformAction.shortWait();
+        tabNavigation(5);
     }
 
     @Test(priority = 6, dependsOnMethods = "navigateToPersoneelTab")
