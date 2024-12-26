@@ -30,7 +30,7 @@ public class PerformAction extends AutomationSetupClass {
     public static void clearField(By locator) throws InterruptedException {
         WebElement element = driver.findElement(locator);
         element.clear();
-        Thread.sleep(SHORT_WAIT);
+        Thread.sleep(LONG_WAIT);
     }
 
     public static void waitForPageLoad() throws InterruptedException {

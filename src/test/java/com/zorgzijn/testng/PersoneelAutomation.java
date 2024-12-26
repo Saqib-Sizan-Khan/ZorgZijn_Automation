@@ -120,6 +120,22 @@ public class PersoneelAutomation extends AutomationSetupClass {
     }
 
     @Test(priority = 6, dependsOnMethods = "modifyEmployee")
+    public void changeEmployeeFilter() throws InterruptedException {
+        PerformAction.clearField(By.id("simple-search"));
+        PerformAction.clickElement(By.xpath("//div[3]/button"));
+        PerformAction.clickElement(By.id("mat-radio-4-input"));
+        PerformAction.longWait();
+    }
+
+    @Test(priority = 7, dependsOnMethods = "changeEmployeeFilter")
+    public void searchEmployeeAgain() throws InterruptedException {
+        PerformAction.sendKeysToElement(By.id("simple-search"), "Dylan");
+        PerformAction.shortWait();
+        PerformAction.clickElement(By.xpath("//staff-list/div/div[1]"));
+        PerformAction.shortWait();
+    }
+
+    @Test(priority = 8, dependsOnMethods = "searchEmployeeAgain")
     public void deleteEmployee() throws InterruptedException {
         PerformAction.clickElement(By.xpath("//staff-details/div/staff-header/div/div[2]/button"));
         PerformAction.clickElement(By.xpath("//button[@role='menuitem'][3]"));
