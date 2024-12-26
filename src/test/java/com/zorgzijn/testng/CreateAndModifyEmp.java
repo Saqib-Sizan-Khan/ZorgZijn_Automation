@@ -25,9 +25,9 @@ public class CreateAndModifyEmp extends AutomationSetupClass {
         PerformAction.clickElement(By.tagName("button"));
 
         // Fill employee details
-        PerformAction.sendKeysToElement(By.id("Voornaam"), "Scarlett");
-        PerformAction.sendKeysToElement(By.id("Tussenvoegsel"), "Faith");
-        PerformAction.sendKeysToElement(By.id("Achternaam"), "Turner");
+        PerformAction.typeField(By.id("Voornaam"), "Scarlett");
+        PerformAction.typeField(By.id("Tussenvoegsel"), "Faith");
+        PerformAction.typeField(By.id("Achternaam"), "Turner");
 
         List<WebElement> dropDown = driver.findElements(By.tagName("mat-select"));
 
@@ -39,19 +39,19 @@ public class CreateAndModifyEmp extends AutomationSetupClass {
         dropDown.get(1).click();
         PerformAction.clickElement(By.xpath("//*[@role='option'][2]"));
 
-        PerformAction.sendKeysToElement(By.id("Geboortedatum"), RandomInput.birthday());
-        PerformAction.sendKeysToElement(By.id("Telefoonnummer"), RandomInput.phoneNumber());
-        PerformAction.sendKeysToElement(By.id("E-mailadres"), RandomInput.email());
+        PerformAction.typeField(By.id("Geboortedatum"), RandomInput.birthday());
+        PerformAction.typeField(By.id("Telefoonnummer"), RandomInput.phoneNumber());
+        PerformAction.typeField(By.id("E-mailadres"), RandomInput.email());
 
         // Nationality
         PerformAction.clickElement(By.xpath("//app-autocomplete-field/div/input"));
         PerformAction.clickElement(By.id("mat-option-12"));
 
         // Company details
-        PerformAction.sendKeysToElement(By.id("KVK"), "34148704");
-        PerformAction.sendKeysToElement(By.id("BTW-nummer"), "865845621B01");
-        PerformAction.sendKeysToElement(By.id("Rekeningnummer"), "02ABNA0123456789");
-        PerformAction.sendKeysToElement(By.id("Fee per uur"), RandomInput.feePerHour());
+        PerformAction.typeField(By.id("KVK"), "34148704");
+        PerformAction.typeField(By.id("BTW-nummer"), "865845621B01");
+        PerformAction.typeField(By.id("Rekeningnummer"), "02ABNA0123456789");
+        PerformAction.typeField(By.id("Fee per uur"), RandomInput.feePerHour());
 
         // Checkbox and submit
         PerformAction.clickElement(By.xpath("//input[@type='checkbox']"));
@@ -70,9 +70,9 @@ public class CreateAndModifyEmp extends AutomationSetupClass {
         Personeel.openEmployeeMenu(1);
 
         // Modify details
-        PerformAction.sendKeysToElement(By.id("Voornaam"), "Dylan");
-        PerformAction.sendKeysToElement(By.id("Tussenvoegsel"), "Nicholas");
-        PerformAction.sendKeysToElement(By.id("Achternaam"), "Reed");
+        PerformAction.typeField(By.id("Voornaam"), "Dylan");
+        PerformAction.typeField(By.id("Tussenvoegsel"), "Nicholas");
+        PerformAction.typeField(By.id("Achternaam"), "Reed");
 
         List<WebElement> dropDown = driver.findElements(By.tagName("mat-select"));
 
@@ -84,16 +84,16 @@ public class CreateAndModifyEmp extends AutomationSetupClass {
         dropDown.get(1).click();
         PerformAction.clickElement(By.xpath("//*[@role='option'][1]"));
 
-        PerformAction.sendKeysToElement(By.id("Geboortedatum"), RandomInput.birthday());
-        PerformAction.sendKeysToElement(By.id("Telefoonnummer"), RandomInput.phoneNumber());
-        PerformAction.sendKeysToElement(By.id("E-mailadres"), RandomInput.email());
+        PerformAction.typeField(By.id("Geboortedatum"), RandomInput.birthday());
+        PerformAction.typeField(By.id("Telefoonnummer"), RandomInput.phoneNumber());
+        PerformAction.typeField(By.id("E-mailadres"), RandomInput.email());
 
         // Change nationality
-        PerformAction.sendKeysToElement(By.xpath("//app-autocomplete-field/div/input"), "Bengaals");
+        PerformAction.typeField(By.xpath("//app-autocomplete-field/div/input"), "Bengaals");
 
         // Company details
-        PerformAction.sendKeysToElement(By.id("KVK"), "53531795");
-        PerformAction.sendKeysToElement(By.id("Fee per uur"), RandomInput.feePerHour());
+        PerformAction.typeField(By.id("KVK"), "53531795");
+        PerformAction.typeField(By.id("Fee per uur"), RandomInput.feePerHour());
 
         // Submit changes
         PerformAction.clickElement(By.xpath("//div[4]/submit-button/button"));

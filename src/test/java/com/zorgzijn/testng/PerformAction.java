@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 
 public class PerformAction extends AutomationSetupClass {
     private static final int SHORT_WAIT = 1500;
-    private static final int LONG_WAIT = 2000;
+    private static final int LONG_WAIT = 2500;
 
     public static void shortWait () throws InterruptedException {
         Thread.sleep(SHORT_WAIT);
@@ -15,22 +15,29 @@ public class PerformAction extends AutomationSetupClass {
         Thread.sleep(LONG_WAIT);
     }
 
+    public static void veryLongWait () throws InterruptedException {
+        Thread.sleep(LONG_WAIT*2);
+    }
+
     public static void clickElement(By locator) throws InterruptedException {
         driver.findElement(locator).click();
         Thread.sleep(SHORT_WAIT);
     }
 
-    public static void sendKeysToElement(By locator, String keys) throws InterruptedException {
+    public static void typeField(By locator, String keys) throws InterruptedException {
         WebElement element = driver.findElement(locator);
+        element.click();
         element.clear();
+        Thread.sleep(LONG_WAIT);
         element.sendKeys(keys);
         Thread.sleep(SHORT_WAIT);
     }
 
     public static void clearField(By locator) throws InterruptedException {
         WebElement element = driver.findElement(locator);
+        element.click();
         element.clear();
-        Thread.sleep(LONG_WAIT);
+        Thread.sleep(SHORT_WAIT);
     }
 
     public static void waitForPageLoad() throws InterruptedException {

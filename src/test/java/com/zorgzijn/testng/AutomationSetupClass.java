@@ -22,8 +22,8 @@ public abstract class AutomationSetupClass {
         driver.get(baseUrl + "/auth/login");
         PerformAction.waitForPageLoad();
 
-        PerformAction.sendKeysToElement(By.id("E-mailadres"), "ssk123098@gmail.com");
-        PerformAction.sendKeysToElement(By.id("Wachtwoord"), "Sizan@1999");
+        PerformAction.typeField(By.id("E-mailadres"), "ssk123098@gmail.com");
+        PerformAction.typeField(By.id("Wachtwoord"), "Sizan@1999");
         PerformAction.clickElement(By.id("remember"));
 
         // Submit the login form

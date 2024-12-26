@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 public class Personeel {
 
     public static void searchAndShowEmployee(String employeeName) throws InterruptedException {
-        PerformAction.sendKeysToElement(By.id("simple-search"), employeeName);
+        PerformAction.typeField(By.id("simple-search"), employeeName);
         PerformAction.shortWait();
         PerformAction.clickElement(By.xpath("//staff-list/div/div[1]"));
         PerformAction.shortWait();
