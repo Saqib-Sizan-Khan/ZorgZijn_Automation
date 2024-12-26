@@ -7,7 +7,7 @@
     </test>
     <test name="Part2" preserve-order="true">
         <classes>
-            <class name="com.zorgzijn.testng.TimelineCRUDOperation"/>
+            <class name="com.zorgzijn.testng.TimelineEmp"/>
         </classes>
     </test>
 </suite>
