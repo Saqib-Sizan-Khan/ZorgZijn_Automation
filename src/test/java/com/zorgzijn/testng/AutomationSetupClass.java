@@ -12,7 +12,7 @@ public abstract class AutomationSetupClass {
 
     @BeforeTest
     public void setup() {
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.edgedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }

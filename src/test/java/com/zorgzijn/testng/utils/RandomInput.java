@@ -1,4 +1,4 @@
-package com.zorgzijn.testng;
+package com.zorgzijn.testng.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
@@ -106,5 +106,24 @@ public class RandomInput {
         int number = 100 + random.nextInt(900);
 
         return String.valueOf(number);
+    }
+
+    public static String text() {
+        Random random = new Random();
+        int wordCount = random.nextInt(11) + 10; // Random number between 10 and 20
+        StringBuilder text = new StringBuilder();
+
+        for (int i = 0; i < wordCount; i++) {
+            text.append(InputData.words[random.nextInt(InputData.words.length)]);
+
+            // Add a newline after every 5th word (except the last word)
+            if ((i + 1) % 7 == 0 && i < wordCount - 1) {
+                text.append("\n");
+            } else if (i < wordCount - 1) {
+                text.append(" ");
+            }
+        }
+
+        return text.toString();
     }
 }

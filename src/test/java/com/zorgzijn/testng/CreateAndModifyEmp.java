@@ -1,24 +1,14 @@
 package com.zorgzijn.testng;
 
+import com.zorgzijn.testng.utils.Personeel;
+import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class PersoneelAutomation extends AutomationSetupClass {
-
-    private void searchAndShowEmployee(String employeeName) throws InterruptedException {
-        PerformAction.sendKeysToElement(By.id("simple-search"), employeeName);
-        PerformAction.shortWait();
-        PerformAction.clickElement(By.xpath("//staff-list/div/div[1]"));
-        PerformAction.shortWait();
-    }
-
-    private void openEmployeeMenu(int menuItem) throws InterruptedException {
-        PerformAction.clickElement(By.xpath("//staff-details/div/staff-header/div/div[2]/button"));
-        PerformAction.clickElement(By.xpath("//button[@role='menuitem']["+ menuItem +"]"));
-    }
+public class CreateAndModifyEmp extends AutomationSetupClass {
 
     @Test(priority = 1)
     public void login() throws InterruptedException {
@@ -82,12 +72,12 @@ public class PersoneelAutomation extends AutomationSetupClass {
 
     @Test(priority = 4, dependsOnMethods = "createEmployee")
     public void searchEmployee() throws InterruptedException {
-        searchAndShowEmployee("Scarlett");
+        Personeel.searchAndShowEmployee("Scarlett");
     }
 
     @Test(priority = 5, dependsOnMethods = "searchEmployee")
     public void modifyEmployee() throws InterruptedException {
-        openEmployeeMenu(1);
+        Personeel.openEmployeeMenu(1);
 
         // Modify details
         PerformAction.sendKeysToElement(By.id("Voornaam"), "Dylan");
@@ -118,25 +108,5 @@ public class PersoneelAutomation extends AutomationSetupClass {
         // Submit changes
         PerformAction.clickElement(By.xpath("//div[4]/submit-button/button"));
         PerformAction.longWait();
-    }
-
-    @Test(priority = 6, dependsOnMethods = "modifyEmployee")
-    public void changeEmployeeFilter() throws InterruptedException {
-        PerformAction.clearField(By.id("simple-search"));
-        PerformAction.clickElement(By.xpath("//div[3]/button"));
-        PerformAction.clickElement(By.id("mat-radio-4-input"));
-        PerformAction.longWait();
-    }
-
-    @Test(priority = 7, dependsOnMethods = "changeEmployeeFilter")
-    public void searchEmployeeAgain() throws InterruptedException {
-        searchAndShowEmployee("Dylan");
-    }
-
-    @Test(priority = 8, dependsOnMethods = "searchEmployeeAgain")
-    public void deleteEmployee() throws InterruptedException {
-        openEmployeeMenu(3);
-        PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
-        PerformAction.shortWait();
     }
 }
