@@ -8,6 +8,18 @@ import java.util.List;
 
 public class PersoneelAutomation extends AutomationSetupClass {
 
+    private void searchAndShowEmployee(String employeeName) throws InterruptedException {
+        PerformAction.sendKeysToElement(By.id("simple-search"), employeeName);
+        PerformAction.shortWait();
+        PerformAction.clickElement(By.xpath("//staff-list/div/div[1]"));
+        PerformAction.shortWait();
+    }
+
+    private void openEmployeeMenu(int menuItem) throws InterruptedException {
+        PerformAction.clickElement(By.xpath("//staff-details/div/staff-header/div/div[2]/button"));
+        PerformAction.clickElement(By.xpath("//button[@role='menuitem']["+ menuItem +"]"));
+    }
+
     @Test(priority = 1)
     public void login() throws InterruptedException {
         driver.get(baseUrl + "/auth/login");
@@ -25,18 +37,17 @@ public class PersoneelAutomation extends AutomationSetupClass {
     @Test(priority = 2, dependsOnMethods = "login")
     public void navigateToPersoneelTab() throws InterruptedException {
         PerformAction.clickElement(By.xpath("//div/a[5]"));
-        Thread.sleep(3000);
+        PerformAction.shortWait();
     }
 
     @Test(priority = 3, dependsOnMethods = "navigateToPersoneelTab")
     public void createEmployee() throws InterruptedException {
-
         PerformAction.clickElement(By.tagName("button"));
 
-        //Type Employee Name
-        PerformAction.sendKeysToElement(By.id("Voornaam"),"Scarlett");
-        PerformAction.sendKeysToElement(By.id("Tussenvoegsel"),"Faith");
-        PerformAction.sendKeysToElement(By.id("Achternaam"),"Turner");
+        // Fill employee details
+        PerformAction.sendKeysToElement(By.id("Voornaam"), "Scarlett");
+        PerformAction.sendKeysToElement(By.id("Tussenvoegsel"), "Faith");
+        PerformAction.sendKeysToElement(By.id("Achternaam"), "Turner");
 
         List<WebElement> dropDown = driver.findElements(By.tagName("mat-select"));
 
@@ -48,25 +59,22 @@ public class PersoneelAutomation extends AutomationSetupClass {
         dropDown.get(1).click();
         PerformAction.clickElement(By.xpath("//*[@role='option'][2]"));
 
-        //Type Phone, DOB and Email
         PerformAction.sendKeysToElement(By.id("Geboortedatum"), RandomInput.birthday());
         PerformAction.sendKeysToElement(By.id("Telefoonnummer"), RandomInput.phoneNumber());
         PerformAction.sendKeysToElement(By.id("E-mailadres"), RandomInput.email());
 
-        //Select Nationality
+        // Nationality
         PerformAction.clickElement(By.xpath("//app-autocomplete-field/div/input"));
         PerformAction.clickElement(By.id("mat-option-12"));
 
-        //Type Company Details
+        // Company details
         PerformAction.sendKeysToElement(By.id("KVK"), "34148704");
         PerformAction.sendKeysToElement(By.id("BTW-nummer"), "865845621B01");
         PerformAction.sendKeysToElement(By.id("Rekeningnummer"), "02ABNA0123456789");
         PerformAction.sendKeysToElement(By.id("Fee per uur"), RandomInput.feePerHour());
 
-        //Checked relationship code
+        // Checkbox and submit
         PerformAction.clickElement(By.xpath("//input[@type='checkbox']"));
-
-        //Submit form
         PerformAction.clickElement(By.xpath("//button[@type='submit']"));
 
         PerformAction.longWait();
@@ -74,22 +82,17 @@ public class PersoneelAutomation extends AutomationSetupClass {
 
     @Test(priority = 4, dependsOnMethods = "createEmployee")
     public void searchEmployee() throws InterruptedException {
-        PerformAction.sendKeysToElement(By.id("simple-search"), "Scarlett");
-        PerformAction.shortWait();
-        PerformAction.clickElement(By.xpath("//staff-list/div/div[1]"));
-        PerformAction.shortWait();
+        searchAndShowEmployee("Scarlett");
     }
 
     @Test(priority = 5, dependsOnMethods = "searchEmployee")
     public void modifyEmployee() throws InterruptedException {
+        openEmployeeMenu(1);
 
-        PerformAction.clickElement(By.xpath("//staff-details/div/staff-header/div/div[2]/button"));
-        PerformAction.clickElement(By.xpath("//button[@role='menuitem'][1]"));
-
-        //Change Employee Name
-        PerformAction.sendKeysToElement(By.id("Voornaam"),"Dylan");
-        PerformAction.sendKeysToElement(By.id("Tussenvoegsel"),"Nicholas");
-        PerformAction.sendKeysToElement(By.id("Achternaam"),"Reed");
+        // Modify details
+        PerformAction.sendKeysToElement(By.id("Voornaam"), "Dylan");
+        PerformAction.sendKeysToElement(By.id("Tussenvoegsel"), "Nicholas");
+        PerformAction.sendKeysToElement(By.id("Achternaam"), "Reed");
 
         List<WebElement> dropDown = driver.findElements(By.tagName("mat-select"));
 
@@ -101,21 +104,19 @@ public class PersoneelAutomation extends AutomationSetupClass {
         dropDown.get(1).click();
         PerformAction.clickElement(By.xpath("//*[@role='option'][1]"));
 
-        //Change Phone, DOB and Email
         PerformAction.sendKeysToElement(By.id("Geboortedatum"), RandomInput.birthday());
         PerformAction.sendKeysToElement(By.id("Telefoonnummer"), RandomInput.phoneNumber());
         PerformAction.sendKeysToElement(By.id("E-mailadres"), RandomInput.email());
 
-        //Change Nationality
+        // Change nationality
         PerformAction.sendKeysToElement(By.xpath("//app-autocomplete-field/div/input"), "Bengaals");
 
-        //Change Company Details
+        // Company details
         PerformAction.sendKeysToElement(By.id("KVK"), "53531795");
         PerformAction.sendKeysToElement(By.id("Fee per uur"), RandomInput.feePerHour());
 
-        //Submit form
+        // Submit changes
         PerformAction.clickElement(By.xpath("//div[4]/submit-button/button"));
-
         PerformAction.longWait();
     }
 
@@ -129,16 +130,12 @@ public class PersoneelAutomation extends AutomationSetupClass {
 
     @Test(priority = 7, dependsOnMethods = "changeEmployeeFilter")
     public void searchEmployeeAgain() throws InterruptedException {
-        PerformAction.sendKeysToElement(By.id("simple-search"), "Dylan");
-        PerformAction.shortWait();
-        PerformAction.clickElement(By.xpath("//staff-list/div/div[1]"));
-        PerformAction.shortWait();
+        searchAndShowEmployee("Dylan");
     }
 
     @Test(priority = 8, dependsOnMethods = "searchEmployeeAgain")
     public void deleteEmployee() throws InterruptedException {
-        PerformAction.clickElement(By.xpath("//staff-details/div/staff-header/div/div[2]/button"));
-        PerformAction.clickElement(By.xpath("//button[@role='menuitem'][3]"));
+        openEmployeeMenu(3);
         PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
         PerformAction.shortWait();
     }
