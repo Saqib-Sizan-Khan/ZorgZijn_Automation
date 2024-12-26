@@ -1,7 +1,6 @@
 package com.zorgzijn.testng;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -49,14 +48,14 @@ public class PersoneelAutomation extends AutomationSetupClass {
         dropDown.get(1).click();
         PerformAction.clickElement(By.xpath("//*[@role='option'][2]"));
 
-        //Type Phone and Email
+        //Type Phone, DOB and Email
         PerformAction.sendKeysToElement(By.id("Geboortedatum"), RandomInput.birthday());
         PerformAction.sendKeysToElement(By.id("Telefoonnummer"), RandomInput.phoneNumber());
-        PerformAction.sendKeysToElement(By.id("E-mailadres"), "9785elsy@freesourcecodes.com");
+        PerformAction.sendKeysToElement(By.id("E-mailadres"), RandomInput.email());
 
         //Select Nationality
         PerformAction.clickElement(By.xpath("//app-autocomplete-field/div/input"));
-        PerformAction.clickElement(By.xpath("//*[@role='option'][12]"));
+        PerformAction.clickElement(By.id("mat-option-12"));
 
         //Type Company Details
         PerformAction.sendKeysToElement(By.id("KVK"), "34148704");
@@ -82,9 +81,48 @@ public class PersoneelAutomation extends AutomationSetupClass {
     }
 
     @Test(priority = 5, dependsOnMethods = "searchEmployee")
+    public void modifyEmployee() throws InterruptedException {
+
+        PerformAction.clickElement(By.xpath("//staff-details/div/staff-header/div/div[2]/button"));
+        PerformAction.clickElement(By.xpath("//button[@role='menuitem'][1]"));
+
+        //Change Employee Name
+        PerformAction.sendKeysToElement(By.id("Voornaam"),"Dylan");
+        PerformAction.sendKeysToElement(By.id("Tussenvoegsel"),"Nicholas");
+        PerformAction.sendKeysToElement(By.id("Achternaam"),"Reed");
+
+        List<WebElement> dropDown = driver.findElements(By.tagName("mat-select"));
+
+        //Change Employee Type
+        dropDown.get(0).click();
+        PerformAction.clickElement(By.xpath("//*[@role='option'][2]"));
+
+        //Change Gender
+        dropDown.get(1).click();
+        PerformAction.clickElement(By.xpath("//*[@role='option'][1]"));
+
+        //Change Phone, DOB and Email
+        PerformAction.sendKeysToElement(By.id("Geboortedatum"), RandomInput.birthday());
+        PerformAction.sendKeysToElement(By.id("Telefoonnummer"), RandomInput.phoneNumber());
+        PerformAction.sendKeysToElement(By.id("E-mailadres"), RandomInput.email());
+
+        //Change Nationality
+        PerformAction.sendKeysToElement(By.xpath("//app-autocomplete-field/div/input"), "Bengaals");
+
+        //Change Company Details
+        PerformAction.sendKeysToElement(By.id("KVK"), "53531795");
+        PerformAction.sendKeysToElement(By.id("Fee per uur"), RandomInput.feePerHour());
+
+        //Submit form
+        PerformAction.clickElement(By.xpath("//div[4]/submit-button/button"));
+
+        PerformAction.longWait();
+    }
+
+    @Test(priority = 6, dependsOnMethods = "modifyEmployee")
     public void deleteEmployee() throws InterruptedException {
         PerformAction.clickElement(By.xpath("//staff-details/div/staff-header/div/div[2]/button"));
-        PerformAction.clickElement(By.xpath("//button[@role='menuitem'][2]"));
+        PerformAction.clickElement(By.xpath("//button[@role='menuitem'][3]"));
         PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
         PerformAction.shortWait();
     }

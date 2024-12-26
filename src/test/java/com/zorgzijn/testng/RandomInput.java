@@ -6,14 +6,43 @@ import java.util.Random;
 
 public class RandomInput {
 
-    public static String phoneNumber() {
+    public static String email() {
+        Random random = new Random();
 
+        // Generate random username
+        int usernameLength = 8 + random.nextInt(5); // Length between 8 and 12
+        StringBuilder username = new StringBuilder();
+        for (int i = 0; i < usernameLength; i++) {
+            char randomChar = (char) ('a' + random.nextInt(26));
+            username.append(randomChar);
+        }
+
+        // Generate random domain name
+        int domainLength = 5 + random.nextInt(3); // Length between 5 and 7
+        StringBuilder domainName = new StringBuilder();
+        for (int i = 0; i < domainLength; i++) {
+            char randomChar = (char) ('a' + random.nextInt(26));
+            domainName.append(randomChar);
+        }
+
+        // Generate random domain extension
+        String[] extensions = {".com", ".org", ".net", ".edu", ".info"};
+        String extension = extensions[random.nextInt(extensions.length)];
+
+        // Combine username, domain, and extension
+        return username.toString() + "@" + domainName.toString() + extension;
+    }
+
+    public static String phoneNumber() {
         Random random = new Random();
         String countryCode = "+31";
         StringBuilder phoneNumber = new StringBuilder(countryCode);
 
-        int digitsCount = 9;
-        for (int i = 0; i < digitsCount; i++) {
+        int firstDigit = 1 + random.nextInt(9);
+        phoneNumber.append(firstDigit);
+
+        int remainingDigitsCount = 8;
+        for (int i = 0; i < remainingDigitsCount; i++) {
             phoneNumber.append(random.nextInt(10));
         }
 
