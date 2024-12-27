@@ -31,11 +31,11 @@ public class TimelineEmp extends AutomationSetupClass {
     }
 
     @Test(priority = 4, dependsOnMethods = "changeEmployeeFilter")
-    public void searchEmployeeAgain() throws InterruptedException {
+    public void searchEmployee() throws InterruptedException {
         Personeel.searchAndShowEmployee("Dylan");
     }
 
-    @Test(priority = 5, dependsOnMethods = "searchEmployeeAgain")
+    @Test(priority = 5, dependsOnMethods = "searchEmployee")
     public void addTimelineNotes() throws InterruptedException {
         // Randomly decide the number of notes to add (between 3 and 6)
         notesCount = 3 + random.nextInt(4);
@@ -75,12 +75,5 @@ public class TimelineEmp extends AutomationSetupClass {
             PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
             notesCount-=1;
         }
-    }
-
-    @Test(priority = 8, dependsOnMethods = "deleteTimeline")
-    public void deleteEmployee() throws InterruptedException {
-        Personeel.openEmployeeMenu(3);
-        PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
-        PerformAction.shortWait();
     }
 }
