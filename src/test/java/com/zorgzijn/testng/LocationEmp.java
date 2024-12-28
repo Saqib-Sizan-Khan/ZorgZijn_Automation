@@ -4,8 +4,6 @@ import com.zorgzijn.testng.utils.Personeel;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.Random;
@@ -33,11 +31,11 @@ public class LocationEmp extends AutomationSetupClass {
     @Test(priority = 4, dependsOnMethods = "searchEmployee")
     public void navigateToLocationOption() throws InterruptedException {
         PerformAction.clickElement(By.xpath("//staff-tabs/div/div[3]"));
+        PerformAction.shortWait();
     }
 
     @Test(priority = 5, dependsOnMethods = "navigateToLocationOption")
     public void addLocations() throws InterruptedException {
-        // Randomly decide the number of location to add (between 3 and 6)
         locationCount = 3 + random.nextInt(4);
 
         for (int i = 0; i < locationCount; i++) {
@@ -50,6 +48,7 @@ public class LocationEmp extends AutomationSetupClass {
 
                 //Open add location dialog
                 PerformAction.clickElement(By.xpath("//staff-location/div/button"));
+                PerformAction.shortWait();
 
                 //Select location
                 PerformAction.clickElement(By.xpath("//div[1]/app-autocomplete-field//input"));
@@ -86,36 +85,44 @@ public class LocationEmp extends AutomationSetupClass {
         }
     }
 
-//    @Test(priority = 6, dependsOnMethods = "addLocations")
-//    public void modifyTimelineNotes() throws InterruptedException {
-//        for (int i = 0; i < 3; i++) {
-//            int noteNum = 1 + random.nextInt(locationCount);
-//
-//            //Open edit timeline dialog
-//            PerformAction.clickElement(By.xpath("//staff-timeline/div/div[2]/div["+ noteNum +"]//button"));
-//            PerformAction.clickElement(By.xpath("//button[@role='menuitem'][1]"));
-//
-//            //Modify timeline
-//            PerformAction.typeField(By.xpath("//form/app-ckeditor-field//div[2]/div[2]/div"), RandomInput.text());
-//            PerformAction.clickElement(By.xpath("//note-update-dialog//div[4]/button[1]"));
-//        }
-//    }
-//
-//    @Test(priority = 7, dependsOnMethods = "modifyTimelineNotes")
-//    public void deleteTimeline() throws InterruptedException {
-//        for (int i = 0; i < 2; i++) {
-//            int noteNum = 1 + random.nextInt(locationCount);
-//
-//            //Open edit timeline dialog
-//            PerformAction.clickElement(By.xpath("//staff-timeline/div/div[2]/div["+ noteNum +"]//button"));
-//            PerformAction.clickElement(By.xpath("//button[@role='menuitem'][2]"));
-//
-//            //delete timeline
-//            PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
-//            locationCount-=1;
-//        }
-//    }
-//
+    @Test(priority = 6, dependsOnMethods = "addLocations")
+    public void modifyLocations() throws InterruptedException {
+        int locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
+
+        for (int i = 0; i < 3; i++) {
+            int location = 1 + random.nextInt(locationCount);
+
+            //Activate location modification
+            PerformAction.clickElement(By.xpath("//div["+ location +"]/staff-location-detail//button"));
+            PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(1)"));
+
+            //Change Employee fee
+            PerformAction.typeField(By.xpath("//div[1]/app-rate-input-field//input"), RandomInput.feePerHour());
+            PerformAction.typeField(By.xpath("//div[2]/app-rate-input-field//input"), RandomInput.feePerHour());
+
+            //Click submit
+            PerformAction.clickElement(By.xpath("//button[@type='submit']"));
+            PerformAction.longWait();
+        }
+    }
+
+    @Test(priority = 7, dependsOnMethods = "modifyLocations")
+    public void deleteLocations() throws InterruptedException {
+        int locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
+
+        for (int i = 0; i < 2; i++) {
+            int location = 1 + random.nextInt(locationCount);
+
+            //Open delete dialog
+            PerformAction.clickElement(By.xpath("//div["+ location +"]/staff-location-detail//button"));
+            PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(2)"));
+
+            //Confirm delete
+            PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
+            locationCount-=1;
+        }
+    }
+
 //    @Test(priority = 8, dependsOnMethods = "addLocations")
 //    public void deleteEmployee() throws InterruptedException {
 //        Personeel.openEmployeeMenu(3);
