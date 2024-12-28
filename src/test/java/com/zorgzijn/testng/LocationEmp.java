@@ -3,6 +3,9 @@ package com.zorgzijn.testng;
 import com.zorgzijn.testng.utils.Personeel;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.Random;
@@ -37,31 +40,50 @@ public class LocationEmp extends AutomationSetupClass {
         // Randomly decide the number of location to add (between 3 and 6)
         locationCount = 3 + random.nextInt(4);
 
-        //Open add location dialog
-        PerformAction.clickElement(By.xpath("//staff-location/div/button"));
+        for (int i = 0; i < locationCount; i++) {
+            boolean validLocation = false;
 
-        //Select location
-        PerformAction.clickElement(By.xpath("//div[1]/app-autocomplete-field//input"));
-        PerformAction.clickElement(By.xpath("//mat-option[3]"));
+            while (!validLocation) {
+                int location = 1 + random.nextInt(25);
+                int contract = 1 + random.nextInt(2);
+                int profile = 1 + random.nextInt(19);
 
-        //Set Employee fee
-        PerformAction.typeField(By.id("Doordeweekse uren"), RandomInput.feePerHour());
-        PerformAction.typeField(By.id("Weekenduren"), RandomInput.feePerHour());
+                //Open add location dialog
+                PerformAction.clickElement(By.xpath("//staff-location/div/button"));
 
-        //Set Contract and Profile type
-        PerformAction.clickElement(By.xpath("//div[2]/app-select-field/div/mat-select"));
-        PerformAction.clickElement(By.xpath("//mat-option[1]"));
-        PerformAction.clickElement(By.xpath("//div[2]/app-autocomplete-field//input"));
-        PerformAction.clickElement(By.xpath("//mat-option[4]"));
+                //Select location
+                PerformAction.clickElement(By.xpath("//div[1]/app-autocomplete-field//input"));
+                PerformAction.clickElement(By.xpath("//mat-option["+ location +"]"));
 
-        //Click submit
-        PerformAction.clickElement(By.xpath("//button[@type='submit']"));
+                //Set Employee fee
+                PerformAction.typeField(By.id("Doordeweekse uren"), RandomInput.feePerHour());
+                PerformAction.typeField(By.id("Weekenduren"), RandomInput.feePerHour());
 
-//        for (int i = 0; i < locationCount; i++) {
-//            PerformAction.typeField(By.xpath("//ckeditor/div[2]/div[2]/div"), RandomInput.text());
-//            PerformAction.clickElement(By.xpath("//button[@type='submit']"));
-//            PerformAction.shortWait();
-//        }
+                //Set Contract and Profile type
+                PerformAction.clickElement(By.xpath("//div[2]/app-select-field/div/mat-select"));
+                PerformAction.clickElement(By.xpath("//mat-option["+ contract +"]"));
+                PerformAction.clickElement(By.xpath("//div[2]/app-autocomplete-field//input"));
+                PerformAction.clickElement(By.xpath("//mat-option["+ profile +"]"));
+
+                //Click submit
+                PerformAction.clickElement(By.xpath("//button[@type='submit']"));
+                PerformAction.longWait();
+
+                // Check for alert message
+                try {
+                    String alert = driver.findElement(By.xpath("//alert//p")).getText();
+
+                    if (alert.equals("Medewerker die al aan deze locatie is toegewezen.")) {
+                        System.out.println("Same location picked, trying again...");
+                        PerformAction.clickElement(By.xpath("//form/div[3]/button"));
+                    } else {
+                        validLocation = true;
+                    }
+                } catch (NoSuchElementException e) {
+                    validLocation = true;
+                }
+            }
+        }
     }
 
 //    @Test(priority = 6, dependsOnMethods = "addLocations")
@@ -94,7 +116,7 @@ public class LocationEmp extends AutomationSetupClass {
 //        }
 //    }
 //
-//    @Test(priority = 8, dependsOnMethods = "deleteTimeline")
+//    @Test(priority = 8, dependsOnMethods = "addLocations")
 //    public void deleteEmployee() throws InterruptedException {
 //        Personeel.openEmployeeMenu(3);
 //        PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
