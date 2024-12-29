@@ -123,10 +123,10 @@ public class LocationEmp extends AutomationSetupClass {
         }
     }
 
-//    @Test(priority = 8, dependsOnMethods = "addLocations")
-//    public void deleteEmployee() throws InterruptedException {
-//        Personeel.openEmployeeMenu(3);
-//        PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
-//        PerformAction.shortWait();
-//    }
+    @Test(priority = 8, dependsOnMethods = "addLocations")
+    public void deleteEmployee() throws InterruptedException {
+        Personeel.openEmployeeMenu(3);
+        PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
+        PerformAction.shortWait();
+    }
 }
