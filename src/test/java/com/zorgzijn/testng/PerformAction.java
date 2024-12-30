@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class PerformAction extends AutomationSetupClass {
+    private static final int VERY_SHORT_WAIT = 500;
     private static final int SHORT_WAIT = 1500;
     private static final int LONG_WAIT = 2500;
 
@@ -21,16 +22,16 @@ public class PerformAction extends AutomationSetupClass {
 
     public static void clickElement(By locator) throws InterruptedException {
         driver.findElement(locator).click();
-        Thread.sleep(SHORT_WAIT);
+        Thread.sleep(VERY_SHORT_WAIT);
     }
 
     public static void typeField(By locator, String keys) throws InterruptedException {
         WebElement element = driver.findElement(locator);
         element.click();
         element.clear();
-        Thread.sleep(LONG_WAIT);
+        Thread.sleep(VERY_SHORT_WAIT);
         element.sendKeys(keys);
-        Thread.sleep(SHORT_WAIT);
+        Thread.sleep(VERY_SHORT_WAIT);
     }
 
     public static void clearField(By locator) throws InterruptedException {
@@ -38,6 +39,12 @@ public class PerformAction extends AutomationSetupClass {
         element.click();
         element.clear();
         Thread.sleep(SHORT_WAIT);
+    }
+
+    public static String getFieldText(By locator) throws InterruptedException {
+        WebElement element = driver.findElement(locator);
+        System.out.println(element.getText());
+        return element.getText();
     }
 
     public static void waitForPageLoad() throws InterruptedException {
