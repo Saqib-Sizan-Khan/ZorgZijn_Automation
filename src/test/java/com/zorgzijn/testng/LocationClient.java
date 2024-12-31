@@ -1,6 +1,5 @@
 package com.zorgzijn.testng;
 
-import com.zorgzijn.testng.utils.InputData;
 import com.zorgzijn.testng.utils.Klanten;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
@@ -25,7 +24,7 @@ public class LocationClient extends AutomationSetupClass {
 
     @Test(priority = 3, dependsOnMethods = "navigateToKlantenTab")
     public void searchClient() throws InterruptedException {
-        Klanten.searchAndShowClient("Henderik Hospital Waste");
+        Klanten.searchAndShowClient(Klanten.getClientName());
     }
 
     @Test(priority = 4, dependsOnMethods = "searchClient")
@@ -50,7 +49,7 @@ public class LocationClient extends AutomationSetupClass {
 
     @Test(priority = 5, dependsOnMethods = "createLocations")
     public void modifyLocations() throws InterruptedException {
-        int locationCount = driver.findElements(By.xpath("//div/client-location-detail")).size();
+        locationCount = driver.findElements(By.xpath("//div/client-location-detail")).size();
 
         for (int i = 0; i < 3; i++) {
             int location = 2 + random.nextInt(locationCount);
@@ -71,10 +70,28 @@ public class LocationClient extends AutomationSetupClass {
         }
     }
 
-//    @Test(priority = 6, dependsOnMethods = "modifyClient")
-//    public void deleteClient() throws InterruptedException {
-//        Klanten.openClientMenu(3);
-//        PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
-//        PerformAction.shortWait();
-//    }
+    @Test(priority = 6, dependsOnMethods = "modifyLocations")
+    public void deleteLocations() throws InterruptedException {
+        locationCount = driver.findElements(By.xpath("//div/client-location-detail")).size();
+
+        for (int i = 0; i < 2; i++) {
+            int location = 2 + random.nextInt(locationCount);
+
+            //Open location delete dialog
+            PerformAction.clickElement(By.xpath("//div["+ location +"]/client-location-detail/div/div[1]/button"));
+            PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(2)"));
+
+            //Click submit button
+            PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
+            PerformAction.longWait();
+            locationCount-=1;
+        }
+    }
+
+    @Test(priority = 7, dependsOnMethods = "deleteLocations")
+    public void deleteClient() throws InterruptedException {
+        Klanten.openClientMenu(3);
+        PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
+        PerformAction.shortWait();
+    }
 }
