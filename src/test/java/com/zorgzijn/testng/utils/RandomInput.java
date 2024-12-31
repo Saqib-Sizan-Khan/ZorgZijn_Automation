@@ -100,12 +100,17 @@ public class RandomInput {
         return dateFormat.format(calendar.getTime());
     }
 
-    public static String feePerHour() {
+    public static String threeDigit() {
         Random random = new Random();
-
         int number = 100 + random.nextInt(900);
-
         return String.valueOf(number);
+    }
+
+    public static String twoChars() {
+        Random random = new Random();
+        char firstChar = (char) ('A' + random.nextInt(26));
+        char secondChar = (char) ('A' + random.nextInt(26));
+        return "" + firstChar + secondChar;
     }
 
     public static String text() {
@@ -125,5 +130,23 @@ public class RandomInput {
         }
 
         return text.toString();
+    }
+
+    public static String place() {
+        Random random = new Random();
+        int randomIndex = random.nextInt(InputData.places.length);
+        return InputData.places[randomIndex];
+    }
+
+    public static String streetName() {
+        Random random = new Random();
+        int randomIndex = random.nextInt(InputData.streetName.length);
+        return InputData.streetName[randomIndex];
+    }
+
+    public static String postCode() {
+        Random random = new Random();
+        int randomIndex = random.nextInt(InputData.postCode.length);
+        return InputData.postCode[randomIndex] + " " + twoChars();
     }
 }

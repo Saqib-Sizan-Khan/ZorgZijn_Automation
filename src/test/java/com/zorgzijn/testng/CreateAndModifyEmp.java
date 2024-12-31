@@ -51,7 +51,7 @@ public class CreateAndModifyEmp extends AutomationSetupClass {
         PerformAction.typeField(By.id("KVK"), "34148704");
         PerformAction.typeField(By.id("BTW-nummer"), "865845621B01");
         PerformAction.typeField(By.id("Rekeningnummer"), "02ABNA0123456789");
-        PerformAction.typeField(By.id("Fee per uur"), RandomInput.feePerHour());
+        PerformAction.typeField(By.id("Fee per uur"), RandomInput.threeDigit());
 
         // Checkbox and submit
         PerformAction.clickElement(By.xpath("//input[@type='checkbox']"));
@@ -93,7 +93,7 @@ public class CreateAndModifyEmp extends AutomationSetupClass {
 
         // Company details
         PerformAction.typeField(By.id("KVK"), "53531795");
-        PerformAction.typeField(By.id("Fee per uur"), RandomInput.feePerHour());
+        PerformAction.typeField(By.id("Fee per uur"), RandomInput.threeDigit());
 
         // Submit changes
         PerformAction.clickElement(By.xpath("//div[4]/submit-button/button"));

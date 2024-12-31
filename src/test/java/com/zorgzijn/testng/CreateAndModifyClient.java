@@ -1,7 +1,6 @@
 package com.zorgzijn.testng;
 
 import com.zorgzijn.testng.utils.Klanten;
-import com.zorgzijn.testng.utils.Personeel;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
@@ -32,7 +31,7 @@ public class CreateAndModifyClient extends AutomationSetupClass {
         //Give Client Details
         PerformAction.typeField(By.id("BTW-nummer"), "865845621B01");
         PerformAction.typeField(By.id("Rekeningnummer"), "02ABNA0123456789");
-        PerformAction.typeField(By.id("Fee per uur"), RandomInput.feePerHour());
+        PerformAction.typeField(By.id("Fee per uur"), RandomInput.threeDigit());
 
         //Select VAT type
         PerformAction.clickElement(By.tagName("mat-select"));
@@ -67,7 +66,7 @@ public class CreateAndModifyClient extends AutomationSetupClass {
         PerformAction.typeField(By.id("E-mailadres"), RandomInput.email());
 
         //Change Fee
-        PerformAction.typeField(By.id("Fee per uur"), RandomInput.feePerHour());
+        PerformAction.typeField(By.id("Fee per uur"), RandomInput.threeDigit());
 
         //Change VAT type
         PerformAction.clickElement(By.tagName("mat-select"));
@@ -77,16 +76,8 @@ public class CreateAndModifyClient extends AutomationSetupClass {
         Klanten.setClientName(PerformAction.getFieldText(By.id("Naam bedrijf")));
 
         //Submit Changes
-        //form/div[3]/submit-button/button
         PerformAction.clickElement(By.xpath("//submit-button/button"));
 
         PerformAction.longWait();
-    }
-
-    @Test(priority = 6, dependsOnMethods = "modifyClient")
-    public void deleteClient() throws InterruptedException {
-        Klanten.openClientMenu(3);
-        PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
-        PerformAction.shortWait();
     }
 }

@@ -55,8 +55,8 @@ public class LocationEmp extends AutomationSetupClass {
                 PerformAction.clickElement(By.xpath("//mat-option["+ location +"]"));
 
                 //Set Employee fee
-                PerformAction.typeField(By.id("Doordeweekse uren"), RandomInput.feePerHour());
-                PerformAction.typeField(By.id("Weekenduren"), RandomInput.feePerHour());
+                PerformAction.typeField(By.id("Doordeweekse uren"), RandomInput.threeDigit());
+                PerformAction.typeField(By.id("Weekenduren"), RandomInput.threeDigit());
 
                 //Set Contract and Profile type
                 PerformAction.clickElement(By.xpath("//div[2]/app-select-field/div/mat-select"));
@@ -97,8 +97,8 @@ public class LocationEmp extends AutomationSetupClass {
             PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(1)"));
 
             //Change Employee fee
-            PerformAction.typeField(By.xpath("//div[1]/app-rate-input-field//input"), RandomInput.feePerHour());
-            PerformAction.typeField(By.xpath("//div[2]/app-rate-input-field//input"), RandomInput.feePerHour());
+            PerformAction.typeField(By.xpath("//div[1]/app-rate-input-field//input"), RandomInput.threeDigit());
+            PerformAction.typeField(By.xpath("//div[2]/app-rate-input-field//input"), RandomInput.threeDigit());
 
             //Click submit
             PerformAction.clickElement(By.xpath("//button[@type='submit']"));
