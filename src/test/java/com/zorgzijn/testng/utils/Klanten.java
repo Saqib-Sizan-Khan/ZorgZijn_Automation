@@ -23,7 +23,7 @@ public class Klanten {
     }
 
     public static void openClientMenu(int menuItem) throws InterruptedException {
-        PerformAction.clickElement(By.xpath("//staff-details/div/staff-header/div/div[2]/button"));
+        PerformAction.clickElement(By.xpath("//client-details/div/client-header/div/div[2]/button"));
         PerformAction.clickElement(By.xpath("//button[@role='menuitem']["+ menuItem +"]"));
     }
 }

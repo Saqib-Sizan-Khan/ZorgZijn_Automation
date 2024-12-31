@@ -1,11 +1,12 @@
 package com.zorgzijn.testng;
 
 import com.zorgzijn.testng.utils.Klanten;
+import com.zorgzijn.testng.utils.Personeel;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-public class KlantCreation extends AutomationSetupClass {
+public class CreateAndModifyClient extends AutomationSetupClass {
 
     @Test(priority = 1)
     public void login() throws InterruptedException {
@@ -52,5 +53,40 @@ public class KlantCreation extends AutomationSetupClass {
     @Test(priority = 4, dependsOnMethods = "createClient")
     public void searchClient() throws InterruptedException {
         Klanten.searchAndShowClient(Klanten.getClientName());
+    }
+
+    @Test(priority = 5, dependsOnMethods = "searchClient")
+    public void modifyClient() throws InterruptedException {
+        Klanten.openClientMenu(2);
+
+        //Change KVK
+        PerformAction.typeField(By.id("KVK"), "91532906");
+
+        //Change Email and Phone
+        PerformAction.typeField(By.id("Telefoonnummer"), RandomInput.phoneNumber());
+        PerformAction.typeField(By.id("E-mailadres"), RandomInput.email());
+
+        //Change Fee
+        PerformAction.typeField(By.id("Fee per uur"), RandomInput.feePerHour());
+
+        //Change VAT type
+        PerformAction.clickElement(By.tagName("mat-select"));
+        PerformAction.clickElement(By.xpath("//mat-option[1]"));
+
+        //Get Client Name
+        Klanten.setClientName(PerformAction.getFieldText(By.id("Naam bedrijf")));
+
+        //Submit Changes
+        //form/div[3]/submit-button/button
+        PerformAction.clickElement(By.xpath("//submit-button/button"));
+
+        PerformAction.longWait();
+    }
+
+    @Test(priority = 6, dependsOnMethods = "modifyClient")
+    public void deleteClient() throws InterruptedException {
+        Klanten.openClientMenu(3);
+        PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
+        PerformAction.shortWait();
     }
 }
