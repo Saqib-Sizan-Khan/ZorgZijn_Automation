@@ -87,7 +87,7 @@ public class LocationEmp extends AutomationSetupClass {
 
     @Test(priority = 6, dependsOnMethods = "addLocations")
     public void modifyLocations() throws InterruptedException {
-        int locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
+        locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
 
         for (int i = 0; i < 3; i++) {
             int location = 1 + random.nextInt(locationCount);
@@ -108,7 +108,7 @@ public class LocationEmp extends AutomationSetupClass {
 
     @Test(priority = 7, dependsOnMethods = "modifyLocations")
     public void deleteLocations() throws InterruptedException {
-        int locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
+        locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
 
         for (int i = 0; i < 2; i++) {
             int location = 1 + random.nextInt(locationCount);
@@ -123,7 +123,7 @@ public class LocationEmp extends AutomationSetupClass {
         }
     }
 
-    @Test(priority = 8, dependsOnMethods = "addLocations")
+    @Test(priority = 8, dependsOnMethods = "deleteLocations")
     public void deleteEmployee() throws InterruptedException {
         Personeel.openEmployeeMenu(3);
         PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));

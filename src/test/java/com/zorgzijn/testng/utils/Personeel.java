@@ -9,7 +9,7 @@ public class Personeel {
         PerformAction.typeField(By.id("simple-search"), employeeName);
         PerformAction.shortWait();
         PerformAction.clickElement(By.xpath("//staff-list/div/div[1]"));
-        PerformAction.shortWait();
+        PerformAction.longWait();
     }
 
     public static void openEmployeeMenu(int menuItem) throws InterruptedException {
