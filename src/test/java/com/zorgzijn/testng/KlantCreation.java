@@ -7,8 +7,6 @@ import org.testng.annotations.Test;
 
 public class KlantCreation extends AutomationSetupClass {
 
-    String clientName;
-
     @Test(priority = 1)
     public void login() throws InterruptedException {
         baseLogin();
@@ -43,7 +41,7 @@ public class KlantCreation extends AutomationSetupClass {
         PerformAction.clickElement(By.xpath("//input[@type='checkbox']"));
 
         //Get Client Name
-        clientName = PerformAction.getFieldText(By.id("Naam bedrijf"));
+        Klanten.setClientName(PerformAction.getFieldText(By.id("Naam bedrijf")));
 
         //Click submit button
         PerformAction.clickElement(By.xpath("//button[@type='submit']"));
@@ -53,6 +51,6 @@ public class KlantCreation extends AutomationSetupClass {
 
     @Test(priority = 4, dependsOnMethods = "createClient")
     public void searchClient() throws InterruptedException {
-        Klanten.searchAndShowClient(clientName);
+        Klanten.searchAndShowClient(Klanten.getClientName());
     }
 }

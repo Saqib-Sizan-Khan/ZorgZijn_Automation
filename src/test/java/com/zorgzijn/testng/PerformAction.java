@@ -43,8 +43,8 @@ public class PerformAction extends AutomationSetupClass {
 
     public static String getFieldText(By locator) throws InterruptedException {
         WebElement element = driver.findElement(locator);
-        System.out.println(element.getText());
-        return element.getText();
+        System.out.println(element.getAttribute("value"));
+        return element.getAttribute("value");
     }
 
     public static void waitForPageLoad() throws InterruptedException {

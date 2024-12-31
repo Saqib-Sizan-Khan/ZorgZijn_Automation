@@ -5,6 +5,16 @@ import org.openqa.selenium.By;
 
 public class Klanten {
 
+    private static String clientName;
+
+    public static String getClientName() {
+        return clientName;
+    }
+
+    public static void setClientName(String clientName) {
+        Klanten.clientName = clientName;
+    }
+
     public static void searchAndShowClient(String client) throws InterruptedException {
         PerformAction.typeField(By.id("simple-search"), client);
         PerformAction.longWait();
