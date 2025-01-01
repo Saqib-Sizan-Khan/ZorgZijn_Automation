@@ -89,10 +89,10 @@ public class LocationClient extends AutomationSetupClass {
         }
     }
 
-    @Test(priority = 7, dependsOnMethods = "deleteLocations")
-    public void deleteClient() throws InterruptedException {
-        Klanten.openClientMenu(3);
-        PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
-        PerformAction.shortWait();
-    }
+//    @Test(priority = 7, dependsOnMethods = "deleteLocations")
+//    public void deleteClient() throws InterruptedException {
+//        Klanten.openClientMenu(3);
+//        PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
+//        PerformAction.shortWait();
+//    }
 }

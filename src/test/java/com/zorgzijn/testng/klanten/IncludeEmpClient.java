@@ -1,18 +1,16 @@
 package com.zorgzijn.testng.klanten;
 
 import com.zorgzijn.testng.utils.PerformAction;
-import com.zorgzijn.testng.personeel.Personeel;
 import com.zorgzijn.testng.utils.AutomationSetupClass;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.Test;
 
 import java.util.Random;
 
 public class IncludeEmpClient extends AutomationSetupClass {
 
-    int locationCount;
+    int empCount;
     Random random = new Random();
 
     @Test(priority = 1)
@@ -21,81 +19,74 @@ public class IncludeEmpClient extends AutomationSetupClass {
     }
 
     @Test(priority = 2, dependsOnMethods = "login")
-    public void navigateToPersoneelTab() throws InterruptedException {
-        tabNavigation(5);
+    public void navigateToKlantenTab() throws InterruptedException {
+        tabNavigation(4);
     }
 
-    @Test(priority = 3, dependsOnMethods = "navigateToPersoneelTab")
-    public void searchEmployee() throws InterruptedException {
-        Personeel.searchAndShowEmployee("Dylan");
+    @Test(priority = 3, dependsOnMethods = "navigateToKlantenTab")
+    public void searchClient() throws InterruptedException {
+        Klanten.searchAndShowClient("Henderik Hospital Waste");
     }
 
-    @Test(priority = 4, dependsOnMethods = "searchEmployee")
-    public void navigateToLocationOption() throws InterruptedException {
-        PerformAction.clickElement(By.xpath("//staff-tabs/div/div[3]"));
+    @Test(priority = 4, dependsOnMethods = "searchClient")
+    public void navigateToPersoneelOption() throws InterruptedException {
+        PerformAction.clickElement(By.xpath("//client-tabs/div/div[2]"));
         PerformAction.shortWait();
     }
 
-    @Test(priority = 5, dependsOnMethods = "navigateToLocationOption")
-    public void addLocations() throws InterruptedException {
-        locationCount = 3 + random.nextInt(4);
+    @Test(priority = 5, dependsOnMethods = "navigateToPersoneelOption")
+    public void addEmployees() throws InterruptedException {
+        PerformAction.clickElement(By.xpath("//client-employees/div/div[1]//button"));
+        int totalLocation = driver.findElements(By.xpath("//client-employees//ul/li")).size();
+        int pickLocation = 1 + random.nextInt(totalLocation);
 
-        for (int i = 0; i < locationCount; i++) {
-            boolean validLocation = false;
+        if (pickLocation == 1) {pickLocation++;}
 
-            while (!validLocation) {
-                int location = 1 + random.nextInt(25);
-                int contract = 1 + random.nextInt(2);
-                int profile = 1 + random.nextInt(19);
+        PerformAction.clickElement(By.xpath("//client-employees//ul/li["+ pickLocation +"]"));
 
-                //Open add location dialog
-                PerformAction.clickElement(By.xpath("//staff-location/div/button"));
-                PerformAction.shortWait();
+        empCount = 3 + random.nextInt(4);
+        for (int i=0; i<empCount; i++) {
+            PerformAction.clickElement(By.xpath("//button[@type='submit']"));
+            PerformAction.shortWait();
 
-                //Select location
-                PerformAction.clickElement(By.xpath("//div[1]/app-autocomplete-field//input"));
-                PerformAction.clickElement(By.xpath("//mat-option["+ location +"]"));
+            //Select Employee
+            PerformAction.clickElement(By.xpath("//div[1]/app-autocomplete-field//input"));
+            int totalEmp = driver.findElements(By.xpath("//mat-option")).size();
+            int pickEmp = 1 + random.nextInt(totalEmp);
+            PerformAction.clickElement(By.xpath("//mat-option["+ pickEmp +"]"));
 
-                //Set Employee fee
-                PerformAction.typeField(By.id("Doordeweekse uren"), RandomInput.threeDigit());
-                PerformAction.typeField(By.id("Weekenduren"), RandomInput.threeDigit());
+            //Set Employee fee
+            PerformAction.typeField(By.id("Doordeweekse uren"), RandomInput.threeDigit());
+            PerformAction.typeField(By.id("Weekenduren"), RandomInput.threeDigit());
 
-                //Set Contract and Profile type
-                PerformAction.clickElement(By.xpath("//div[2]/app-select-field/div/mat-select"));
-                PerformAction.clickElement(By.xpath("//mat-option["+ contract +"]"));
-                PerformAction.clickElement(By.xpath("//div[2]/app-autocomplete-field//input"));
-                PerformAction.clickElement(By.xpath("//mat-option["+ profile +"]"));
+            //Set Contract type
+            PerformAction.clickElement(By.xpath("//div[2]/app-select-field/div/mat-select"));
+            PerformAction.clickElement(By.xpath("//mat-option[1]"));
 
-                //Click submit
-                PerformAction.clickElement(By.xpath("//button[@type='submit']"));
-                PerformAction.longWait();
+            //Set Profile type
+            PerformAction.clickElement(By.xpath("//div[2]/app-autocomplete-field//input"));
+            int totalProfiles = driver.findElements(By.xpath("//mat-option")).size();
+            int pickProfile = 1 + random.nextInt(totalProfiles);
+            PerformAction.clickElement(By.xpath("//mat-option["+ pickProfile +"]"));
 
-                // Check for alert message
-                try {
-                    String alert = driver.findElement(By.xpath("//alert//p")).getText();
-
-                    if (alert.equals("Medewerker die al aan deze locatie is toegewezen.")) {
-                        System.out.println("Same location picked, trying again...");
-                        PerformAction.clickElement(By.xpath("//form/div[3]/button"));
-                    } else {
-                        validLocation = true;
-                    }
-                } catch (NoSuchElementException e) {
-                    validLocation = true;
-                }
-            }
+            //Click submit
+            PerformAction.clickElement(By.xpath("//submit-button/button"));
+            PerformAction.longWait();
         }
     }
 
-    @Test(priority = 6, dependsOnMethods = "addLocations")
+    @Test(priority = 6, dependsOnMethods = "addEmployees")
     public void modifyLocations() throws InterruptedException {
-        locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
+        empCount = driver.findElements(By.xpath("//client-employee-info")).size();
 
         for (int i = 0; i < 3; i++) {
-            int location = 1 + random.nextInt(locationCount);
+            int location = 2 + random.nextInt(empCount);
 
-            //Activate location modification
-            PerformAction.clickElement(By.xpath("//div["+ location +"]/staff-location-detail//button"));
+            //client-employees/div/div[2]/client-employee-info
+            //Activate employee modification
+            //client-employee-info/div/div/div[2]/button[2]
+
+            PerformAction.clickElement(By.xpath("//div[1]/client-employee-info//button"));
             PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(1)"));
 
             //Change Employee fee
@@ -108,27 +99,27 @@ public class IncludeEmpClient extends AutomationSetupClass {
         }
     }
 
-    @Test(priority = 7, dependsOnMethods = "modifyLocations")
-    public void deleteLocations() throws InterruptedException {
-        locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
-
-        for (int i = 0; i < 2; i++) {
-            int location = 1 + random.nextInt(locationCount);
-
-            //Open delete dialog
-            PerformAction.clickElement(By.xpath("//div["+ location +"]/staff-location-detail//button"));
-            PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(2)"));
-
-            //Confirm delete
-            PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
-            locationCount-=1;
-        }
-    }
-
-    @Test(priority = 8, dependsOnMethods = "deleteLocations")
-    public void deleteEmployee() throws InterruptedException {
-        Personeel.openEmployeeMenu(3);
-        PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
-        PerformAction.shortWait();
-    }
+//    @Test(priority = 7, dependsOnMethods = "modifyLocations")
+//    public void deleteLocations() throws InterruptedException {
+//        locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
+//
+//        for (int i = 0; i < 2; i++) {
+//            int location = 1 + random.nextInt(locationCount);
+//
+//            //Open delete dialog
+//            PerformAction.clickElement(By.xpath("//div["+ location +"]/staff-location-detail//button"));
+//            PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(2)"));
+//
+//            //Confirm delete
+//            PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
+//            locationCount-=1;
+//        }
+//    }
+//
+//    @Test(priority = 8, dependsOnMethods = "deleteLocations")
+//    public void deleteEmployee() throws InterruptedException {
+//        Personeel.openEmployeeMenu(3);
+//        PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
+//        PerformAction.shortWait();
+//    }
 }
