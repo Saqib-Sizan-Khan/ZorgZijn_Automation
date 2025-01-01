@@ -1,6 +1,7 @@
-package com.zorgzijn.testng;
+package com.zorgzijn.testng.personeel;
 
-import com.zorgzijn.testng.utils.Personeel;
+import com.zorgzijn.testng.utils.AutomationSetupClass;
+import com.zorgzijn.testng.PerformAction;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -42,9 +43,7 @@ public class LocationEmp extends AutomationSetupClass {
             boolean validLocation = false;
 
             while (!validLocation) {
-                int location = 1 + random.nextInt(25);
                 int contract = 1 + random.nextInt(2);
-                int profile = 1 + random.nextInt(19);
 
                 //Open add location dialog
                 PerformAction.clickElement(By.xpath("//staff-location/div/button"));
@@ -52,17 +51,23 @@ public class LocationEmp extends AutomationSetupClass {
 
                 //Select location
                 PerformAction.clickElement(By.xpath("//div[1]/app-autocomplete-field//input"));
-                PerformAction.clickElement(By.xpath("//mat-option["+ location +"]"));
+                int totalLocations = driver.findElements(By.xpath("//mat-option")).size();
+                int pickLocation = 1 + random.nextInt(totalLocations);
+                PerformAction.clickElement(By.xpath("//mat-option["+ pickLocation +"]"));
 
                 //Set Employee fee
                 PerformAction.typeField(By.id("Doordeweekse uren"), RandomInput.threeDigit());
                 PerformAction.typeField(By.id("Weekenduren"), RandomInput.threeDigit());
 
-                //Set Contract and Profile type
+                //Set Contract type
                 PerformAction.clickElement(By.xpath("//div[2]/app-select-field/div/mat-select"));
                 PerformAction.clickElement(By.xpath("//mat-option["+ contract +"]"));
+
+                //Set Profile type
                 PerformAction.clickElement(By.xpath("//div[2]/app-autocomplete-field//input"));
-                PerformAction.clickElement(By.xpath("//mat-option["+ profile +"]"));
+                int totalProfiles = driver.findElements(By.xpath("//mat-option")).size();
+                int pickProfile = 1 + random.nextInt(totalProfiles);
+                PerformAction.clickElement(By.xpath("//mat-option["+ pickProfile +"]"));
 
                 //Click submit
                 PerformAction.clickElement(By.xpath("//button[@type='submit']"));

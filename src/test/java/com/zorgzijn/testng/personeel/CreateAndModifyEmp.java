@@ -1,6 +1,7 @@
-package com.zorgzijn.testng;
+package com.zorgzijn.testng.personeel;
 
-import com.zorgzijn.testng.utils.Personeel;
+import com.zorgzijn.testng.utils.AutomationSetupClass;
+import com.zorgzijn.testng.PerformAction;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

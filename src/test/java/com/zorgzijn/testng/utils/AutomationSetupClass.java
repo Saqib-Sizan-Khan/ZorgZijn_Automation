@@ -1,16 +1,16 @@
-package com.zorgzijn.testng;
+package com.zorgzijn.testng.utils;
 
+import com.zorgzijn.testng.PerformAction;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 public abstract class AutomationSetupClass {
-    static WebDriver driver;
-    String baseUrl = "https://zorgzijn-dev.acegreen.nl";
+    public static WebDriver driver;
+    public String baseUrl = "https://zorgzijn-dev.acegreen.nl";
 
     @BeforeTest
     public void setup() {

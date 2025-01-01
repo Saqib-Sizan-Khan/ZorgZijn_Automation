@@ -1,6 +1,7 @@
-package com.zorgzijn.testng;
+package com.zorgzijn.testng.personeel;
 
-import com.zorgzijn.testng.utils.Personeel;
+import com.zorgzijn.testng.utils.AutomationSetupClass;
+import com.zorgzijn.testng.PerformAction;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
@@ -59,6 +60,7 @@ public class TimelineEmp extends AutomationSetupClass {
             //Modify timeline
             PerformAction.typeField(By.xpath("//form/app-ckeditor-field//div[2]/div[2]/div"), RandomInput.text());
             PerformAction.clickElement(By.xpath("//note-update-dialog//div[4]/button[1]"));
+            PerformAction.shortWait();
         }
     }
 

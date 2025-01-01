@@ -1,4 +1,4 @@
-package com.zorgzijn.testng.utils;
+package com.zorgzijn.testng.klanten;
 
 import com.zorgzijn.testng.PerformAction;
 import org.openqa.selenium.By;

@@ -2,17 +2,17 @@
 <suite name="PersoneelAutomationSuite">
     <test name="Part1">
         <classes>
-            <class name="com.zorgzijn.testng.CreateAndModifyEmp"/>
+            <class name="com.zorgzijn.testng.personeel.CreateAndModifyEmp"/>
         </classes>
     </test>
     <test name="Part2" preserve-order="true">
         <classes>
-            <class name="com.zorgzijn.testng.TimelineEmp"/>
+            <class name="com.zorgzijn.testng.personeel.TimelineEmp"/>
         </classes>
     </test>
     <test name="Part3" preserve-order="true">
         <classes>
-            <class name="com.zorgzijn.testng.LocationEmp"/>
+            <class name="com.zorgzijn.testng.personeel.LocationEmp"/>
         </classes>
     </test>
 </suite>

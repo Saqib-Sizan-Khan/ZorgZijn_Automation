@@ -2,12 +2,12 @@
 <suite name="KlantenAutomationSuite">
     <test name="Part1">
         <classes>
-            <class name="com.zorgzijn.testng.CreateAndModifyClient"/>
+            <class name="com.zorgzijn.testng.klanten.CreateAndModifyClient"/>
         </classes>
     </test>
     <test name="Part2" preserve-order="true">
         <classes>
-            <class name="com.zorgzijn.testng.LocationClient"/>
+            <class name="com.zorgzijn.testng.klanten.LocationClient"/>
         </classes>
     </test>
 </suite>

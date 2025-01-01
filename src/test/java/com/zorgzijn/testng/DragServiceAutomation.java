@@ -1,5 +1,6 @@
 package com.zorgzijn.testng;
 
+import com.zorgzijn.testng.utils.AutomationSetupClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;

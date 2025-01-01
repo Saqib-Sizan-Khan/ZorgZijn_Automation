@@ -1,4 +1,4 @@
-package com.zorgzijn.testng.utils;
+package com.zorgzijn.testng.personeel;
 
 import com.zorgzijn.testng.PerformAction;
 import org.openqa.selenium.By;
