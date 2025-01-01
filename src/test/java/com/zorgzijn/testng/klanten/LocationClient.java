@@ -1,6 +1,6 @@
 package com.zorgzijn.testng.klanten;
 
-import com.zorgzijn.testng.PerformAction;
+import com.zorgzijn.testng.utils.PerformAction;
 import com.zorgzijn.testng.utils.AutomationSetupClass;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
@@ -84,8 +84,8 @@ public class LocationClient extends AutomationSetupClass {
 
             //Click submit button
             PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
-            PerformAction.longWait();
             locationCount-=1;
+            PerformAction.longWait();
         }
     }
 

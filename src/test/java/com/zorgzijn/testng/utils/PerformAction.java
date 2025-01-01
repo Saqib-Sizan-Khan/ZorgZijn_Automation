@@ -1,6 +1,5 @@
-package com.zorgzijn.testng;
+package com.zorgzijn.testng.utils;
 
-import com.zorgzijn.testng.utils.AutomationSetupClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 

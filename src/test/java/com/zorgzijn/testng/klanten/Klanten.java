@@ -1,6 +1,6 @@
 package com.zorgzijn.testng.klanten;
 
-import com.zorgzijn.testng.PerformAction;
+import com.zorgzijn.testng.utils.PerformAction;
 import org.openqa.selenium.By;
 
 public class Klanten {
