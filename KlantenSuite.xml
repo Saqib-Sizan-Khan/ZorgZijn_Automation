@@ -18,8 +18,8 @@
         <classes>
             <class name="com.zorgzijn.testng.klanten.LoginTest" />
             <class name="com.zorgzijn.testng.klanten.CreateAndModifyClientTest" />
-            <class name="com.zorgzijn.testng.klanten.LocationClient" />
-            <class name="com.zorgzijn.testng.klanten.EmpClient" />
+            <class name="com.zorgzijn.testng.klanten.LocationClientTest" />
+            <class name="com.zorgzijn.testng.klanten.EmpClientTest" />
         </classes>
     </test>
 </suite>

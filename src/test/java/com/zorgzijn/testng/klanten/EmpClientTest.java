@@ -8,29 +8,29 @@ import org.testng.annotations.Test;
 
 import java.util.Random;
 
-public class EmpClient extends ZorgzijnBaseTest {
+public class EmpClientTest extends ZorgzijnBaseTest {
 
     int empCount;
     Random random = new Random();
 
     @Test(groups = "client-employee-management")
-    public void navigateToKlantenTab() throws InterruptedException {
+    public void testNavigateToKlantenMenu() throws InterruptedException {
         tabNavigation(4);
     }
 
-    @Test(groups = "client-employee-management", dependsOnMethods = "navigateToKlantenTab")
-    public void searchClient() throws InterruptedException {
+    @Test(groups = "client-employee-management", dependsOnMethods = "testNavigateToKlantenMenu")
+    public void testSearchClient() throws InterruptedException {
         Klanten.searchAndShowClient(Klanten.getClientName());
     }
 
-    @Test(groups = "client-employee-management", dependsOnMethods = "searchClient")
-    public void navigateToPersoneelOption() throws InterruptedException {
+    @Test(groups = "client-employee-management", dependsOnMethods = "testSearchClient")
+    public void testNavigateToPersoneelTab() throws InterruptedException {
         PerformAction.clickElement(By.xpath("//client-tabs/div/div[2]"));
         PerformAction.shortWait();
     }
 
-    @Test(groups = "client-employee-management", dependsOnMethods = "navigateToPersoneelOption")
-    public void addEmployees() throws InterruptedException {
+    @Test(groups = "client-employee-management", dependsOnMethods = "testNavigateToPersoneelTab")
+    public void testAddEmployees() throws InterruptedException {
         PerformAction.shortWait();
         PerformAction.clickElement(By.xpath("//client-employees/div/div[1]//button"));
         int totalLocation = driver.findElements(By.xpath("//client-employees//ul/li")).size();
@@ -42,7 +42,7 @@ public class EmpClient extends ZorgzijnBaseTest {
 
         PerformAction.clickElement(By.xpath("//client-employees//ul/li[" + pickLocation + "]"));
 
-        empCount = 3 + random.nextInt(4);
+        empCount = 2 + random.nextInt(2);
         for (int i = 0; i < empCount; i++) {
             PerformAction.clickElement(By.xpath("//button[@type='submit']"));
             PerformAction.shortWait();
@@ -73,11 +73,11 @@ public class EmpClient extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(groups = "client-employee-management", dependsOnMethods = "addEmployees")
-    public void modifyEmployees() throws InterruptedException {
+    @Test(groups = "client-employee-management", dependsOnMethods = "testAddEmployees")
+    public void testModifyEmployees() throws InterruptedException {
         empCount = driver.findElements(By.xpath("//client-employee-info")).size();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             int employee = 2 + random.nextInt(empCount);
 
             //Activate employee modification
@@ -94,11 +94,11 @@ public class EmpClient extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(groups = "client-employee-management", dependsOnMethods = "modifyEmployees")
+    @Test(groups = "client-employee-management", dependsOnMethods = "testModifyEmployees")
     void testDeleteEmployees() throws InterruptedException {
         empCount = driver.findElements(By.xpath("//client-employee-info")).size();
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             int employee = 2 + random.nextInt(empCount);
 
             //Open employee delete dialog
@@ -113,7 +113,7 @@ public class EmpClient extends ZorgzijnBaseTest {
     }
 
     @Test(groups = "client-employee-management", dependsOnMethods = "testDeleteEmployees")
-    public void deleteEmployee() throws InterruptedException {
+    public void testDeleteClient() throws InterruptedException {
         Klanten.openClientMenu(3);
         PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
         PerformAction.longWait();

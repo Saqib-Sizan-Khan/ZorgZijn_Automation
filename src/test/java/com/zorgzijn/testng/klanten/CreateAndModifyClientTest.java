@@ -10,12 +10,12 @@ import org.testng.annotations.Test;
 public class CreateAndModifyClientTest extends ZorgzijnBaseTest {
 
     @Test(groups = "client-management")
-    public void navigateToKlantenTab() throws InterruptedException {
+    public void testNavigateToKlantenMenu() throws InterruptedException {
         tabNavigation(4);
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "navigateToKlantenTab")
-    public void createClient() throws InterruptedException {
+    @Test(groups = "client-management", dependsOnMethods = "testNavigateToKlantenMenu")
+    public void testCreateClient() throws InterruptedException {
         PerformAction.clickElement(By.tagName("button"));
 
         // Enter KVK
@@ -46,14 +46,14 @@ public class CreateAndModifyClientTest extends ZorgzijnBaseTest {
         PerformAction.longWait();
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "createClient")
-    public void searchClient() throws InterruptedException {
+    @Test(groups = "client-management", dependsOnMethods = "testCreateClient")
+    public void testSearchClient() throws InterruptedException {
         System.out.println(Klanten.getClientName());
         Klanten.searchAndShowClient(Klanten.getClientName());
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "searchClient")
-    public void modifyClient() throws InterruptedException {
+    @Test(groups = "client-management", dependsOnMethods = "testSearchClient")
+    public void testModifyClient() throws InterruptedException {
         Klanten.openClientMenu(2);
 
         //Change KVK

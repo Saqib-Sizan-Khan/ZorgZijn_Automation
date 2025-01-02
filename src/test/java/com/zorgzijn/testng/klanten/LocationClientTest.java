@@ -8,24 +8,24 @@ import org.testng.annotations.Test;
 
 import java.util.Random;
 
-public class LocationClient extends ZorgzijnBaseTest {
+public class LocationClientTest extends ZorgzijnBaseTest {
 
     int locationCount;
     Random random = new Random();
 
     @Test(groups = "client-location-management")
-    public void navigateToKlantenTab() throws InterruptedException {
+    public void testNavigateToKlantenMenu() throws InterruptedException {
         tabNavigation(4);
     }
 
-    @Test(groups = "client-location-management", dependsOnMethods = "navigateToKlantenTab")
-    public void searchClient() throws InterruptedException {
+    @Test(groups = "client-location-management", dependsOnMethods = "testNavigateToKlantenMenu")
+    public void testSearchClient() throws InterruptedException {
         Klanten.searchAndShowClient(Klanten.getClientName());
     }
 
-    @Test(groups = "client-location-management", dependsOnMethods = "searchClient")
-    public void createLocations() throws InterruptedException {
-        locationCount = 1 + random.nextInt(2);
+    @Test(groups = "client-location-management", dependsOnMethods = "testSearchClient")
+    public void testCreateLocations() throws InterruptedException {
+        locationCount = 2 + random.nextInt(2);
 
         for (int i = 0; i < locationCount; i++) {
 
@@ -43,11 +43,11 @@ public class LocationClient extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(groups = "client-location-management", dependsOnMethods = "createLocations")
-    public void modifyLocations() throws InterruptedException {
+    @Test(groups = "client-location-management", dependsOnMethods = "testCreateLocations")
+    public void testModifyLocations() throws InterruptedException {
         locationCount = driver.findElements(By.xpath("//div/client-location-detail")).size();
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 2; i++) {
             int location = 2 + random.nextInt(locationCount);
 
             //Activate location modification
@@ -67,8 +67,8 @@ public class LocationClient extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(groups = "client-location-management", dependsOnMethods = "modifyLocations")
-    public void deleteLocations() throws InterruptedException {
+    @Test(groups = "client-location-management", dependsOnMethods = "testModifyLocations")
+    public void testDeleteLocations() throws InterruptedException {
         locationCount = driver.findElements(By.xpath("//div/client-location-detail")).size();
 
         for (int i = 0; i < 1; i++) {
@@ -84,5 +84,4 @@ public class LocationClient extends ZorgzijnBaseTest {
             PerformAction.longWait();
         }
     }
-
 }
