@@ -59,13 +59,14 @@ public class LocationClient extends AutomationSetupClass {
             PerformAction.clickElement(By.xpath("//div["+ location +"]/client-location-detail/div/div[1]/button"));
             PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(1)"));
 
+            //Change location info
             PerformAction.typeField(By.id("Naam"), "Location " + RandomInput.threeDigit());//Enter location name
             PerformAction.typeField(By.id("autocompleteInput"), RandomInput.streetName()); //Give Street Name
             PerformAction.typeField(By.id("Huisnummer"), RandomInput.threeDigit()); //Give House No
             PerformAction.typeField(By.id("Postcode"), RandomInput.postCode()); //Give Postcode
             PerformAction.typeField(By.id("Plaats"), RandomInput.place()); //Give Place
 
-            //Click submit button
+            //Submit Changes
             PerformAction.clickElement(By.xpath("//submit-button/button"));
             PerformAction.shortWait();
         }
@@ -82,7 +83,7 @@ public class LocationClient extends AutomationSetupClass {
             PerformAction.clickElement(By.xpath("//div["+ location +"]/client-location-detail/div/div[1]/button"));
             PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(2)"));
 
-            //Click submit button
+            //Confirm delete
             PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
             locationCount-=1;
             PerformAction.longWait();
