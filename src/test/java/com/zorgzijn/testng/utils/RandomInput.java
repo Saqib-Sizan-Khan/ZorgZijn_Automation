@@ -122,7 +122,7 @@ public class RandomInput {
             text.append(InputData.words[random.nextInt(InputData.words.length)]);
 
             // Add a newline after every 5th word (except the last word)
-            if ((i + 1) % 7 == 0 && i < wordCount - 1) {
+            if ((i + 1) % 5 == 0 && i < wordCount - 1) {
                 text.append("\n");
             } else if (i < wordCount - 1) {
                 text.append(" ");

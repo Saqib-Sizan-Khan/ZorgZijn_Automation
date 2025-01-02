@@ -8,6 +8,7 @@ public class PerformAction {
     private static final int VERY_SHORT_WAIT = 750;
     private static final int SHORT_WAIT = 1500;
     private static final int LONG_WAIT = 2500;
+    private static final int VERY_LONG_WAIT = 5000;
 
     public static void shortWait () throws InterruptedException {
         Thread.sleep(SHORT_WAIT);
@@ -18,7 +19,7 @@ public class PerformAction {
     }
 
     public static void veryLongWait () throws InterruptedException {
-        Thread.sleep(LONG_WAIT*2);
+        Thread.sleep(VERY_LONG_WAIT);
     }
 
     public static void clickElement(By locator) throws InterruptedException {
