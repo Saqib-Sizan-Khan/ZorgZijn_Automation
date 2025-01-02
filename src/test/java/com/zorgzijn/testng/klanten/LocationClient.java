@@ -13,17 +13,17 @@ public class LocationClient extends ZorgzijnBaseTest {
     int locationCount;
     Random random = new Random();
 
-    @Test(groups = "client-management")
+    @Test(groups = "client-location-management")
     public void navigateToKlantenTab() throws InterruptedException {
         tabNavigation(4);
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "navigateToKlantenTab")
+    @Test(groups = "client-location-management", dependsOnMethods = "navigateToKlantenTab")
     public void searchClient() throws InterruptedException {
         Klanten.searchAndShowClient(Klanten.getClientName());
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "searchClient")
+    @Test(groups = "client-location-management", dependsOnMethods = "searchClient")
     public void createLocations() throws InterruptedException {
         locationCount = 1 + random.nextInt(2);
 
@@ -43,7 +43,7 @@ public class LocationClient extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "createLocations")
+    @Test(groups = "client-location-management", dependsOnMethods = "createLocations")
     public void modifyLocations() throws InterruptedException {
         locationCount = driver.findElements(By.xpath("//div/client-location-detail")).size();
 
@@ -67,7 +67,7 @@ public class LocationClient extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "modifyLocations")
+    @Test(groups = "client-location-management", dependsOnMethods = "modifyLocations")
     public void deleteLocations() throws InterruptedException {
         locationCount = driver.findElements(By.xpath("//div/client-location-detail")).size();
 

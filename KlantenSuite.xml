@@ -11,13 +11,14 @@
             <run>
                 <include name="login" />
                 <include name="client-management" />
+                <include name="client-location-management" />
             </run>
         </groups>
         <classes>
             <class name="com.zorgzijn.testng.klanten.LoginTest" />
             <class name="com.zorgzijn.testng.klanten.CreateAndModifyClientTest" />
             <class name="com.zorgzijn.testng.klanten.LocationClient" />
-            <class name="com.zorgzijn.testng.klanten.EmpClient" />
+<!--            <class name="com.zorgzijn.testng.klanten.EmpClient" />-->
         </classes>
     </test>
 </suite>
