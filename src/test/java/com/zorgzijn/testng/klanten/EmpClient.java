@@ -13,23 +13,23 @@ public class EmpClient extends ZorgzijnBaseTest {
     int empCount;
     Random random = new Random();
 
-    @Test(groups = "client-management")
+    @Test(groups = "client-employee-management")
     public void navigateToKlantenTab() throws InterruptedException {
         tabNavigation(4);
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "navigateToKlantenTab")
+    @Test(groups = "client-employee-management", dependsOnMethods = "navigateToKlantenTab")
     public void searchClient() throws InterruptedException {
         Klanten.searchAndShowClient(Klanten.getClientName());
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "searchClient")
+    @Test(groups = "client-employee-management", dependsOnMethods = "searchClient")
     public void navigateToPersoneelOption() throws InterruptedException {
         PerformAction.clickElement(By.xpath("//client-tabs/div/div[2]"));
         PerformAction.shortWait();
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "navigateToPersoneelOption")
+    @Test(groups = "client-employee-management", dependsOnMethods = "navigateToPersoneelOption")
     public void addEmployees() throws InterruptedException {
         PerformAction.shortWait();
         PerformAction.clickElement(By.xpath("//client-employees/div/div[1]//button"));
@@ -73,7 +73,7 @@ public class EmpClient extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "addEmployees")
+    @Test(groups = "client-employee-management", dependsOnMethods = "addEmployees")
     public void modifyEmployees() throws InterruptedException {
         empCount = driver.findElements(By.xpath("//client-employee-info")).size();
 
@@ -94,7 +94,7 @@ public class EmpClient extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "modifyEmployees")
+    @Test(groups = "client-employee-management", dependsOnMethods = "modifyEmployees")
     void testDeleteEmployees() throws InterruptedException {
         empCount = driver.findElements(By.xpath("//client-employee-info")).size();
 
@@ -112,7 +112,7 @@ public class EmpClient extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(groups = "client-management", dependsOnMethods = "deleteEmployees")
+    @Test(groups = "client-employee-management", dependsOnMethods = "testDeleteEmployees")
     public void deleteEmployee() throws InterruptedException {
         Klanten.openClientMenu(3);
         PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
