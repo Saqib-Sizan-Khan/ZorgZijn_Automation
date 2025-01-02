@@ -1,13 +1,13 @@
 package com.zorgzijn.testng;
 
-import com.zorgzijn.testng.utils.AutomationSetupClass;
+import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class ServiceInvoiceAutomation extends AutomationSetupClass {
+public class ServiceInvoiceAutomation extends ZorgzijnBaseTest {
 
     private static final int SHORT_WAIT = 1500;
     private static final int LONG_WAIT = 2000;

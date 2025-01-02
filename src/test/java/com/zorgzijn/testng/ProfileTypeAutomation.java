@@ -1,11 +1,11 @@
 package com.zorgzijn.testng;
 
-import com.zorgzijn.testng.utils.AutomationSetupClass;
+import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-public class ProfileTypeAutomation extends AutomationSetupClass {
+public class ProfileTypeAutomation extends ZorgzijnBaseTest {
 
     @Test(priority = 1)
     public void login() throws InterruptedException {

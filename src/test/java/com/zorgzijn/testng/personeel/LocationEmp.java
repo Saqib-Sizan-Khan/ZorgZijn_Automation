@@ -1,7 +1,7 @@
 package com.zorgzijn.testng.personeel;
 
-import com.zorgzijn.testng.utils.AutomationSetupClass;
-import com.zorgzijn.testng.utils.PerformAction;
+import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
+import com.zorgzijn.testng.setup.PerformAction;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -9,15 +9,11 @@ import org.testng.annotations.Test;
 
 import java.util.Random;
 
-public class LocationEmp extends AutomationSetupClass {
+public class LocationEmp extends ZorgzijnBaseTest {
 
     int locationCount;
     Random random = new Random();
 
-    @Test(priority = 1)
-    public void login() throws InterruptedException {
-        baseLogin();
-    }
 
     @Test(priority = 2, dependsOnMethods = "login")
     public void navigateToPersoneelTab() throws InterruptedException {

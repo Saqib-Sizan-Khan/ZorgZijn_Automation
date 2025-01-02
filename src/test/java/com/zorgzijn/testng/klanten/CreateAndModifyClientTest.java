@@ -1,24 +1,20 @@
 package com.zorgzijn.testng.klanten;
 
-import com.zorgzijn.testng.utils.PerformAction;
-import com.zorgzijn.testng.utils.AutomationSetupClass;
+import com.zorgzijn.testng.setup.PerformAction;
+import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
-public class CreateAndModifyClient extends AutomationSetupClass {
+public class CreateAndModifyClientTest extends ZorgzijnBaseTest {
 
-    @Test(priority = 1)
-    public void login() throws InterruptedException {
-        baseLogin();
-    }
-
-    @Test(priority = 2, dependsOnMethods = "login")
+    @Test(groups = "client-management")
     public void navigateToKlantenTab() throws InterruptedException {
         tabNavigation(4);
     }
 
-    @Test(priority = 3, dependsOnMethods = "navigateToKlantenTab")
+    @Test(groups = "client-management", dependsOnMethods = "navigateToKlantenTab")
     public void createClient() throws InterruptedException {
         PerformAction.clickElement(By.tagName("button"));
 
@@ -50,12 +46,13 @@ public class CreateAndModifyClient extends AutomationSetupClass {
         PerformAction.longWait();
     }
 
-    @Test(priority = 4, dependsOnMethods = "createClient")
+    @Test(groups = "client-management", dependsOnMethods = "createClient")
     public void searchClient() throws InterruptedException {
+        System.out.println(Klanten.getClientName());
         Klanten.searchAndShowClient(Klanten.getClientName());
     }
 
-    @Test(priority = 5, dependsOnMethods = "searchClient")
+    @Test(groups = "client-management", dependsOnMethods = "searchClient")
     public void modifyClient() throws InterruptedException {
         Klanten.openClientMenu(2);
 

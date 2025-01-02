@@ -1,25 +1,15 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
-    <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="isIgnoringEnabled" value="true" />
-      <option name="ignoredModules">
-        <list>
-          <option value="ZorgZijn_Automation" />
-          <option value="ZorgZijn_Automation" />
-        </list>
-      </option>
-      <option name="ignoredPackages">
-        <list>
-          <option value="com.fasterxml.jackson.core:jackson-databind:2.10.3" />
-          <option value="org.bouncycastle:bcprov-jdk18on:1.76" />
-        </list>
-      </option>
-      <option name="ignoredReasons">
-        <list>
-          <option value="Not exploitable" />
-          <option value="Not exploitable" />
-        </list>
+    <inspection_tool class="groupsTestNG" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="groups">
+        <value>
+          <list size="3">
+            <item index="0" class="java.lang.String" itemvalue="client-management" />
+            <item index="1" class="java.lang.String" itemvalue="login" />
+            <item index="2" class="java.lang.String" itemvalue="login-test" />
+          </list>
+        </value>
       </option>
     </inspection_tool>
   </profile>

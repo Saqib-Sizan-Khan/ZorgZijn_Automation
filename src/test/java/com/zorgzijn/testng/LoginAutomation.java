@@ -1,10 +1,10 @@
 package com.zorgzijn.testng;
 
-import com.zorgzijn.testng.utils.AutomationSetupClass;
+import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-public class LoginAutomation extends AutomationSetupClass {
+public class LoginAutomation extends ZorgzijnBaseTest {
     @Test(priority = 1)
     public void login() throws InterruptedException {
         driver.get(baseUrl + "/auth/login");

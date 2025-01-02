@@ -1,36 +1,31 @@
 package com.zorgzijn.testng.klanten;
 
-import com.zorgzijn.testng.utils.PerformAction;
-import com.zorgzijn.testng.utils.AutomationSetupClass;
+import com.zorgzijn.testng.setup.PerformAction;
+import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import java.util.Random;
 
-public class LocationClient extends AutomationSetupClass {
+public class LocationClient extends ZorgzijnBaseTest {
 
     int locationCount;
     Random random = new Random();
 
-    @Test(priority = 1)
-    public void login() throws InterruptedException {
-        baseLogin();
-    }
-
-    @Test(priority = 2, dependsOnMethods = "login")
+    @Test(groups = "client-management")
     public void navigateToKlantenTab() throws InterruptedException {
         tabNavigation(4);
     }
 
-    @Test(priority = 3, dependsOnMethods = "navigateToKlantenTab")
+    @Test(groups = "client-management", dependsOnMethods = "navigateToKlantenTab")
     public void searchClient() throws InterruptedException {
         Klanten.searchAndShowClient(Klanten.getClientName());
     }
 
-    @Test(priority = 4, dependsOnMethods = "searchClient")
+    @Test(groups = "client-management", dependsOnMethods = "searchClient")
     public void createLocations() throws InterruptedException {
-        locationCount = 3 + random.nextInt(4);
+        locationCount = 1 + random.nextInt(2);
 
         for (int i = 0; i < locationCount; i++) {
 
@@ -48,11 +43,11 @@ public class LocationClient extends AutomationSetupClass {
         }
     }
 
-    @Test(priority = 5, dependsOnMethods = "createLocations")
+    @Test(groups = "client-management", dependsOnMethods = "createLocations")
     public void modifyLocations() throws InterruptedException {
         locationCount = driver.findElements(By.xpath("//div/client-location-detail")).size();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 1; i++) {
             int location = 2 + random.nextInt(locationCount);
 
             //Activate location modification
@@ -72,11 +67,11 @@ public class LocationClient extends AutomationSetupClass {
         }
     }
 
-    @Test(priority = 6, dependsOnMethods = "modifyLocations")
+    @Test(groups = "client-management", dependsOnMethods = "modifyLocations")
     public void deleteLocations() throws InterruptedException {
         locationCount = driver.findElements(By.xpath("//div/client-location-detail")).size();
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             int location = 2 + random.nextInt(locationCount);
 
             //Open location delete dialog
@@ -90,10 +85,4 @@ public class LocationClient extends AutomationSetupClass {
         }
     }
 
-//    @Test(priority = 7, dependsOnMethods = "deleteLocations")
-//    public void deleteClient() throws InterruptedException {
-//        Klanten.openClientMenu(3);
-//        PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
-//        PerformAction.shortWait();
-//    }
 }

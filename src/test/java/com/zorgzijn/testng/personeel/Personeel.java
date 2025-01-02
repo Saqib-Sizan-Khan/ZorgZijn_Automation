@@ -1,6 +1,6 @@
 package com.zorgzijn.testng.personeel;
 
-import com.zorgzijn.testng.utils.PerformAction;
+import com.zorgzijn.testng.setup.PerformAction;
 import org.openqa.selenium.By;
 
 public class Personeel {

@@ -1,11 +1,11 @@
 package com.zorgzijn.testng;
 
-import com.zorgzijn.testng.utils.AutomationSetupClass;
+import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-public class RoleAutomation extends AutomationSetupClass {
+public class RoleAutomation extends ZorgzijnBaseTest {
 
     private void clickElement(By locator) throws InterruptedException {
         driver.findElement(locator).click();

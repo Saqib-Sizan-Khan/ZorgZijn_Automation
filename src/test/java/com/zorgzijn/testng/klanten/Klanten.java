@@ -1,6 +1,6 @@
 package com.zorgzijn.testng.klanten;
 
-import com.zorgzijn.testng.utils.PerformAction;
+import com.zorgzijn.testng.setup.PerformAction;
 import org.openqa.selenium.By;
 
 public class Klanten {
@@ -16,6 +16,7 @@ public class Klanten {
     }
 
     public static void searchAndShowClient(String client) throws InterruptedException {
+        PerformAction.shortWait();
         PerformAction.typeField(By.id("simple-search"), client);
         PerformAction.longWait();
         PerformAction.clickElement(By.xpath("//client-list/div/div[1]"));

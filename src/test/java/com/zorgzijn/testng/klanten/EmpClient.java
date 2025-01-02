@@ -1,51 +1,49 @@
 package com.zorgzijn.testng.klanten;
 
-import com.zorgzijn.testng.utils.PerformAction;
-import com.zorgzijn.testng.utils.AutomationSetupClass;
+import com.zorgzijn.testng.setup.PerformAction;
+import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import java.util.Random;
 
-public class EmpClient extends AutomationSetupClass {
+public class EmpClient extends ZorgzijnBaseTest {
 
     int empCount;
     Random random = new Random();
 
-    @Test(priority = 1)
-    public void login() throws InterruptedException {
-        baseLogin();
-    }
-
-    @Test(priority = 2, dependsOnMethods = "login")
+    @Test(groups = "client-management")
     public void navigateToKlantenTab() throws InterruptedException {
         tabNavigation(4);
     }
 
-    @Test(priority = 3, dependsOnMethods = "navigateToKlantenTab")
+    @Test(groups = "client-management", dependsOnMethods = "navigateToKlantenTab")
     public void searchClient() throws InterruptedException {
         Klanten.searchAndShowClient(Klanten.getClientName());
     }
 
-    @Test(priority = 4, dependsOnMethods = "searchClient")
+    @Test(groups = "client-management", dependsOnMethods = "searchClient")
     public void navigateToPersoneelOption() throws InterruptedException {
         PerformAction.clickElement(By.xpath("//client-tabs/div/div[2]"));
         PerformAction.shortWait();
     }
 
-    @Test(priority = 5, dependsOnMethods = "navigateToPersoneelOption")
+    @Test(groups = "client-management", dependsOnMethods = "navigateToPersoneelOption")
     public void addEmployees() throws InterruptedException {
+        PerformAction.shortWait();
         PerformAction.clickElement(By.xpath("//client-employees/div/div[1]//button"));
         int totalLocation = driver.findElements(By.xpath("//client-employees//ul/li")).size();
         int pickLocation = 1 + random.nextInt(totalLocation);
 
-        if (pickLocation == 1) {pickLocation++;}
+        if (pickLocation == 1) {
+            pickLocation++;
+        }
 
-        PerformAction.clickElement(By.xpath("//client-employees//ul/li["+ pickLocation +"]"));
+        PerformAction.clickElement(By.xpath("//client-employees//ul/li[" + pickLocation + "]"));
 
         empCount = 3 + random.nextInt(4);
-        for (int i=0; i<empCount; i++) {
+        for (int i = 0; i < empCount; i++) {
             PerformAction.clickElement(By.xpath("//button[@type='submit']"));
             PerformAction.shortWait();
 
@@ -53,7 +51,7 @@ public class EmpClient extends AutomationSetupClass {
             PerformAction.clickElement(By.xpath("//div[1]/app-autocomplete-field//input"));
             int totalEmp = driver.findElements(By.xpath("//mat-option")).size();
             int pickEmp = 1 + random.nextInt(totalEmp);
-            PerformAction.clickElement(By.xpath("//mat-option["+ pickEmp +"]"));
+            PerformAction.clickElement(By.xpath("//mat-option[" + pickEmp + "]"));
 
             //Set Employee fee
             PerformAction.typeField(By.id("Doordeweekse uren"), RandomInput.threeDigit());
@@ -67,7 +65,7 @@ public class EmpClient extends AutomationSetupClass {
             PerformAction.clickElement(By.xpath("//div[2]/app-autocomplete-field//input"));
             int totalProfiles = driver.findElements(By.xpath("//mat-option")).size();
             int pickProfile = 1 + random.nextInt(totalProfiles);
-            PerformAction.clickElement(By.xpath("//mat-option["+ pickProfile +"]"));
+            PerformAction.clickElement(By.xpath("//mat-option[" + pickProfile + "]"));
 
             //Click submit
             PerformAction.clickElement(By.xpath("//submit-button/button"));
@@ -75,7 +73,7 @@ public class EmpClient extends AutomationSetupClass {
         }
     }
 
-    @Test(priority = 6, dependsOnMethods = "addEmployees")
+    @Test(groups = "client-management", dependsOnMethods = "addEmployees")
     public void modifyEmployees() throws InterruptedException {
         empCount = driver.findElements(By.xpath("//client-employee-info")).size();
 
@@ -83,7 +81,7 @@ public class EmpClient extends AutomationSetupClass {
             int employee = 2 + random.nextInt(empCount);
 
             //Activate employee modification
-            PerformAction.clickElement(By.xpath("//div["+ employee +"]/client-employee-info//div[2]/button[2]"));
+            PerformAction.clickElement(By.xpath("//div[" + employee + "]/client-employee-info//div[2]/button[2]"));
             PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(1)"));
 
             //Change Employee fee
@@ -96,25 +94,25 @@ public class EmpClient extends AutomationSetupClass {
         }
     }
 
-    @Test(priority = 7, dependsOnMethods = "modifyEmployees")
-    public void deleteEmployees() throws InterruptedException {
+    @Test(groups = "client-management", dependsOnMethods = "modifyEmployees")
+    void testDeleteEmployees() throws InterruptedException {
         empCount = driver.findElements(By.xpath("//client-employee-info")).size();
 
         for (int i = 0; i < 2; i++) {
             int employee = 2 + random.nextInt(empCount);
 
             //Open employee delete dialog
-            PerformAction.clickElement(By.xpath("//div["+ employee +"]/client-employee-info//div[2]/button[2]"));
+            PerformAction.clickElement(By.xpath("//div[" + employee + "]/client-employee-info//div[2]/button[2]"));
             PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(2)"));
 
             //Confirm delete
             PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
-            empCount-=1;
+            empCount -= 1;
             PerformAction.longWait();
         }
     }
 
-    @Test(priority = 8, dependsOnMethods = "deleteEmployees")
+    @Test(groups = "client-management", dependsOnMethods = "deleteEmployees")
     public void deleteEmployee() throws InterruptedException {
         Klanten.openClientMenu(3);
         PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
