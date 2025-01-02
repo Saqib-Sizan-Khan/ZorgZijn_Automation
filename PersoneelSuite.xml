@@ -1,18 +1,25 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="PersoneelAutomationSuite">
-    <test name="Part1">
+<suite name="KlantenAutomationSuite">
+    <parameter name="baseUrl" value="https://zorgzijn-dev.acegreen.nl" />
+    <parameter name="email" value="ssk123098@gmail.com" />
+    <parameter name="password" value="Sizan@1999" />
+    <listeners>
+        <listener class-name="com.zorgzijn.testng.report.ExtentReportListener"/>
+    </listeners>
+    <test name="Zorgzijn Tests">
+        <groups>
+            <run>
+                <include name="login" />
+                <include name="employee-management" />
+                <include name="employee-timeline-management" />
+                <include name="employee-location-management" />
+            </run>
+        </groups>
         <classes>
-            <class name="com.zorgzijn.testng.personeel.CreateAndModifyEmp"/>
-        </classes>
-    </test>
-    <test name="Part2" preserve-order="true">
-        <classes>
-            <class name="com.zorgzijn.testng.personeel.TimelineEmp"/>
-        </classes>
-    </test>
-    <test name="Part3" preserve-order="true">
-        <classes>
-            <class name="com.zorgzijn.testng.personeel.LocationEmp"/>
+            <class name="com.zorgzijn.testng.auth.LoginTest" />
+            <class name="com.zorgzijn.testng.personeel.CreateAndModifyEmpTest" />
+            <class name="com.zorgzijn.testng.personeel.TimelineEmpTest" />
+            <class name="com.zorgzijn.testng.personeel.LocationEmp" />
         </classes>
     </test>
 </suite>

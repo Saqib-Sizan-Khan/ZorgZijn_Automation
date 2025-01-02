@@ -1,4 +1,4 @@
-package com.zorgzijn.testng.klanten;
+package com.zorgzijn.testng.auth;
 
 import com.zorgzijn.testng.setup.PerformAction;
 import com.zorgzijn.testng.setup.ZorgzijnBaseTest;

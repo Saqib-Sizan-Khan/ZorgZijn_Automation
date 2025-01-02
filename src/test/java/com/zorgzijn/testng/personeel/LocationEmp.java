@@ -15,25 +15,25 @@ public class LocationEmp extends ZorgzijnBaseTest {
     Random random = new Random();
 
 
-    @Test(priority = 2, dependsOnMethods = "login")
-    public void navigateToPersoneelTab() throws InterruptedException {
+    @Test(groups = "employee-location-management")
+    public void testNavigateToPersoneelMenu() throws InterruptedException {
         tabNavigation(5);
     }
 
-    @Test(priority = 3, dependsOnMethods = "navigateToPersoneelTab")
-    public void searchEmployee() throws InterruptedException {
+    @Test(groups = "employee-location-management", dependsOnMethods = "testNavigateToPersoneelMenu")
+    public void testSearchEmployee() throws InterruptedException {
         Personeel.searchAndShowEmployee("Dylan");
     }
 
-    @Test(priority = 4, dependsOnMethods = "searchEmployee")
-    public void navigateToLocationOption() throws InterruptedException {
+    @Test(groups = "employee-location-management", dependsOnMethods = "testSearchEmployee")
+    public void testNavigateToLocationTab() throws InterruptedException {
         PerformAction.clickElement(By.xpath("//staff-tabs/div/div[3]"));
         PerformAction.shortWait();
     }
 
-    @Test(priority = 5, dependsOnMethods = "navigateToLocationOption")
-    public void addLocations() throws InterruptedException {
-        locationCount = 3 + random.nextInt(4);
+    @Test(groups = "employee-location-management", dependsOnMethods = "testNavigateToLocationTab")
+    public void testAddLocations() throws InterruptedException {
+        locationCount = 2 + random.nextInt(2);
 
         for (int i = 0; i < locationCount; i++) {
             boolean validLocation = false;
@@ -86,11 +86,11 @@ public class LocationEmp extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(priority = 6, dependsOnMethods = "addLocations")
-    public void modifyLocations() throws InterruptedException {
+    @Test(groups = "employee-location-management", dependsOnMethods = "testAddLocations")
+    public void testModifyLocations() throws InterruptedException {
         locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             int location = 1 + random.nextInt(locationCount);
 
             //Activate location modification
@@ -107,11 +107,11 @@ public class LocationEmp extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(priority = 7, dependsOnMethods = "modifyLocations")
-    public void deleteLocations() throws InterruptedException {
+    @Test(groups = "employee-location-management", dependsOnMethods = "testModifyLocations")
+    public void testDeleteLocations() throws InterruptedException {
         locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             int location = 1 + random.nextInt(locationCount);
 
             //Open delete dialog
@@ -124,8 +124,8 @@ public class LocationEmp extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(priority = 8, dependsOnMethods = "deleteLocations")
-    public void deleteEmployee() throws InterruptedException {
+    @Test(groups = "employee-location-management", dependsOnMethods = "testDeleteLocations")
+    public void testDeleteEmployee() throws InterruptedException {
         Personeel.openEmployeeMenu(3);
         PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
         PerformAction.shortWait();

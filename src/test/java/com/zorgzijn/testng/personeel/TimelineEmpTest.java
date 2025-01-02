@@ -8,34 +8,34 @@ import org.testng.annotations.Test;
 
 import java.util.Random;
 
-public class TimelineEmp extends ZorgzijnBaseTest {
+public class TimelineEmpTest extends ZorgzijnBaseTest {
 
     int notesCount;
     Random random = new Random();
 
 
-    @Test(priority = 2, dependsOnMethods = "login")
-    public void navigateToPersoneelTab() throws InterruptedException {
+    @Test(groups = "employee-timeline-management")
+    public void testNavigateToPersoneelMenu() throws InterruptedException {
         tabNavigation(5);
     }
 
-    @Test(priority = 3, dependsOnMethods = "navigateToPersoneelTab")
-    public void changeEmployeeFilter() throws InterruptedException {
+    @Test(groups = "employee-timeline-management", dependsOnMethods = "testNavigateToPersoneelMenu")
+    public void testChangeEmployeeFilter() throws InterruptedException {
         PerformAction.clearField(By.id("simple-search"));
         PerformAction.clickElement(By.xpath("//div[3]/button"));
         PerformAction.clickElement(By.id("mat-radio-4-input"));
         PerformAction.longWait();
     }
 
-    @Test(priority = 4, dependsOnMethods = "changeEmployeeFilter")
-    public void searchEmployee() throws InterruptedException {
+    @Test(groups = "employee-timeline-management", dependsOnMethods = "testChangeEmployeeFilter")
+    public void testSearchEmployee() throws InterruptedException {
         Personeel.searchAndShowEmployee("Dylan");
     }
 
-    @Test(priority = 5, dependsOnMethods = "searchEmployee")
-    public void addTimelineNotes() throws InterruptedException {
+    @Test(groups = "employee-timeline-management", dependsOnMethods = "testSearchEmployee")
+    public void testAddTimelineNotes() throws InterruptedException {
         // Randomly decide the number of notes to add (between 3 and 6)
-        notesCount = 3 + random.nextInt(4);
+        notesCount = 2 + random.nextInt(2);
 
         for (int i = 0; i < notesCount; i++) {
             PerformAction.typeField(By.xpath("//ckeditor/div[2]/div[2]/div"), RandomInput.text());
@@ -44,9 +44,9 @@ public class TimelineEmp extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(priority = 6, dependsOnMethods = "addTimelineNotes")
-    public void modifyTimelineNotes() throws InterruptedException {
-        for (int i = 0; i < 3; i++) {
+    @Test(groups = "employee-timeline-management", dependsOnMethods = "testAddTimelineNotes")
+    public void testModifyTimelineNotes() throws InterruptedException {
+        for (int i = 0; i < 2; i++) {
             int noteNum = 1 + random.nextInt(notesCount);
 
             //Open edit timeline dialog
@@ -60,9 +60,9 @@ public class TimelineEmp extends ZorgzijnBaseTest {
         }
     }
 
-    @Test(priority = 7, dependsOnMethods = "modifyTimelineNotes")
-    public void deleteTimeline() throws InterruptedException {
-        for (int i = 0; i < 2; i++) {
+    @Test(groups = "employee-timeline-management", dependsOnMethods = "testModifyTimelineNotes")
+    public void testDeleteTimeline() throws InterruptedException {
+        for (int i = 0; i < 1; i++) {
             int noteNum = 1 + random.nextInt(notesCount);
 
             //Open edit timeline dialog

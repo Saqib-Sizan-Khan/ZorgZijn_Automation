@@ -9,16 +9,15 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class CreateAndModifyEmp extends ZorgzijnBaseTest {
+public class CreateAndModifyEmpTest extends ZorgzijnBaseTest {
 
-
-    @Test(priority = 2, dependsOnMethods = "login")
-    public void navigateToPersoneelTab() throws InterruptedException {
+    @Test(groups = "employee-management")
+    public void testNavigateToPersoneelMenu() throws InterruptedException {
         tabNavigation(5);
     }
 
-    @Test(priority = 3, dependsOnMethods = "navigateToPersoneelTab")
-    public void createEmployee() throws InterruptedException {
+    @Test(groups = "employee-management", dependsOnMethods = "testNavigateToPersoneelMenu")
+    public void testCreateEmployee() throws InterruptedException {
         PerformAction.clickElement(By.tagName("button"));
 
         // Fill employee details
@@ -57,13 +56,13 @@ public class CreateAndModifyEmp extends ZorgzijnBaseTest {
         PerformAction.longWait();
     }
 
-    @Test(priority = 4, dependsOnMethods = "createEmployee")
-    public void searchEmployee() throws InterruptedException {
+    @Test(groups = "employee-management", dependsOnMethods = "testCreateEmployee")
+    public void testSearchEmployee() throws InterruptedException {
         Personeel.searchAndShowEmployee("Scarlett");
     }
 
-    @Test(priority = 5, dependsOnMethods = "searchEmployee")
-    public void modifyEmployee() throws InterruptedException {
+    @Test(groups = "employee-management", dependsOnMethods = "testSearchEmployee")
+    public void testModifyEmployee() throws InterruptedException {
         Personeel.openEmployeeMenu(1);
 
         // Modify details
