@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.Random;
 
-public class IncludeEmpClient extends AutomationSetupClass {
+public class EmpClient extends AutomationSetupClass {
 
     int empCount;
     Random random = new Random();
@@ -76,50 +76,48 @@ public class IncludeEmpClient extends AutomationSetupClass {
     }
 
     @Test(priority = 6, dependsOnMethods = "addEmployees")
-    public void modifyLocations() throws InterruptedException {
+    public void modifyEmployees() throws InterruptedException {
         empCount = driver.findElements(By.xpath("//client-employee-info")).size();
 
         for (int i = 0; i < 3; i++) {
-            int location = 2 + random.nextInt(empCount);
+            int employee = 2 + random.nextInt(empCount);
 
-            //client-employees/div/div[2]/client-employee-info
             //Activate employee modification
-            //client-employee-info/div/div/div[2]/button[2]
-
-            PerformAction.clickElement(By.xpath("//div[1]/client-employee-info//button"));
+            PerformAction.clickElement(By.xpath("//div["+ employee +"]/client-employee-info//div[2]/button[2]"));
             PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(1)"));
 
             //Change Employee fee
             PerformAction.typeField(By.xpath("//div[1]/app-rate-input-field//input"), RandomInput.threeDigit());
             PerformAction.typeField(By.xpath("//div[2]/app-rate-input-field//input"), RandomInput.threeDigit());
 
-            //Click submit
-            PerformAction.clickElement(By.xpath("//button[@type='submit']"));
+            //Submit Changes
+            PerformAction.clickElement(By.xpath("//submit-button/button"));
             PerformAction.longWait();
         }
     }
 
-//    @Test(priority = 7, dependsOnMethods = "modifyLocations")
-//    public void deleteLocations() throws InterruptedException {
-//        locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
-//
-//        for (int i = 0; i < 2; i++) {
-//            int location = 1 + random.nextInt(locationCount);
-//
-//            //Open delete dialog
-//            PerformAction.clickElement(By.xpath("//div["+ location +"]/staff-location-detail//button"));
-//            PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(2)"));
-//
-//            //Confirm delete
-//            PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
-//            locationCount-=1;
-//        }
-//    }
-//
-//    @Test(priority = 8, dependsOnMethods = "deleteLocations")
-//    public void deleteEmployee() throws InterruptedException {
-//        Personeel.openEmployeeMenu(3);
-//        PerformAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
-//        PerformAction.shortWait();
-//    }
+    @Test(priority = 7, dependsOnMethods = "modifyEmployees")
+    public void deleteEmployees() throws InterruptedException {
+        empCount = driver.findElements(By.xpath("//client-employee-info")).size();
+
+        for (int i = 0; i < 2; i++) {
+            int employee = 2 + random.nextInt(empCount);
+
+            //Open employee delete dialog
+            PerformAction.clickElement(By.xpath("//div["+ employee +"]/client-employee-info//div[2]/button[2]"));
+            PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(2)"));
+
+            //Confirm delete
+            PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
+            empCount-=1;
+            PerformAction.longWait();
+        }
+    }
+
+    @Test(priority = 8, dependsOnMethods = "deleteEmployees")
+    public void deleteEmployee() throws InterruptedException {
+        Klanten.openClientMenu(3);
+        PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
+        PerformAction.longWait();
+    }
 }
