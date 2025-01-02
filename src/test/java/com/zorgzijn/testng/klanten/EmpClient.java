@@ -25,7 +25,7 @@ public class EmpClient extends AutomationSetupClass {
 
     @Test(priority = 3, dependsOnMethods = "navigateToKlantenTab")
     public void searchClient() throws InterruptedException {
-        Klanten.searchAndShowClient("Henderik Hospital Waste");
+        Klanten.searchAndShowClient(Klanten.getClientName());
     }
 
     @Test(priority = 4, dependsOnMethods = "searchClient")
