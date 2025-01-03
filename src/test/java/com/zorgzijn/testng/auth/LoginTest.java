@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends ZorgzijnBaseTest {
 
+    PerformAction performAction = new PerformAction();
+
     private final By emailField = By.id("E-mailadres");
     private final By passwordField = By.id("Wachtwoord");
     private final By rememberMeCheckbox = By.id("remember");
@@ -18,8 +20,6 @@ public class LoginTest extends ZorgzijnBaseTest {
         if (driver == null) {
             throw new RuntimeException("Driver is not initialized. Ensure setup is executed properly.");
         }
-
-        PerformAction performAction = new PerformAction();
 
 
         driver.get(baseUrl + "/auth/login");
