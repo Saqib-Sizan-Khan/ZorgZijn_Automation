@@ -9,12 +9,17 @@ import org.testng.annotations.Test;
 public class NotificationTest extends ZorgzijnBaseTest {
 
     @Test(groups = "notification-test")
+    public void testNavigateToSettingsMenu() throws InterruptedException {
+        tabNavigation(7);
+    }
+
+    @Test(groups = "notification-test", dependsOnMethods = "testNavigateToSettingsMenu")
     public void testNavigateToNotificationTab() throws InterruptedException {
         PerformAction.clickElement(By.xpath("//li[2]/a"));
     }
 
     @Test(groups = "notification-test", dependsOnMethods = "testNavigateToNotificationTab")
-    public void createNotification() throws InterruptedException {
+    public void testCreateNotification() throws InterruptedException {
 
         // Open notification creation form
         PerformAction.clickElement(By.xpath("//app-notification//div[1]/button"));
@@ -22,54 +27,41 @@ public class NotificationTest extends ZorgzijnBaseTest {
         // Form 1st step
         PerformAction.typeField(By.id("Titel"), "Automation Notification");
         PerformAction.typeField(By.xpath("//div[@class='ck ck-editor__main']/div"), RandomInput.text());
+        PerformAction.shortWait();
 
         // Click Next Step
-
-        driver.findElement(By.xpath("//form/div/button[1]")).click();
-        Thread.sleep(2000);
+        PerformAction.clickElement(By.xpath("//form/div/button[1]"));
+        PerformAction.shortWait();
 
         // 2nd step Choose employee
-        driver.findElement(By.id("simple-search")).sendKeys("Sizan");
-        Thread.sleep(2000);
-
-        driver.findElement(By.xpath("//li[2]//input")).click();
-        Thread.sleep(1000);
+        PerformAction.typeField(By.id("simple-search"),"Sizan");
+        PerformAction.shortWait();
+        PerformAction.clickElement(By.xpath("//li[2]//input"));
+        PerformAction.shortWait();
 
         // Confirm notification
-        driver.findElement(By.xpath("//submit-button/button")).click();
-        Thread.sleep(3000);
-
+        PerformAction.clickElement(By.xpath("//submit-button/button"));
+        PerformAction.longWait();
     }
 
-    @Test(priority = 4, dependsOnMethods = "createNotification")
-    public void viewNotificationDetails() throws InterruptedException {
-        // See notification details (Scenario 1)
-        driver.findElement(By.xpath("//div[2]/div[2]/div[1]")).click();
-        Thread.sleep(3000);
+    @Test(groups = "notification-test", dependsOnMethods = "testCreateNotification")
+    public void testViewNotification() throws InterruptedException {
+        // See notification details
+        PerformAction.clickElement(By.xpath("//app-notification/div/div/div/div[2]/div[2]/div[1]"));
+        PerformAction.longWait();
 
-        driver.findElement(By.xpath("//div[2]/button")).click();
-        Thread.sleep(3000);
-
-        // See notification details (Scenario 2)
-        driver.findElement(By.xpath("//div[2]/div[1]/div[4]/button/span[3]")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)")).click();
-        Thread.sleep(2000);
-
-        driver.findElement(By.xpath("//div[2]/button")).click();
-        Thread.sleep(2000);
+        PerformAction.clickElement(By.xpath("//button[@type='button']"));
     }
 
-    @Test(priority = 5, dependsOnMethods = "viewNotificationDetails")
-    public void deleteNotification() throws InterruptedException {
-        // Delete notification
-        driver.findElement(By.xpath("//div[2]/div[1]/div[4]/button/span[3]")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)")).click();
-        Thread.sleep(2000);
+    @Test(groups = "notification-test", dependsOnMethods = "testViewNotification")
+    public void testDeleteNotification() throws InterruptedException {
+        // Open delete dialog
+        PerformAction.clickElement(By.xpath("//div[2]/div[1]/div[4]/button"));
+        PerformAction.clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)"));
+        PerformAction.shortWait();
 
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-        Thread.sleep(2000);
+        // Confirm delete
+        PerformAction.clickElement(By.xpath("//button[@type='submit']"));
+        PerformAction.shortWait();
     }
-
 }
