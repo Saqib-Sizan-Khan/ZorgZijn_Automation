@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.util.Random;
 
-public class LocationEmployeeTest extends ZorgzijnBaseTest {
+public class EmployeeLocationTest extends ZorgzijnBaseTest {
 
     int locationCount;
     Random random = new Random();

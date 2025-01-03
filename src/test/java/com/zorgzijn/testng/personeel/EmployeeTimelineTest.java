@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.Random;
 
-public class TimelineEmployeeTest extends ZorgzijnBaseTest {
+public class EmployeeTimelineTest extends ZorgzijnBaseTest {
 
     int notesCount;
     Random random = new Random();

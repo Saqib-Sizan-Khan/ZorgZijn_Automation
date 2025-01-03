@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class CreateAndModifyEmpTest extends ZorgzijnBaseTest {
+public class EmployeeTest extends ZorgzijnBaseTest {
 
     @Test(groups = "employee-management")
     public void testNavigateToPersoneelMenu() throws InterruptedException {
