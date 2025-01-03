@@ -33,7 +33,7 @@ public class ClientEmployeeTest extends ZorgzijnBaseTest {
     public void testAddEmployees() throws InterruptedException {
         PerformAction.shortWait();
         PerformAction.clickElement(By.xpath("//client-employees/div/div[1]//button"));
-        int totalLocation = driver.findElements(By.xpath("//client-employees//ul/li")).size();
+        int totalLocation = PerformAction.countOption(By.xpath("//client-employees//ul/li"));
         int pickLocation = 1 + random.nextInt(totalLocation);
 
         if (pickLocation == 1) {
@@ -45,11 +45,11 @@ public class ClientEmployeeTest extends ZorgzijnBaseTest {
         empCount = 2 + random.nextInt(2);
         for (int i = 0; i < empCount; i++) {
             PerformAction.clickElement(By.xpath("//button[@type='submit']"));
-            PerformAction.shortWait();
+            PerformAction.longWait();
 
             //Select Employee
             PerformAction.clickElement(By.xpath("//div[1]/app-autocomplete-field//input"));
-            int totalEmp = driver.findElements(By.xpath("//mat-option")).size();
+            int totalEmp = PerformAction.countOption(By.xpath("//mat-option"));
             int pickEmp = 1 + random.nextInt(totalEmp);
             PerformAction.clickElement(By.xpath("//mat-option[" + pickEmp + "]"));
 
@@ -63,7 +63,7 @@ public class ClientEmployeeTest extends ZorgzijnBaseTest {
 
             //Set Profile type
             PerformAction.clickElement(By.xpath("//div[2]/app-autocomplete-field//input"));
-            int totalProfiles = driver.findElements(By.xpath("//mat-option")).size();
+            int totalProfiles = PerformAction.countOption(By.xpath("//mat-option"));
             int pickProfile = 1 + random.nextInt(totalProfiles);
             PerformAction.clickElement(By.xpath("//mat-option[" + pickProfile + "]"));
 
@@ -75,7 +75,7 @@ public class ClientEmployeeTest extends ZorgzijnBaseTest {
 
     @Test(groups = "client-employee-management", dependsOnMethods = "testAddEmployees")
     public void testModifyEmployees() throws InterruptedException {
-        empCount = driver.findElements(By.xpath("//client-employee-info")).size();
+        empCount = PerformAction.countOption(By.xpath("//client-employee-info"));
 
         for (int i = 0; i < 2; i++) {
             int employee = 2 + random.nextInt(empCount);
@@ -96,7 +96,7 @@ public class ClientEmployeeTest extends ZorgzijnBaseTest {
 
     @Test(groups = "client-employee-management", dependsOnMethods = "testModifyEmployees")
     void testDeleteEmployees() throws InterruptedException {
-        empCount = driver.findElements(By.xpath("//client-employee-info")).size();
+        empCount = PerformAction.countOption(By.xpath("//client-employee-info"));
 
         for (int i = 0; i < 1; i++) {
             int employee = 2 + random.nextInt(empCount);

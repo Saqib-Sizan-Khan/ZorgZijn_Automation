@@ -45,7 +45,7 @@ public class ClientLocationTest extends ZorgzijnBaseTest {
 
     @Test(groups = "client-location-management", dependsOnMethods = "testCreateLocations")
     public void testModifyLocations() throws InterruptedException {
-        locationCount = driver.findElements(By.xpath("//div/client-location-detail")).size();
+        locationCount = PerformAction.countOption(By.xpath("//div/client-location-detail"));
 
         for (int i = 0; i < 2; i++) {
             int location = 2 + random.nextInt(locationCount);
@@ -69,7 +69,7 @@ public class ClientLocationTest extends ZorgzijnBaseTest {
 
     @Test(groups = "client-location-management", dependsOnMethods = "testModifyLocations")
     public void testDeleteLocations() throws InterruptedException {
-        locationCount = driver.findElements(By.xpath("//div/client-location-detail")).size();
+        locationCount = PerformAction.countOption(By.xpath("//div/client-location-detail"));
 
         for (int i = 0; i < 1; i++) {
             int location = 2 + random.nextInt(locationCount);

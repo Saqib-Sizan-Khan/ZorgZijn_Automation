@@ -47,7 +47,7 @@ public class EmployeeLocationTest extends ZorgzijnBaseTest {
 
                 //Select location
                 PerformAction.clickElement(By.xpath("//div[1]/app-autocomplete-field//input"));
-                int totalLocations = driver.findElements(By.xpath("//mat-option")).size();
+                int totalLocations = PerformAction.countOption(By.xpath("//mat-option"));
                 int pickLocation = 1 + random.nextInt(totalLocations);
                 PerformAction.clickElement(By.xpath("//mat-option["+ pickLocation +"]"));
 
@@ -61,7 +61,7 @@ public class EmployeeLocationTest extends ZorgzijnBaseTest {
 
                 //Set Profile type
                 PerformAction.clickElement(By.xpath("//div[2]/app-autocomplete-field//input"));
-                int totalProfiles = driver.findElements(By.xpath("//mat-option")).size();
+                int totalProfiles = PerformAction.countOption(By.xpath("//mat-option"));
                 int pickProfile = 1 + random.nextInt(totalProfiles);
                 PerformAction.clickElement(By.xpath("//mat-option["+ pickProfile +"]"));
 
@@ -71,7 +71,7 @@ public class EmployeeLocationTest extends ZorgzijnBaseTest {
 
                 // Check for alert message
                 try {
-                    String alert = driver.findElement(By.xpath("//alert//p")).getText();
+                    String alert = PerformAction.getAlertText(By.xpath("//alert//p"));
 
                     if (alert.equals("Medewerker die al aan deze locatie is toegewezen.")) {
                         System.out.println("Same location picked, trying again...");
@@ -88,7 +88,7 @@ public class EmployeeLocationTest extends ZorgzijnBaseTest {
 
     @Test(groups = "employee-location-management", dependsOnMethods = "testAddLocations")
     public void testModifyLocations() throws InterruptedException {
-        locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
+        locationCount = PerformAction.countOption(By.xpath("//div/staff-location-detail"));
 
         for (int i = 0; i < 2; i++) {
             int location = 1 + random.nextInt(locationCount);
@@ -109,7 +109,7 @@ public class EmployeeLocationTest extends ZorgzijnBaseTest {
 
     @Test(groups = "employee-location-management", dependsOnMethods = "testModifyLocations")
     public void testDeleteLocations() throws InterruptedException {
-        locationCount = driver.findElements(By.xpath("//div/staff-location-detail")).size();
+        locationCount = PerformAction.countOption(By.xpath("//div/staff-location-detail"));
 
         for (int i = 0; i < 1; i++) {
             int location = 1 + random.nextInt(locationCount);

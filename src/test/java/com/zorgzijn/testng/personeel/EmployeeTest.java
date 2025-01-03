@@ -1,11 +1,9 @@
 package com.zorgzijn.testng.personeel;
 
-import com.zorgzijn.testng.setup.WebDriverManager;
 import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import com.zorgzijn.testng.setup.PerformAction;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -27,7 +25,7 @@ public class EmployeeTest extends ZorgzijnBaseTest {
         PerformAction.typeField(By.id("Tussenvoegsel"), "Faith");
         PerformAction.typeField(By.id("Achternaam"), "Turner");
 
-        List<WebElement> dropDown = PerformAction.getDropDown();
+        List<WebElement> dropDown = PerformAction.getDropDown(By.tagName("mat-select"));
 
         //Select Employee Type
         dropDown.get(0).click();
@@ -74,7 +72,7 @@ public class EmployeeTest extends ZorgzijnBaseTest {
         PerformAction.typeField(By.id("Tussenvoegsel"), "Nicholas");
         PerformAction.typeField(By.id("Achternaam"), "Reed");
 
-        List<WebElement> dropDown = PerformAction.getDropDown();
+        List<WebElement> dropDown = PerformAction.getDropDown(By.tagName("mat-select"));
 
         //Change Employee Type
         dropDown.get(0).click();

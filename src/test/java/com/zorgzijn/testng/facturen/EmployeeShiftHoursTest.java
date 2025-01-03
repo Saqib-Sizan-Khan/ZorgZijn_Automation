@@ -15,7 +15,7 @@ public class EmployeeShiftHoursTest extends ZorgzijnBaseTest {
 
     @Test(groups = "shift-register", dependsOnMethods = "testNavigateToTimeRegistrationMenu")
     public void testRegisterShift() throws InterruptedException {
-        int empCount = driver.findElements(By.xpath("//table/tbody/tr")).size();
+        int empCount = PerformAction.countOption(By.xpath("//table/tbody/tr"));
 
         for (int i=1; i<=empCount; i++) {
             try {

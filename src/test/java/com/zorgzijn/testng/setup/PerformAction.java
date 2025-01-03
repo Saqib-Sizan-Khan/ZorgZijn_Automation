@@ -80,11 +80,27 @@ public class PerformAction {
         shortWait();
     }
 
-    public static List<WebElement> getDropDown() {
+    public static List<WebElement> getDropDown(By locator) {
         WebDriver driver = WebDriverManager.getDriver();
         if (driver == null) {
             throw new RuntimeException("WebDriver is not initialized in PerformAction.");
         }
-        return driver.findElements(By.tagName("mat-select"));
+        return driver.findElements(locator);
+    }
+
+    public static int countOption(By locator) {
+        WebDriver driver = WebDriverManager.getDriver();
+        if (driver == null) {
+            throw new RuntimeException("WebDriver is not initialized in PerformAction.");
+        }
+        return driver.findElements(locator).size();
+    }
+
+    public static String getAlertText(By locator) {
+        WebDriver driver = WebDriverManager.getDriver();
+        if (driver == null) {
+            throw new RuntimeException("WebDriver is not initialized in PerformAction.");
+        }
+        return driver.findElement(locator).getText();
     }
 }

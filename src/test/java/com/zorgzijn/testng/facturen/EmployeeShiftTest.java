@@ -29,7 +29,7 @@ public class EmployeeShiftTest extends ZorgzijnBaseTest {
 
             //Choose a service
             PerformAction.clickElement(By.xpath("//form//mat-select"));
-            int totalService = driver.findElements(By.xpath("//mat-option")).size();
+            int totalService = PerformAction.countOption(By.xpath("//mat-option"));
             int pickService = 1 + random.nextInt(totalService);
             PerformAction.clickElement(By.xpath("//mat-option[" + pickService + "]"));
 
