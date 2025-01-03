@@ -17,9 +17,9 @@
         </groups>
         <classes>
             <class name="com.zorgzijn.testng.auth.LoginTest" />
-            <class name="com.zorgzijn.testng.facturen.CreateShiftTest" />
-            <class name="com.zorgzijn.testng.facturen.RegisterShiftTest" />
-            <class name="com.zorgzijn.testng.facturen.InvoiceShiftTest" />
+            <class name="com.zorgzijn.testng.facturen.EmployeeShiftTest" />
+            <class name="com.zorgzijn.testng.facturen.EmployeeShiftHoursTest" />
+            <class name="com.zorgzijn.testng.facturen.EmployeeInvoiceTest" />
         </classes>
     </test>
 </suite>

@@ -5,7 +5,7 @@ import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-public class InvoiceShiftTest extends ZorgzijnBaseTest {
+public class EmployeeInvoiceTest extends ZorgzijnBaseTest {
 
     @Test(groups = "shift-invoice")
     public void testNavigateToInvoiceMenu() throws InterruptedException {

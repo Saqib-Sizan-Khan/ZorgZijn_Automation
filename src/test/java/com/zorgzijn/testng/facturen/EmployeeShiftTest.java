@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.Random;
 
-public class CreateShiftTest extends ZorgzijnBaseTest {
+public class EmployeeShiftTest extends ZorgzijnBaseTest {
 
     int location = 1;
     int tableColumnPosition = 6;

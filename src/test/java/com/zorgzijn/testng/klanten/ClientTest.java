@@ -4,10 +4,9 @@ import com.zorgzijn.testng.setup.PerformAction;
 import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
-public class CreateAndModifyClientTest extends ZorgzijnBaseTest {
+public class ClientTest extends ZorgzijnBaseTest {
 
     @Test(groups = "client-management")
     public void testNavigateToKlantenMenu() throws InterruptedException {
