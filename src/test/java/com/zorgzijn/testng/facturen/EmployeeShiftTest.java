@@ -22,7 +22,7 @@ public class EmployeeShiftTest extends ZorgzijnBaseTest {
 
     @Test(groups = "create-shift", dependsOnMethods = "testNavigateToPlanningMenu")
     public void testCreateShifts() throws InterruptedException {
-        for (int i=2; i<6; i++) {
+        for (int i=6; i<10; i++) {
             // Open service creation form
             PerformAction.clickElement(By.xpath("//tbody/div["+ location +"]/tr["+ i +"]/td["+ tableColumnPosition +"]"));
             PerformAction.shortWait();
