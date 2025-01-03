@@ -16,7 +16,7 @@ public class EmployeeShiftTest extends ZorgzijnBaseTest {
 
     @Test(groups = "create-shift")
     public void testNavigateToPlanningMenu() throws InterruptedException {
-        tabNavigation(2);
+        PerformAction.tabNavigation(2);
         PerformAction.longWait();
     }
 

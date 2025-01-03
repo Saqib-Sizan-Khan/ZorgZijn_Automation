@@ -9,7 +9,7 @@ public class EmployeeShiftHoursTest extends ZorgzijnBaseTest {
 
     @Test(groups = "shift-register")
     public void testNavigateToTimeRegistrationMenu() throws InterruptedException {
-        tabNavigation(3);
+        PerformAction.tabNavigation(3);
         PerformAction.longWait();
     }
 

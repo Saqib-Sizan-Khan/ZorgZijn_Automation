@@ -10,7 +10,7 @@ public class ClientTest extends ZorgzijnBaseTest {
 
     @Test(groups = "client-management")
     public void testNavigateToKlantenMenu() throws InterruptedException {
-        tabNavigation(4);
+        PerformAction.tabNavigation(4);
     }
 
     @Test(groups = "client-management", dependsOnMethods = "testNavigateToKlantenMenu")

@@ -10,7 +10,7 @@ public class NotificationTest extends ZorgzijnBaseTest {
 
     @Test(groups = "notification-test")
     public void testNavigateToSettingsMenu() throws InterruptedException {
-        tabNavigation(7);
+        PerformAction.tabNavigation(7);
     }
 
     @Test(groups = "notification-test", dependsOnMethods = "testNavigateToSettingsMenu")

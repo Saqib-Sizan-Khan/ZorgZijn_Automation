@@ -9,7 +9,7 @@ public class EmployeeInvoiceTest extends ZorgzijnBaseTest {
 
     @Test(groups = "shift-invoice")
     public void testNavigateToInvoiceMenu() throws InterruptedException {
-        tabNavigation(6);
+        PerformAction.tabNavigation(6);
         PerformAction.longWait();
     }
 

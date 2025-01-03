@@ -15,7 +15,7 @@ public class ClientEmployeeTest extends ZorgzijnBaseTest {
 
     @Test(groups = "client-employee-management")
     public void testNavigateToKlantenMenu() throws InterruptedException {
-        tabNavigation(4);
+        PerformAction.tabNavigation(4);
     }
 
     @Test(groups = "client-employee-management", dependsOnMethods = "testNavigateToKlantenMenu")

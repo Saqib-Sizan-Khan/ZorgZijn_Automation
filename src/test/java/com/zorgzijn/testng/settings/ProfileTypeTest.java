@@ -10,7 +10,7 @@ public class ProfileTypeTest extends ZorgzijnBaseTest {
 
     @Test(groups = "profiletype-test")
     public void testNavigateToSettingsMenu() throws InterruptedException {
-        tabNavigation(7);
+        PerformAction.tabNavigation(7);
     }
 
     @Test(groups = "profiletype-test", dependsOnMethods = "testNavigateToSettingsMenu")

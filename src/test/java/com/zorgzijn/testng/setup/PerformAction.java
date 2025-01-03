@@ -68,4 +68,13 @@ public class PerformAction {
     public static void waitForPageLoad() throws InterruptedException {
         Thread.sleep(LONG_WAIT);
     }
+
+    public static void tabNavigation(int tabNum) throws InterruptedException {
+        WebDriver driver = WebDriverManager.getDriver();
+        if (driver == null) {
+            throw new RuntimeException("WebDriver is not initialized in PerformAction.");
+        }
+        clickElement(By.xpath("//div/a[" + tabNum + "]"));
+        shortWait();
+    }
 }

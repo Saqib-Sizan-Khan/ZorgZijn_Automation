@@ -17,7 +17,7 @@ public class LocationEmployeeTest extends ZorgzijnBaseTest {
 
     @Test(groups = "employee-location-management")
     public void testNavigateToPersoneelMenu() throws InterruptedException {
-        tabNavigation(5);
+        PerformAction.tabNavigation(5);
     }
 
     @Test(groups = "employee-location-management", dependsOnMethods = "testNavigateToPersoneelMenu")

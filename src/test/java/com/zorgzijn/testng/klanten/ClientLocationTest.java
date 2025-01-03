@@ -15,7 +15,7 @@ public class ClientLocationTest extends ZorgzijnBaseTest {
 
     @Test(groups = "client-location-management")
     public void testNavigateToKlantenMenu() throws InterruptedException {
-        tabNavigation(4);
+        PerformAction.tabNavigation(4);
     }
 
     @Test(groups = "client-location-management", dependsOnMethods = "testNavigateToKlantenMenu")

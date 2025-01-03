@@ -1,6 +1,5 @@
 package com.zorgzijn.testng.setup;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
@@ -22,15 +21,6 @@ public abstract class ZorgzijnBaseTest {
             throw new RuntimeException("Driver initialization failed. Ensure WebDriver is set up properly.");
         }
         System.out.println("Driver initialized successfully.");
-    }
-
-    public void tabNavigation(int tabNum) throws InterruptedException {
-        driver = WebDriverManager.getDriver();
-        if (driver == null) {
-            throw new RuntimeException("Driver is not initialized. Ensure login is successful before navigating tabs.");
-        }
-        PerformAction.clickElement(By.xpath("//div/a[" + tabNum + "]"));
-        PerformAction.shortWait();
     }
 
     @AfterSuite(alwaysRun = true)

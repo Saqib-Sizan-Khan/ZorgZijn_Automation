@@ -13,7 +13,7 @@ public class CreateAndModifyEmpTest extends ZorgzijnBaseTest {
 
     @Test(groups = "employee-management")
     public void testNavigateToPersoneelMenu() throws InterruptedException {
-        tabNavigation(5);
+        PerformAction.tabNavigation(5);
     }
 
     @Test(groups = "employee-management", dependsOnMethods = "testNavigateToPersoneelMenu")
