@@ -7,9 +7,12 @@ import org.testng.annotations.Test;
 
 public class EmployeeShiftHoursTest extends ZorgzijnBaseTest {
 
+    PerformAction performAction = new PerformAction();
+
+
     @Test(groups = "shift-register")
     public void testNavigateToTimeRegistrationMenu() throws InterruptedException {
-        PerformAction.tabNavigation(3);
+        performAction.tabNavigation(3);
         PerformAction.longWait();
     }
 
@@ -19,7 +22,7 @@ public class EmployeeShiftHoursTest extends ZorgzijnBaseTest {
 
         for (int i=1; i<=empCount; i++) {
             try {
-                PerformAction.clickElement(By.xpath("//table/tbody/tr["+ i +"]/td[10]/div/button[2]"));
+                performAction.clickElement(By.xpath("//table/tbody/tr["+ i +"]/td[10]/div/button[2]"));
             } catch (Exception e) {
                 System.out.println("Already service definative");
             }

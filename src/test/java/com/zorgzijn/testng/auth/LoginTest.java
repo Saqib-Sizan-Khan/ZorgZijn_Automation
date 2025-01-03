@@ -18,12 +18,16 @@ public class LoginTest extends ZorgzijnBaseTest {
         if (driver == null) {
             throw new RuntimeException("Driver is not initialized. Ensure setup is executed properly.");
         }
+
+        PerformAction performAction = new PerformAction();
+
+
         driver.get(baseUrl + "/auth/login");
         PerformAction.waitForPageLoad();
-        PerformAction.typeField(emailField, username);
-        PerformAction.typeField(passwordField, password);
-        PerformAction.clickElement(rememberMeCheckbox);
-        PerformAction.clickElement(loginButton);
+        performAction.typeField(emailField, username);
+        performAction.typeField(passwordField, password);
+        performAction.clickElement(rememberMeCheckbox);
+        performAction.clickElement(loginButton);
         PerformAction.waitForPageLoad();
         System.out.println("Login successful.");
     }

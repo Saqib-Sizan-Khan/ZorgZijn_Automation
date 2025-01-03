@@ -8,41 +8,44 @@ import org.testng.annotations.Test;
 
 public class ClientTest extends ZorgzijnBaseTest {
 
+    PerformAction performAction = new PerformAction();
+
+
     @Test(groups = "client-management")
     public void testNavigateToKlantenMenu() throws InterruptedException {
-        PerformAction.tabNavigation(4);
+        performAction.tabNavigation(4);
     }
 
     @Test(groups = "client-management", dependsOnMethods = "testNavigateToKlantenMenu")
     public void testCreateClient() throws InterruptedException {
-        PerformAction.clickElement(By.tagName("button"));
+        performAction.clickElement(By.tagName("button"));
 
         // Enter KVK
-        PerformAction.typeField(By.id("KVK"), "63888076");
+        performAction.typeField(By.id("KVK"), "63888076");
 
         //Type Email and Phone
-        PerformAction.typeField(By.id("Telefoonnummer"), RandomInput.phoneNumber());
-        PerformAction.typeField(By.id("E-mailadres"), RandomInput.email());
+        performAction.typeField(By.id("Telefoonnummer"), RandomInput.phoneNumber());
+        performAction.typeField(By.id("E-mailadres"), RandomInput.email());
 
         //Give Client Details
-        PerformAction.typeField(By.id("BTW-nummer"), "865845621B01");
-        PerformAction.typeField(By.id("Rekeningnummer"), "02ABNA0123456789");
-        PerformAction.typeField(By.id("Fee per uur"), RandomInput.threeDigit());
+        performAction.typeField(By.id("BTW-nummer"), "865845621B01");
+        performAction.typeField(By.id("Rekeningnummer"), "02ABNA0123456789");
+        performAction.typeField(By.id("Fee per uur"), RandomInput.threeDigit());
 
         //Select VAT type
-        PerformAction.clickElement(By.tagName("mat-select"));
-        PerformAction.clickElement(By.xpath("//mat-option[2]"));
+        performAction.clickElement(By.tagName("mat-select"));
+        performAction.clickElement(By.xpath("//mat-option[2]"));
 
         //Checked relationship code
-        PerformAction.clickElement(By.xpath("//input[@type='checkbox']"));
+        performAction.clickElement(By.xpath("//input[@type='checkbox']"));
 
         //Get Client Name
-        Klanten.setClientName(PerformAction.getFieldText(By.id("Naam bedrijf")));
+        Klanten.setClientName(performAction.getFieldText(By.id("Naam bedrijf")));
 
         //Click submit button
-        PerformAction.clickElement(By.xpath("//button[@type='submit']"));
+        performAction.clickElement(By.xpath("//button[@type='submit']"));
 
-        PerformAction.longWait();
+        performAction.longWait();
     }
 
     @Test(groups = "client-management", dependsOnMethods = "testCreateClient")
@@ -56,25 +59,25 @@ public class ClientTest extends ZorgzijnBaseTest {
         Klanten.openClientMenu(2);
 
         //Change KVK
-        PerformAction.typeField(By.id("KVK"), "91532906");
+        performAction.typeField(By.id("KVK"), "91532906");
 
         //Change Email and Phone
-        PerformAction.typeField(By.id("Telefoonnummer"), RandomInput.phoneNumber());
-        PerformAction.typeField(By.id("E-mailadres"), RandomInput.email());
+        performAction.typeField(By.id("Telefoonnummer"), RandomInput.phoneNumber());
+        performAction.typeField(By.id("E-mailadres"), RandomInput.email());
 
         //Change Fee
-        PerformAction.typeField(By.id("Fee per uur"), RandomInput.threeDigit());
+        performAction.typeField(By.id("Fee per uur"), RandomInput.threeDigit());
 
         //Change VAT type
-        PerformAction.clickElement(By.tagName("mat-select"));
-        PerformAction.clickElement(By.xpath("//mat-option[1]"));
+        performAction.clickElement(By.tagName("mat-select"));
+        performAction.clickElement(By.xpath("//mat-option[1]"));
 
         //Get Client Name
-        Klanten.setClientName(PerformAction.getFieldText(By.id("Naam bedrijf")));
+        Klanten.setClientName(performAction.getFieldText(By.id("Naam bedrijf")));
 
         //Submit Changes
-        PerformAction.clickElement(By.xpath("//submit-button/button"));
+        performAction.clickElement(By.xpath("//submit-button/button"));
 
-        PerformAction.longWait();
+        performAction.longWait();
     }
 }

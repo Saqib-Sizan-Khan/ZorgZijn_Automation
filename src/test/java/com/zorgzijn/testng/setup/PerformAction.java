@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class PerformAction {
+public class PerformAction extends ZorgzijnBaseTest{
     private static final int VERY_SHORT_WAIT = 750;
     private static final int SHORT_WAIT = 1500;
     private static final int LONG_WAIT = 2500;
@@ -24,20 +24,13 @@ public class PerformAction {
         Thread.sleep(VERY_LONG_WAIT);
     }
 
-    public static void clickElement(By locator) throws InterruptedException {
-        WebDriver driver = WebDriverManager.getDriver();
-        if (driver == null) {
-            throw new RuntimeException("WebDriver is not initialized in PerformAction.");
-        }
+    public void clickElement(By locator) throws InterruptedException {
+
         driver.findElement(locator).click();
         Thread.sleep(VERY_SHORT_WAIT);
     }
 
-    public static void typeField(By locator, String keys) throws InterruptedException {
-        WebDriver driver = WebDriverManager.getDriver();
-        if (driver == null) {
-            throw new RuntimeException("WebDriver is not initialized in PerformAction.");
-        }
+    public  void typeField(By locator, String keys) throws InterruptedException {
         WebElement element = driver.findElement(locator);
         element.click();
         element.clear();
@@ -46,23 +39,17 @@ public class PerformAction {
         Thread.sleep(VERY_SHORT_WAIT);
     }
 
-    public static void clearField(By locator) throws InterruptedException {
-        WebDriver driver = WebDriverManager.getDriver();
-        if (driver == null) {
-            throw new RuntimeException("WebDriver is not initialized in PerformAction.");
-        }
+    public  void clearField(By locator) throws InterruptedException {
+
         WebElement element = driver.findElement(locator);
         element.click();
         element.clear();
         Thread.sleep(SHORT_WAIT);
     }
 
-    public static String getFieldText(By locator) throws InterruptedException {
-        WebDriver driver = WebDriverManager.getDriver();
-        if (driver == null) {
-            throw new RuntimeException("WebDriver is not initialized in PerformAction.");
-        }
-        WebElement element = WebDriverManager.getDriver().findElement(locator);
+    public String getFieldText(By locator) throws InterruptedException {
+
+        WebElement element = driver.findElement(locator);
         System.out.println(element.getAttribute("value"));
         return element.getAttribute("value");
     }
@@ -71,20 +58,12 @@ public class PerformAction {
         Thread.sleep(LONG_WAIT);
     }
 
-    public static void tabNavigation(int tabNum) throws InterruptedException {
-        WebDriver driver = WebDriverManager.getDriver();
-        if (driver == null) {
-            throw new RuntimeException("WebDriver is not initialized in PerformAction.");
-        }
+    public void tabNavigation(int tabNum) throws InterruptedException {
         clickElement(By.xpath("//div/a[" + tabNum + "]"));
         shortWait();
     }
 
-    public static List<WebElement> getDropDown() {
-        WebDriver driver = WebDriverManager.getDriver();
-        if (driver == null) {
-            throw new RuntimeException("WebDriver is not initialized in PerformAction.");
-        }
+    public List<WebElement> getDropDown() {
         return driver.findElements(By.tagName("mat-select"));
     }
 }

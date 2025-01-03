@@ -8,81 +8,114 @@ import org.testng.annotations.Test;
 
 public class ProfileTypeTest extends ZorgzijnBaseTest {
 
+    PerformAction performAction = new PerformAction();
+
+
     @Test(groups = "profiletype-test")
     public void testNavigateToSettingsMenu() throws InterruptedException {
-        PerformAction.tabNavigation(7);
+        performAction.tabNavigation(7);
     }
 
     @Test(groups = "profiletype-test", dependsOnMethods = "testNavigateToSettingsMenu")
     public void testNavigateToProfileTypeTab() throws InterruptedException {
-        PerformAction.clickElement(By.xpath("//li[5]/a"));
+        performAction.clickElement(By.xpath("//li[5]/a"));
     }
 
     @Test(groups = "profiletype-test", dependsOnMethods = "testNavigateToProfileTypeTab")
     public void testCreateProfileType() throws InterruptedException {
 
-        // Open profile creation form
-        PerformAction.clickElement(By.xpath("//app-profile-type/div/div/div/div/button"));
+        performAction.clickElement(By.xpath("//app-profile-type/div/div/div/div/button"));
+
+        WebElement createProfileButton = driver.findElement(By.xpath("//button"));
+
+        // Open the Create Profile form
+        createProfileButton.click();
+        Thread.sleep(2000);
+
+        // Test the close button
+        WebElement closeButton = driver.findElements(By.cssSelector("form div button")).get(0);
+        closeButton.click();
+        Thread.sleep(2000);
+
+        // Reopen the form and test the cancel button
+        createProfileButton.click();
+        Thread.sleep(2000);
+        WebElement cancelButton = driver.findElements(By.cssSelector("form div button")).get(2);
+        cancelButton.click();
+        Thread.sleep(2000);
+
+        // Reopen the form and complete the Profile Type creation
+        createProfileButton.click();
+        Thread.sleep(2000);
 
         // Fill out the form
-        PerformAction.typeField(By.id("Typ Naam"), "Automation Profile");
-
-        PerformAction.clickElement(By.xpath("//app-select-field[1]/div/mat-select"));
-        PerformAction.clickElement(By.xpath("//mat-option[2]"));
-        PerformAction.shortWait();
-
-        PerformAction.clickElement(By.xpath("//app-select-field[2]/div/mat-select"));
-        PerformAction.clickElement(By.xpath("//mat-option[2]"));
-        PerformAction.shortWait();
-
-        PerformAction.clickElement(By.xpath("//app-select-field[3]/div/mat-select"));
-        PerformAction.clickElement(By.xpath("//mat-option[2]"));
-        PerformAction.shortWait();
+        driver.findElement(By.xpath("//input")).sendKeys("Automation Profile");
+        driver.findElement(By.tagName("mat-select")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//mat-option[2]")).click();
+        Thread.sleep(2000);
 
         // Submit the form
-        PerformAction.clickElement(By.xpath("//button[@type='submit']"));
-        PerformAction.shortWait();
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        Thread.sleep(2000);
     }
 
-    @Test(groups = "profiletype-test", dependsOnMethods = "testCreateProfileType")
-    public void testModifyProfileType() throws InterruptedException {
+    @Test(priority = 4, dependsOnMethods = "createProfileType")
+    public void modifyProfileType() throws InterruptedException {
+        // Open the menu for the first profile type
+        driver.findElement(By.xpath("//td/button")).click();
+        Thread.sleep(2000);
 
-        // Open profile menu
-        PerformAction.clickElement(By.xpath("//tr[1]/td/button"));
+        // Select the Edit option
+        driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)")).click();
+        Thread.sleep(2000);
 
-        // Select the modify option
-        PerformAction.clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)"));
+        // Modify the Profile Name
+        WebElement profileName = driver.findElement(By.xpath("//input"));
+        profileName.clear();
+        profileName.sendKeys("Profile Automation");
+        Thread.sleep(2000);
 
-        // Modify the Profile type
-        PerformAction.typeField(By.id("Typ Naam"), "Automation Modified Profile");
+        // Modify the Profile Category
+        driver.findElement(By.tagName("mat-select")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//mat-option[1]")).click();
+        Thread.sleep(2000);
 
-        PerformAction.clickElement(By.xpath("//app-select-field[1]/div/mat-select"));
-        PerformAction.clickElement(By.xpath("//mat-option[1]"));
-        PerformAction.shortWait();
-
-        PerformAction.clickElement(By.xpath("//app-select-field[2]/div/mat-select"));
-        PerformAction.clickElement(By.xpath("//mat-option[1]"));
-        PerformAction.shortWait();
-
-        PerformAction.clickElement(By.xpath("//app-select-field[3]/div/mat-select"));
-        PerformAction.clickElement(By.xpath("//mat-option[1]"));
-        PerformAction.shortWait();
-
-        // Submit Changes
-        PerformAction.clickElement(By.xpath("//button[@type='submit']"));
-        PerformAction.shortWait();
+        // Submit the updated Profile Type
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        Thread.sleep(2000);
     }
 
-    @Test(groups = "profiletype-test", dependsOnMethods = "testModifyProfileType")
-    public void testDeleteProfileType() throws InterruptedException {
+    @Test(priority = 5, dependsOnMethods = "modifyProfileType")
+    public void deleteProfileType() throws InterruptedException {
+        WebElement menuButton = driver.findElement(By.xpath("//td/button"));
 
-        // Open profile menu
-        PerformAction.clickElement(By.xpath("//tr[1]/td/button"));
+        // Open the menu and select the Delete option
+        menuButton.click();
+        Thread.sleep(2000);
+        WebElement deleteOption = driver.findElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)"));
+        deleteOption.click();
+        Thread.sleep(2000);
 
-        // Select the delete option
-        PerformAction.clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)"));
+        // Cancel the delete action
+        driver.findElement(By.xpath("//div[2]/div/div/div[1]/button")).click();
+        Thread.sleep(2000);
 
-        PerformAction.clickElement(By.xpath("//button[@type='submit']"));
-        PerformAction.longWait();
+        // Reattempt delete and confirm using alternative options
+        menuButton.click();
+        Thread.sleep(2000);
+        deleteOption.click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//div[2]/div/div/div[3]/button[2]")).click();
+        Thread.sleep(2000);
+
+        // Final delete confirmation
+        menuButton.click();
+        Thread.sleep(2000);
+        deleteOption.click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        Thread.sleep(2000);
     }
 }
