@@ -21,6 +21,7 @@ public abstract class ZorgzijnBaseTest {
             throw new RuntimeException("Driver initialization failed. Ensure WebDriver is set up properly.");
         }
         System.out.println("Driver initialized successfully.");
+        System.out.println(driver.getCurrentUrl());
     }
 
     @AfterSuite(alwaysRun = true)

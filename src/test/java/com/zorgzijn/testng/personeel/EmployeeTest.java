@@ -1,9 +1,11 @@
 package com.zorgzijn.testng.personeel;
 
+import com.zorgzijn.testng.setup.WebDriverManager;
 import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import com.zorgzijn.testng.setup.PerformAction;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -25,7 +27,7 @@ public class EmployeeTest extends ZorgzijnBaseTest {
         PerformAction.typeField(By.id("Tussenvoegsel"), "Faith");
         PerformAction.typeField(By.id("Achternaam"), "Turner");
 
-        List<WebElement> dropDown = driver.findElements(By.tagName("mat-select"));
+        List<WebElement> dropDown = PerformAction.getDropDown();
 
         //Select Employee Type
         dropDown.get(0).click();
@@ -56,6 +58,8 @@ public class EmployeeTest extends ZorgzijnBaseTest {
         PerformAction.longWait();
     }
 
+
+
     @Test(groups = "employee-management", dependsOnMethods = "testCreateEmployee")
     public void testSearchEmployee() throws InterruptedException {
         Personeel.searchAndShowEmployee("Scarlett");
@@ -70,7 +74,7 @@ public class EmployeeTest extends ZorgzijnBaseTest {
         PerformAction.typeField(By.id("Tussenvoegsel"), "Nicholas");
         PerformAction.typeField(By.id("Achternaam"), "Reed");
 
-        List<WebElement> dropDown = driver.findElements(By.tagName("mat-select"));
+        List<WebElement> dropDown = PerformAction.getDropDown();
 
         //Change Employee Type
         dropDown.get(0).click();
