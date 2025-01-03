@@ -13,7 +13,7 @@ public class LoginTest extends ZorgzijnBaseTest {
     private final By loginButton = By.xpath("//button");
 
     @Test(groups = "login", priority = 1)
-    void loginTest() throws InterruptedException {
+    void testLogin() throws InterruptedException {
         System.out.println("Performing login...");
         if (driver == null) {
             throw new RuntimeException("Driver is not initialized. Ensure setup is executed properly.");

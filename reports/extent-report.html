@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Test Execution Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Jan 3, 2025 03:39:15 pm</span></a>
+<a href="#"><span class="badge badge-primary">Jan 3, 2025 02:33:12 PM</span></a>
 </li>
 </ul>
 </div>
@@ -45,6 +45,11 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
@@ -67,6 +72,8 @@
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
 <a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<a class="dropdown-item" status="skip" href="#"><span>Skip</span><span class="status warning"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -81,7 +88,7 @@
           <div class="test-detail">
             <p class="name">loginTest</p>
             <p class="text-sm">
-              <span>3:39:15 pm</span> / <span>00:00:11:664</span>
+              <span>2:33:12 PM</span> / <span>00:00:11:389</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -90,9 +97,9 @@
 <div class="p-v-10">
 <div class="info">
 <h5 class="test-status text-pass">loginTest</h5>
-<span class='badge badge-success'>01.03.2025 3:39:15 pm</span>
-<span class='badge badge-danger'>01.03.2025 3:39:27 pm</span>
-<span class='badge badge-default'>00:00:11:664</span>
+<span class='badge badge-success'>01.03.2025 2:33:12 PM</span>
+<span class='badge badge-danger'>01.03.2025 2:33:23 PM</span>
+<span class='badge badge-default'>00:00:11:389</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -105,7 +112,7 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:39:27 pm</td>
+        <td>2:33:23 PM</td>
         <td>
           Test Passed
         </td>
@@ -120,9 +127,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">testNavigateToSettingsMenu</p>
+            <p class="name">testNavigateToPlanningMenu</p>
             <p class="text-sm">
-              <span>3:39:27 pm</span> / <span>00:00:02:385</span>
+              <span>2:33:23 PM</span> / <span>00:00:04:950</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -130,10 +137,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testNavigateToSettingsMenu</h5>
-<span class='badge badge-success'>01.03.2025 3:39:27 pm</span>
-<span class='badge badge-danger'>01.03.2025 3:39:29 pm</span>
-<span class='badge badge-default'>00:00:02:385</span>
+<h5 class="test-status text-pass">testNavigateToPlanningMenu</h5>
+<span class='badge badge-success'>01.03.2025 2:33:23 PM</span>
+<span class='badge badge-danger'>01.03.2025 2:33:28 PM</span>
+<span class='badge badge-default'>00:00:04:950</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -146,7 +153,7 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:39:29 pm</td>
+        <td>2:33:28 PM</td>
         <td>
           Test Passed
         </td>
@@ -156,25 +163,25 @@
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="3"
+        <li class="test-item"  status="fail" test-id="3"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">testNavigateToNotificationTab</p>
+            <p class="name">testCreateShifts</p>
             <p class="text-sm">
-              <span>3:39:29 pm</span> / <span>00:00:00:889</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>2:33:28 PM</span> / <span>00:00:03:274</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testNavigateToNotificationTab</h5>
-<span class='badge badge-success'>01.03.2025 3:39:29 pm</span>
-<span class='badge badge-danger'>01.03.2025 3:39:30 pm</span>
-<span class='badge badge-default'>00:00:00:889</span>
+<h5 class="test-status text-fail">testCreateShifts</h5>
+<span class='badge badge-success'>01.03.2025 2:33:28 PM</span>
+<span class='badge badge-danger'>01.03.2025 2:33:32 PM</span>
+<span class='badge badge-default'>00:00:03:274</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -186,10 +193,47 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:39:30 pm</td>
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:33:32 PM</td>
         <td>
-          Test Passed
+          Test Failed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:33:32 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElements(org.openqa.selenium.By)" because "this.driver" is null
+	at com.zorgzijn.testng.facturen.EmployeeShiftTest.testCreateShifts(EmployeeShiftTest.java:32)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+</textarea>
+          
         </td>
       </tr>
   </tbody>
@@ -197,25 +241,25 @@
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="4"
+        <li class="test-item"  status="fail" test-id="4"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">testCreateNotification</p>
+            <p class="name">testNavigateToTimeRegistrationMenu</p>
             <p class="text-sm">
-              <span>3:39:30 pm</span> / <span>00:00:17:937</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>2:33:32 PM</span> / <span>00:00:01:096</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testCreateNotification</h5>
-<span class='badge badge-success'>01.03.2025 3:39:30 pm</span>
-<span class='badge badge-danger'>01.03.2025 3:39:48 pm</span>
-<span class='badge badge-default'>00:00:17:937</span>
+<h5 class="test-status text-fail">testNavigateToTimeRegistrationMenu</h5>
+<span class='badge badge-success'>01.03.2025 2:33:32 PM</span>
+<span class='badge badge-danger'>01.03.2025 2:33:33 PM</span>
+<span class='badge badge-default'>00:00:01:096</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -227,10 +271,71 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:39:48 pm</td>
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:33:33 PM</td>
         <td>
-          Test Passed
+          Test Failed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:33:33 PM</td>
+        <td>
+          <textarea readonly class="code-block">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a _ngcontent-ng-c2880939480="" routerlinkactive="active-link" class="flex flex-col text-sm text-black font-medium mt-[6px]" href="/time-registration">...</a> is not clickable at point (583, 56). Other element would receive the click: <div class="cdk-overlay-backdrop cdk-overlay-transparent-backdrop cdk-overlay-backdrop-showing"></div>
+  (Session info: chrome=131.0.6778.205)
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.8'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [0a254d633fe7d8cf5d54b52e8d25b872, clickElement {id=f.2927BAC93F985F3D162B2FD3128C019D.d.C7959A89BC154D3ED3E7360FE05C86C8.e.88}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 131.0.6778.205, chrome: {chromedriverVersion: 131.0.6778.204 (52183f9e99a..., userDataDir: C:\Users\BSS\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62465}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62465/devtoo..., se:cdpVersion: 131.0.6778.205, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (0a254d633fe7d8cf5d54b52e8d25b872)] -> xpath: //div/a[3]]
+Session ID: 0a254d633fe7d8cf5d54b52e8d25b872
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at com.zorgzijn.testng.setup.PerformAction.clickElement(PerformAction.java:30)
+	at com.zorgzijn.testng.setup.PerformAction.tabNavigation(PerformAction.java:77)
+	at com.zorgzijn.testng.facturen.EmployeeShiftHoursTest.testNavigateToTimeRegistrationMenu(EmployeeShiftHoursTest.java:12)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+</textarea>
+          
         </td>
       </tr>
   </tbody>
@@ -238,25 +343,25 @@
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="5"
+        <li class="test-item"  status="skip" test-id="5"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">testViewNotification</p>
+            <p class="name">testRegisterShift</p>
             <p class="text-sm">
-              <span>3:39:48 pm</span> / <span>00:00:04:220</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>2:33:33 PM</span> / <span>00:00:00:002</span>
+              <span class="badge skip-bg log float-right">Skip</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testViewNotification</h5>
-<span class='badge badge-success'>01.03.2025 3:39:48 pm</span>
-<span class='badge badge-danger'>01.03.2025 3:39:52 pm</span>
-<span class='badge badge-default'>00:00:04:220</span>
+<h5 class="test-status text-skip">testRegisterShift</h5>
+<span class='badge badge-success'>01.03.2025 2:33:33 PM</span>
+<span class='badge badge-danger'>01.03.2025 2:33:33 PM</span>
+<span class='badge badge-default'>00:00:00:002</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -268,10 +373,38 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:39:52 pm</td>
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>2:33:33 PM</td>
         <td>
-          Test Passed
+          Test Skipped
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>2:33:33 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.Throwable: Method com.zorgzijn.testng.facturen.EmployeeShiftHoursTest.testRegisterShift() on instance com.zorgzijn.testng.facturen.EmployeeShiftHoursTest@49e53c76 depends on not successfully finished methods 
+[com.zorgzijn.testng.facturen.EmployeeShiftHoursTest.testNavigateToTimeRegistrationMenu() on instance com.zorgzijn.testng.facturen.EmployeeShiftHoursTest@49e53c76]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+</textarea>
+          
         </td>
       </tr>
   </tbody>
@@ -279,25 +412,25 @@
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="6"
+        <li class="test-item"  status="fail" test-id="6"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">testDeleteNotification</p>
+            <p class="name">testNavigateToInvoiceMenu</p>
             <p class="text-sm">
-              <span>3:39:52 pm</span> / <span>00:00:05:610</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>2:33:33 PM</span> / <span>00:00:01:154</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testDeleteNotification</h5>
-<span class='badge badge-success'>01.03.2025 3:39:52 pm</span>
-<span class='badge badge-danger'>01.03.2025 3:39:58 pm</span>
-<span class='badge badge-default'>00:00:05:610</span>
+<h5 class="test-status text-fail">testNavigateToInvoiceMenu</h5>
+<span class='badge badge-success'>01.03.2025 2:33:33 PM</span>
+<span class='badge badge-danger'>01.03.2025 2:33:34 PM</span>
+<span class='badge badge-default'>00:00:01:154</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -309,10 +442,71 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:39:58 pm</td>
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:33:34 PM</td>
         <td>
-          Test Passed
+          Test Failed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:33:34 PM</td>
+        <td>
+          <textarea readonly class="code-block">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a _ngcontent-ng-c2880939480="" routerlinkactive="active-link" class="flex flex-col text-sm text-black font-medium mt-[6px]" href="/invoices">...</a> is not clickable at point (872, 56). Other element would receive the click: <div class="cdk-overlay-backdrop cdk-overlay-transparent-backdrop cdk-overlay-backdrop-showing"></div>
+  (Session info: chrome=131.0.6778.205)
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.8'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [0a254d633fe7d8cf5d54b52e8d25b872, clickElement {id=f.2927BAC93F985F3D162B2FD3128C019D.d.C7959A89BC154D3ED3E7360FE05C86C8.e.89}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 131.0.6778.205, chrome: {chromedriverVersion: 131.0.6778.204 (52183f9e99a..., userDataDir: C:\Users\BSS\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62465}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62465/devtoo..., se:cdpVersion: 131.0.6778.205, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (0a254d633fe7d8cf5d54b52e8d25b872)] -> xpath: //div/a[6]]
+Session ID: 0a254d633fe7d8cf5d54b52e8d25b872
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at com.zorgzijn.testng.setup.PerformAction.clickElement(PerformAction.java:30)
+	at com.zorgzijn.testng.setup.PerformAction.tabNavigation(PerformAction.java:77)
+	at com.zorgzijn.testng.facturen.EmployeeInvoiceTest.testNavigateToInvoiceMenu(EmployeeInvoiceTest.java:12)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+</textarea>
+          
         </td>
       </tr>
   </tbody>
@@ -320,25 +514,25 @@
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="7"
+        <li class="test-item"  status="skip" test-id="7"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">testNavigateToSettingsMenu</p>
+            <p class="name">testInvoiceShift</p>
             <p class="text-sm">
-              <span>3:39:58 pm</span> / <span>00:00:02:372</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>2:33:34 PM</span> / <span>00:00:00:002</span>
+              <span class="badge skip-bg log float-right">Skip</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">testNavigateToSettingsMenu</h5>
-<span class='badge badge-success'>01.03.2025 3:39:58 pm</span>
-<span class='badge badge-danger'>01.03.2025 3:40:00 pm</span>
-<span class='badge badge-default'>00:00:02:372</span>
+<h5 class="test-status text-skip">testInvoiceShift</h5>
+<span class='badge badge-success'>01.03.2025 2:33:34 PM</span>
+<span class='badge badge-danger'>01.03.2025 2:33:34 PM</span>
+<span class='badge badge-default'>00:00:00:002</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -350,174 +544,38 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:40:00 pm</td>
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>2:33:34 PM</td>
         <td>
-          Test Passed
+          Test Skipped
         </td>
       </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="8"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testNavigateToProfileTypeTab</p>
-            <p class="text-sm">
-              <span>3:40:00 pm</span> / <span>00:00:00:926</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testNavigateToProfileTypeTab</h5>
-<span class='badge badge-success'>01.03.2025 3:40:00 pm</span>
-<span class='badge badge-danger'>01.03.2025 3:40:01 pm</span>
-<span class='badge badge-default'>00:00:00:926</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
-<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
-<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
-<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
       <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:40:01 pm</td>
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>2:33:34 PM</td>
         <td>
-          Test Passed
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="9"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testCreateProfileType</p>
-            <p class="text-sm">
-              <span>3:40:01 pm</span> / <span>00:00:14:694</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testCreateProfileType</h5>
-<span class='badge badge-success'>01.03.2025 3:40:01 pm</span>
-<span class='badge badge-danger'>01.03.2025 3:40:16 pm</span>
-<span class='badge badge-default'>00:00:14:694</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
-<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
-<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
-<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:40:16 pm</td>
-        <td>
-          Test Passed
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="10"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">testModifyProfileType</p>
-            <p class="text-sm">
-              <span>3:40:16 pm</span> / <span>00:00:15:475</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">testModifyProfileType</h5>
-<span class='badge badge-success'>01.03.2025 3:40:16 pm</span>
-<span class='badge badge-danger'>01.03.2025 3:40:31 pm</span>
-<span class='badge badge-default'>00:00:15:475</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=10</span>
-<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
-<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
-<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:40:31 pm</td>
-        <td>
-          Test Passed
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="11"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">deleteProfileType</p>
-            <p class="text-sm">
-              <span>3:40:31 pm</span> / <span>00:00:05:081</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">deleteProfileType</h5>
-<span class='badge badge-success'>01.03.2025 3:40:31 pm</span>
-<span class='badge badge-danger'>01.03.2025 3:40:36 pm</span>
-<span class='badge badge-default'>00:00:05:081</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=11</span>
-<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
-<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
-<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>3:40:36 pm</td>
-        <td>
-          Test Passed
+          <textarea readonly class="code-block">java.lang.Throwable: Method com.zorgzijn.testng.facturen.EmployeeInvoiceTest.testInvoiceShift() on instance com.zorgzijn.testng.facturen.EmployeeInvoiceTest@351d00c0 depends on not successfully finished methods 
+[com.zorgzijn.testng.facturen.EmployeeInvoiceTest.testNavigateToInvoiceMenu() on instance com.zorgzijn.testng.facturen.EmployeeInvoiceTest@351d00c0]
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+</textarea>
+          
         </td>
       </tr>
   </tbody>
@@ -534,30 +592,159 @@
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="container-fluid p-4 view dashboard-view">
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">3</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">java.lang.NullPointerException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>java.lang.NullPointerException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>14:33:28 PM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>testCreateShifts</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">org.openqa.selenium.ElementClickInterceptedException</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.ElementClickInterceptedException</h4>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>14:33:32 PM</td>
+<td>
+<a href="#" class="linked" test-id='4' id='4'>testNavigateToTimeRegistrationMenu</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>14:33:33 PM</td>
+<td>
+<a href="#" class="linked" test-id='6' id='6'>testNavigateToInvoiceMenu</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-skip'>2</span>
+</span>
+<p class="name">java.lang.Throwable</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>java.lang.Throwable</h4>
+<span status="skip" class='badge log badge-skip'>2 skipped</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>14:33:33 PM</td>
+<td>
+<a href="#" class="linked" test-id='5' id='5'>testRegisterShift</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>14:33:34 PM</td>
+<td>
+<a href="#" class="linked" test-id='7' id='7'>testInvoiceShift</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
 <div class="row">
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Jan 3, 2025 03:39:15 pm</h3>
+<h3>Jan 3, 2025 02:33:12 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Jan 3, 2025 03:40:36 pm</h3>
+<h3>Jan 3, 2025 02:33:34 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Tests Passed</p>
-<h3>11</h3>
+<h3>2</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Tests Failed</p>
-<h3>0</h3>
+<h3>3</h3>
 </div></div>
 </div>
 </div>
@@ -573,13 +760,13 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'>
-<b>11</b> tests passed
+<div><small data-tooltip='28%'>
+<b>2</b> tests passed
 </small>
 </div>
 <div>
-<small data-tooltip='0%'><b>0</b> tests failed,
-<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+<small data-tooltip='42%'><b>3</b> tests failed,
+<b>2</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
 </div>
@@ -596,10 +783,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>11</b> events passed</small></div>
+<div><small data-tooltip='16%'><b>2</b> events passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> events failed,
-<b data-tooltip='%'>0</b> others
+<small data-tooltip='50%'><b>6</b> events failed,
+<b data-tooltip='%'>4</b> others
 </small>
 </div>
 </div>
@@ -615,7 +802,7 @@
 </div></div>
 <script>
 var timeline = {
-"loginTest":11.664,"testNavigateToSettingsMenu":2.385,"testNavigateToNotificationTab":0.889,"testCreateNotification":17.937,"testViewNotification":4.22,"testDeleteNotification":5.61,"testNavigateToSettingsMenu":2.372,"testNavigateToProfileTypeTab":0.926,"testCreateProfileType":14.694,"testModifyProfileType":15.475,"deleteProfileType":5.081
+"loginTest":11.389,"testNavigateToPlanningMenu":4.95,"testCreateShifts":3.274,"testNavigateToTimeRegistrationMenu":1.096,"testRegisterShift":0.002,"testNavigateToInvoiceMenu":1.154,"testInvoiceShift":0.002
 };
 </script>
 <div class="row">
@@ -627,7 +814,7 @@ var timeline = {
 <tbody>
 <tr>
 <td>Tester</td>
-<td>Saqib Sizan Khan</td>
+<td>Your Name</td>
 </tr>
 <tr>
 <td>Environment</td>
@@ -642,10 +829,10 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 11,
-failParent: 0,
+passParent: 2,
+failParent: 3,
 warningParent: 0,
-skipParent: 0,
+skipParent: 2,
 childCount: 5,
 passChild: 0,
 failChild: 0,
@@ -659,10 +846,10 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 11,
-failEvents: 0,
+passEvents: 2,
+failEvents: 6,
 warningEvents: 0,
-skipEvents: 0,
+skipEvents: 4,
 infoEvents: 0
 };
 </script>        </div>
