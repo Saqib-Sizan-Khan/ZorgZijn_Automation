@@ -1,37 +1,28 @@
-package com.zorgzijn.testng;
+package com.zorgzijn.testng.setup;
 
+import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-public class NotificationAutomation extends LoginAutomation {
+public class NotificationTest extends ZorgzijnBaseTest {
 
-    @Test(priority = 2, dependsOnMethods = "login")
-    public void navigateToNotificationTab() throws InterruptedException {
-        driver.findElement(By.xpath("//button")).click();
-        Thread.sleep(3000);
-
-        driver.findElement(By.xpath("//li[2]/a")).click();
-        Thread.sleep(2000);
+    @Test(groups = "notification-test")
+    public void testNavigateToNotificationTab() throws InterruptedException {
+        PerformAction.clickElement(By.xpath("//li[2]/a"));
     }
 
-    @Test(priority = 3, dependsOnMethods = "navigateToNotificationTab")
+    @Test(groups = "notification-test", dependsOnMethods = "testNavigateToNotificationTab")
     public void createNotification() throws InterruptedException {
+
         // Open notification creation form
-        driver.findElement(By.xpath("//button")).click();
-        Thread.sleep(3000);
+        PerformAction.clickElement(By.xpath("//app-notification//div[1]/button"));
 
-        // 1st step
-        driver.findElement(By.id("Titel")).sendKeys("Automation Notification");
-        driver.findElement(By.xpath("//div[@class='ck ck-editor__main']/div"))
-                .sendKeys("This is an automation text");
+        // Form 1st step
+        PerformAction.typeField(By.id("Titel"), "Automation Notification");
+        PerformAction.typeField(By.xpath("//div[@class='ck ck-editor__main']/div"), RandomInput.text());
 
-        // Upload a file (if required, uncomment)
-        // WebElement fileInput = driver.findElement(By.xpath("//label[@class='relative']"));
-        // ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", fileInput);
-        // fileInput.sendKeys("C:\\Users\\ssk12\\Downloads\\lorem_Ipsum.pdf");
-        Thread.sleep(2000);
+        // Click Next Step
 
-        // Click Next
         driver.findElement(By.xpath("//form/div/button[1]")).click();
         Thread.sleep(2000);
 

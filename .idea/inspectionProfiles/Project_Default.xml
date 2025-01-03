@@ -4,7 +4,7 @@
     <inspection_tool class="groupsTestNG" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="groups">
         <value>
-          <list size="12">
+          <list size="13">
             <item index="0" class="java.lang.String" itemvalue="client-management" />
             <item index="1" class="java.lang.String" itemvalue="login" />
             <item index="2" class="java.lang.String" itemvalue="login-test" />
@@ -17,6 +17,7 @@
             <item index="9" class="java.lang.String" itemvalue="create-shift" />
             <item index="10" class="java.lang.String" itemvalue="shift-register" />
             <item index="11" class="java.lang.String" itemvalue="shift-invoice" />
+            <item index="12" class="java.lang.String" itemvalue="notification-test" />
           </list>
         </value>
       </option>

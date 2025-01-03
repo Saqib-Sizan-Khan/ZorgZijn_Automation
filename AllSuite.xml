@@ -1,0 +1,37 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="KlantenAutomationSuite">
+    <parameter name="baseUrl" value="https://zorgzijn-dev.acegreen.nl" />
+    <parameter name="email" value="ssk123098@gmail.com" />
+    <parameter name="password" value="Sizan@1999" />
+    <listeners>
+        <listener class-name="com.zorgzijn.testng.report.ExtentReportListener"/>
+    </listeners>
+    <test name="Zorgzijn Tests">
+        <groups>
+            <run>
+                <include name="login" />
+                <include name="employee-management" />
+                <include name="employee-timeline-management" />
+                <include name="employee-location-management" />
+                <include name="client-management" />
+                <include name="client-location-management" />
+                <include name="client-employee-management" />
+                <include name="create-shift" />
+                <include name="shift-register" />
+                <include name="shift-invoice" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.zorgzijn.testng.auth.LoginTest" />
+            <class name="com.zorgzijn.testng.personeel.CreateAndModifyEmpTest" />
+            <class name="com.zorgzijn.testng.personeel.TimelineEmpTest" />
+            <class name="com.zorgzijn.testng.personeel.LocationEmp" />
+            <class name="com.zorgzijn.testng.klanten.CreateAndModifyClientTest" />
+            <class name="com.zorgzijn.testng.klanten.LocationClientTest" />
+            <class name="com.zorgzijn.testng.klanten.EmpClientTest" />
+            <class name="com.zorgzijn.testng.facturen.CreateShiftTest" />
+            <class name="com.zorgzijn.testng.facturen.RegisterShiftTest" />
+            <class name="com.zorgzijn.testng.facturen.InvoiceShiftTest" />
+        </classes>
+    </test>
+</suite>
