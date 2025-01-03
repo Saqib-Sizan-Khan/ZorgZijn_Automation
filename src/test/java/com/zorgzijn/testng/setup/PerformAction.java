@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class PerformAction {
     private static final int VERY_SHORT_WAIT = 750;
     private static final int SHORT_WAIT = 1500;
@@ -76,5 +78,13 @@ public class PerformAction {
         }
         clickElement(By.xpath("//div/a[" + tabNum + "]"));
         shortWait();
+    }
+
+    public static List<WebElement> getDropDown() {
+        WebDriver driver = WebDriverManager.getDriver();
+        if (driver == null) {
+            throw new RuntimeException("WebDriver is not initialized in PerformAction.");
+        }
+        return driver.findElements(By.tagName("mat-select"));
     }
 }
