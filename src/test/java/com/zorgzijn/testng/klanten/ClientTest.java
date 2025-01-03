@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 public class ClientTest extends ZorgzijnBaseTest {
 
     PerformAction performAction = new PerformAction();
+    Klanten klanten = new Klanten();
 
 
     @Test(groups = "client-management")
@@ -45,18 +46,18 @@ public class ClientTest extends ZorgzijnBaseTest {
         //Click submit button
         performAction.clickElement(By.xpath("//button[@type='submit']"));
 
-        performAction.longWait();
+        PerformAction.longWait();
     }
 
     @Test(groups = "client-management", dependsOnMethods = "testCreateClient")
     public void testSearchClient() throws InterruptedException {
         System.out.println(Klanten.getClientName());
-        Klanten.searchAndShowClient(Klanten.getClientName());
+        klanten.searchAndShowClient(Klanten.getClientName());
     }
 
     @Test(groups = "client-management", dependsOnMethods = "testSearchClient")
     public void testModifyClient() throws InterruptedException {
-        Klanten.openClientMenu(2);
+        klanten.openClientMenu(2);
 
         //Change KVK
         performAction.typeField(By.id("KVK"), "91532906");
@@ -78,6 +79,6 @@ public class ClientTest extends ZorgzijnBaseTest {
         //Submit Changes
         performAction.clickElement(By.xpath("//submit-button/button"));
 
-        performAction.longWait();
+        PerformAction.longWait();
     }
 }

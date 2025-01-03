@@ -1,19 +1,17 @@
 package com.zorgzijn.testng.personeel;
 
 import com.zorgzijn.testng.setup.PerformAction;
-import com.zorgzijn.testng.setup.performAction;
 import org.openqa.selenium.By;
 
 public class Personeel {
 
     PerformAction performAction = new PerformAction();
 
-
     public void searchAndShowEmployee(String employeeName) throws InterruptedException {
         performAction.typeField(By.id("simple-search"), employeeName);
-        performAction.shortWait();
+        PerformAction.shortWait();
         performAction.clickElement(By.xpath("//staff-list/div/div[1]"));
-        performAction.longWait();
+        PerformAction.longWait();
     }
 
     public void openEmployeeMenu(int menuItem) throws InterruptedException {

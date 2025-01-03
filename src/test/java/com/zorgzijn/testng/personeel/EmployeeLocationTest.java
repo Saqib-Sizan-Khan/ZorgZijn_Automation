@@ -15,7 +15,7 @@ public class EmployeeLocationTest extends ZorgzijnBaseTest {
     Random random = new Random();
 
     PerformAction performAction = new PerformAction();
-
+    Personeel personeel = new Personeel();
 
 
     @Test(groups = "employee-location-management")
@@ -25,13 +25,13 @@ public class EmployeeLocationTest extends ZorgzijnBaseTest {
 
     @Test(groups = "employee-location-management", dependsOnMethods = "testNavigateToPersoneelMenu")
     public void testSearchEmployee() throws InterruptedException {
-        Personeel.searchAndShowEmployee("Dylan");
+        personeel.searchAndShowEmployee("Dylan");
     }
 
     @Test(groups = "employee-location-management", dependsOnMethods = "testSearchEmployee")
     public void testNavigateToLocationTab() throws InterruptedException {
         performAction.clickElement(By.xpath("//staff-tabs/div/div[3]"));
-        performAction.shortWait();
+        PerformAction.shortWait();
     }
 
     @Test(groups = "employee-location-management", dependsOnMethods = "testNavigateToLocationTab")
@@ -46,7 +46,7 @@ public class EmployeeLocationTest extends ZorgzijnBaseTest {
 
                 //Open add location dialog
                 performAction.clickElement(By.xpath("//staff-location/div/button"));
-                performAction.shortWait();
+                PerformAction.shortWait();
 
                 //Select location
                 performAction.clickElement(By.xpath("//div[1]/app-autocomplete-field//input"));
@@ -70,7 +70,7 @@ public class EmployeeLocationTest extends ZorgzijnBaseTest {
 
                 //Click submit
                 performAction.clickElement(By.xpath("//button[@type='submit']"));
-                performAction.longWait();
+                PerformAction.longWait();
 
                 // Check for alert message
                 try {
@@ -106,7 +106,7 @@ public class EmployeeLocationTest extends ZorgzijnBaseTest {
 
             //Click submit
             performAction.clickElement(By.xpath("//button[@type='submit']"));
-            performAction.longWait();
+            PerformAction.longWait();
         }
     }
 
@@ -129,8 +129,8 @@ public class EmployeeLocationTest extends ZorgzijnBaseTest {
 
     @Test(groups = "employee-location-management", dependsOnMethods = "testDeleteLocations")
     public void testDeleteEmployee() throws InterruptedException {
-        Personeel.openEmployeeMenu(3);
+        personeel.openEmployeeMenu(3);
         performAction.clickElement(By.xpath("//app-delete-dialog//div[3]/button[1]"));
-        performAction.shortWait();
+        PerformAction.shortWait();
     }
 }

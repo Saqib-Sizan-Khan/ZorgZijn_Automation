@@ -14,8 +14,7 @@ public class EmployeeTimelineTest extends ZorgzijnBaseTest {
     Random random = new Random();
 
     PerformAction performAction = new PerformAction();
-
-
+    Personeel personeel = new Personeel();
 
     @Test(groups = "employee-timeline-management")
     public void testNavigateToPersoneelMenu() throws InterruptedException {
@@ -27,12 +26,12 @@ public class EmployeeTimelineTest extends ZorgzijnBaseTest {
         performAction.clearField(By.id("simple-search"));
         performAction.clickElement(By.xpath("//div[3]/button"));
         performAction.clickElement(By.id("mat-radio-4-input"));
-        performAction.longWait();
+        PerformAction.longWait();
     }
 
     @Test(groups = "employee-timeline-management", dependsOnMethods = "testChangeEmployeeFilter")
     public void testSearchEmployee() throws InterruptedException {
-        Personeel.searchAndShowEmployee("Dylan");
+        personeel.searchAndShowEmployee("Dylan");
     }
 
     @Test(groups = "employee-timeline-management", dependsOnMethods = "testSearchEmployee")
@@ -43,7 +42,7 @@ public class EmployeeTimelineTest extends ZorgzijnBaseTest {
         for (int i = 0; i < notesCount; i++) {
             performAction.typeField(By.xpath("//ckeditor/div[2]/div[2]/div"), RandomInput.text());
             performAction.clickElement(By.xpath("//button[@type='submit']"));
-            performAction.shortWait();
+            PerformAction.shortWait();
         }
     }
 
@@ -59,7 +58,7 @@ public class EmployeeTimelineTest extends ZorgzijnBaseTest {
             //Modify timeline
             performAction.typeField(By.xpath("//form/app-ckeditor-field//div[2]/div[2]/div"), RandomInput.text());
             performAction.clickElement(By.xpath("//note-update-dialog//div[4]/button[1]"));
-            performAction.shortWait();
+            PerformAction.shortWait();
         }
     }
 

@@ -14,6 +14,7 @@ public class ClientEmployeeTest extends ZorgzijnBaseTest {
     Random random = new Random();
 
     PerformAction performAction = new PerformAction();
+    Klanten klanten = new Klanten();
 
 
     @Test(groups = "client-employee-management")
@@ -23,7 +24,7 @@ public class ClientEmployeeTest extends ZorgzijnBaseTest {
 
     @Test(groups = "client-employee-management", dependsOnMethods = "testNavigateToKlantenMenu")
     public void testSearchClient() throws InterruptedException {
-        Klanten.searchAndShowClient(Klanten.getClientName());
+        klanten.searchAndShowClient(Klanten.getClientName());
     }
 
     @Test(groups = "client-employee-management", dependsOnMethods = "testSearchClient")
@@ -117,7 +118,7 @@ public class ClientEmployeeTest extends ZorgzijnBaseTest {
 
     @Test(groups = "client-employee-management", dependsOnMethods = "testDeleteEmployees")
     public void testDeleteClient() throws InterruptedException {
-        Klanten.openClientMenu(3);
+        klanten.openClientMenu(3);
         performAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
         PerformAction.longWait();
     }

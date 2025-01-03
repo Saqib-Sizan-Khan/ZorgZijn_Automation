@@ -14,7 +14,7 @@ public class ClientLocationTest extends ZorgzijnBaseTest {
     Random random = new Random();
 
     PerformAction performAction = new PerformAction();
-
+    Klanten klanten = new Klanten();
 
     @Test(groups = "client-location-management")
     public void testNavigateToKlantenMenu() throws InterruptedException {
@@ -23,7 +23,7 @@ public class ClientLocationTest extends ZorgzijnBaseTest {
 
     @Test(groups = "client-location-management", dependsOnMethods = "testNavigateToKlantenMenu")
     public void testSearchClient() throws InterruptedException {
-        Klanten.searchAndShowClient(Klanten.getClientName());
+        klanten.searchAndShowClient(Klanten.getClientName());
     }
 
     @Test(groups = "client-location-management", dependsOnMethods = "testSearchClient")
@@ -42,7 +42,7 @@ public class ClientLocationTest extends ZorgzijnBaseTest {
 
             //Click submit button
             performAction.clickElement(By.xpath("//submit-button/button"));
-            performAction.shortWait();
+            PerformAction.shortWait();
         }
     }
 
@@ -66,7 +66,7 @@ public class ClientLocationTest extends ZorgzijnBaseTest {
 
             //Submit Changes
             performAction.clickElement(By.xpath("//submit-button/button"));
-            performAction.shortWait();
+            PerformAction.shortWait();
         }
     }
 
@@ -84,7 +84,7 @@ public class ClientLocationTest extends ZorgzijnBaseTest {
             //Confirm delete
             performAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
             locationCount-=1;
-            performAction.longWait();
+            PerformAction.longWait();
         }
     }
 }

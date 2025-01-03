@@ -1,12 +1,10 @@
 package com.zorgzijn.testng.personeel;
 
 import com.zorgzijn.testng.setup.PerformAction;
-import com.zorgzijn.testng.setup.WebDriverManager;
 import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -15,6 +13,7 @@ import java.util.List;
 public class EmployeeTest extends ZorgzijnBaseTest {
 
     PerformAction performAction = new PerformAction();
+    Personeel personeel = new Personeel();
 
 
     @Test(groups = "employee-management")
@@ -59,19 +58,17 @@ public class EmployeeTest extends ZorgzijnBaseTest {
         performAction.clickElement(By.xpath("//input[@type='checkbox']"));
         performAction.clickElement(By.xpath("//button[@type='submit']"));
 
-        performAction.longWait();
+        PerformAction.longWait();
     }
-
-
 
     @Test(groups = "employee-management", dependsOnMethods = "testCreateEmployee")
     public void testSearchEmployee() throws InterruptedException {
-        Personeel.searchAndShowEmployee("Scarlett");
+        personeel.searchAndShowEmployee("Scarlett");
     }
 
     @Test(groups = "employee-management", dependsOnMethods = "testSearchEmployee")
     public void testModifyEmployee() throws InterruptedException {
-        Personeel.openEmployeeMenu(1);
+        personeel.openEmployeeMenu(1);
 
         // Modify details
         performAction.typeField(By.id("Voornaam"), "Dylan");
@@ -101,6 +98,6 @@ public class EmployeeTest extends ZorgzijnBaseTest {
 
         // Submit changes
         performAction.clickElement(By.xpath("//div[4]/submit-button/button"));
-        performAction.longWait();
+        PerformAction.longWait();
     }
 }
