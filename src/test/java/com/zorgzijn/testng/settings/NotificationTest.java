@@ -1,5 +1,7 @@
-package com.zorgzijn.testng.setup;
+package com.zorgzijn.testng.settings;
 
+import com.zorgzijn.testng.setup.PerformAction;
+import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import com.zorgzijn.testng.utils.RandomInput;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
