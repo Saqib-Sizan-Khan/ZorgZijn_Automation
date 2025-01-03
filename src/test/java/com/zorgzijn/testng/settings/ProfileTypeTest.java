@@ -1,37 +1,28 @@
-package com.zorgzijn.testng;
+package com.zorgzijn.testng.settings;
 
+import com.zorgzijn.testng.setup.PerformAction;
 import com.zorgzijn.testng.setup.ZorgzijnBaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-public class ProfileTypeAutomation extends ZorgzijnBaseTest {
+public class ProfileTypeTest extends ZorgzijnBaseTest {
 
-    @Test(priority = 1)
-    public void login() throws InterruptedException {
-        driver.get(baseUrl + "/auth/login");
-        Thread.sleep(2000);
-
-        // Enter login credentials and submit
-        driver.findElement(By.id("E-mailadres")).sendKeys("ssk123098@gmail.com");
-        driver.findElement(By.id("Wachtwoord")).sendKeys("Sizan@1999");
-        driver.findElement(By.id("remember")).click();
-        Thread.sleep(2000);
-
-        // Click the login button
-        driver.findElement(By.xpath("//button")).click();
-        Thread.sleep(3000);
+    @Test(groups = "profiletype-test")
+    public void testNavigateToSettingsMenu() throws InterruptedException {
+        tabNavigation(7);
     }
 
-    @Test(priority = 2, dependsOnMethods = "login")
-    public void navigateToProfileTypeTab() throws InterruptedException {
-        // Navigate to the Profile Type tab
-        driver.findElement(By.xpath("//li[5]/a")).click();
-        Thread.sleep(2000);
+    @Test(groups = "profiletype-test", dependsOnMethods = "testNavigateToSettingsMenu")
+    public void testNavigateToProfileTypeTab() throws InterruptedException {
+        PerformAction.clickElement(By.xpath("//li[5]/a"));
     }
 
-    @Test(priority = 3, dependsOnMethods = "navigateToProfileTypeTab")
-    public void createProfileType() throws InterruptedException {
+    @Test(groups = "profiletype-test", dependsOnMethods = "testNavigateToProfileTypeTab")
+    public void testCreateProfileType() throws InterruptedException {
+
+        PerformAction.clickElement(By.xpath("//app-profile-type/div/div/div/div/button"));
+
         WebElement createProfileButton = driver.findElement(By.xpath("//button"));
 
         // Open the Create Profile form

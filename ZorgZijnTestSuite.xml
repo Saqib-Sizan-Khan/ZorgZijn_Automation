@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="KlantenAutomationSuite">
+<suite name="ZorgZijnAutomationSuite">
     <parameter name="baseUrl" value="https://zorgzijn-dev.acegreen.nl" />
     <parameter name="email" value="ssk123098@gmail.com" />
     <parameter name="password" value="Sizan@1999" />
