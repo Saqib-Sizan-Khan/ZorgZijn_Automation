@@ -18,7 +18,7 @@
         <classes>
             <class name="com.zorgzijn.testng.auth.LoginTest" />
             <class name="com.zorgzijn.testng.personeel.CreateAndModifyEmpTest" />
-            <class name="com.zorgzijn.testng.personeel.TimelineEmpTest" />
+            <class name="com.zorgzijn.testng.personeel.TimelineEmployeeTest" />
             <class name="com.zorgzijn.testng.personeel.LocationEmployeeTest" />
         </classes>
     </test>

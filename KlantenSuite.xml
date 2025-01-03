@@ -19,7 +19,7 @@
             <class name="com.zorgzijn.testng.auth.LoginTest" />
             <class name="com.zorgzijn.testng.klanten.CreateAndModifyClientTest" />
             <class name="com.zorgzijn.testng.klanten.LocationClientTest" />
-            <class name="com.zorgzijn.testng.klanten.EmpClientTest" />
+            <class name="com.zorgzijn.testng.klanten.EmployeeClientTest" />
         </classes>
     </test>
 </suite>
