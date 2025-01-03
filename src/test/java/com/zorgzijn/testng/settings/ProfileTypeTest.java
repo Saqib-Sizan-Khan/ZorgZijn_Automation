@@ -8,20 +8,23 @@ import org.testng.annotations.Test;
 
 public class ProfileTypeTest extends ZorgzijnBaseTest {
 
+    PerformAction performAction = new PerformAction();
+
+
     @Test(groups = "profiletype-test")
     public void testNavigateToSettingsMenu() throws InterruptedException {
-        PerformAction.tabNavigation(7);
+        performAction.tabNavigation(7);
     }
 
     @Test(groups = "profiletype-test", dependsOnMethods = "testNavigateToSettingsMenu")
     public void testNavigateToProfileTypeTab() throws InterruptedException {
-        PerformAction.clickElement(By.xpath("//li[5]/a"));
+        performAction.clickElement(By.xpath("//li[5]/a"));
     }
 
     @Test(groups = "profiletype-test", dependsOnMethods = "testNavigateToProfileTypeTab")
     public void testCreateProfileType() throws InterruptedException {
 
-        PerformAction.clickElement(By.xpath("//app-profile-type/div/div/div/div/button"));
+        performAction.clickElement(By.xpath("//app-profile-type/div/div/div/div/button"));
 
         WebElement createProfileButton = driver.findElement(By.xpath("//button"));
 

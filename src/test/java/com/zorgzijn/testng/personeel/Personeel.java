@@ -1,19 +1,23 @@
 package com.zorgzijn.testng.personeel;
 
 import com.zorgzijn.testng.setup.PerformAction;
+import com.zorgzijn.testng.setup.performAction;
 import org.openqa.selenium.By;
 
 public class Personeel {
 
-    public static void searchAndShowEmployee(String employeeName) throws InterruptedException {
-        PerformAction.typeField(By.id("simple-search"), employeeName);
-        PerformAction.shortWait();
-        PerformAction.clickElement(By.xpath("//staff-list/div/div[1]"));
-        PerformAction.longWait();
+    PerformAction performAction = new PerformAction();
+
+
+    public void searchAndShowEmployee(String employeeName) throws InterruptedException {
+        performAction.typeField(By.id("simple-search"), employeeName);
+        performAction.shortWait();
+        performAction.clickElement(By.xpath("//staff-list/div/div[1]"));
+        performAction.longWait();
     }
 
-    public static void openEmployeeMenu(int menuItem) throws InterruptedException {
-        PerformAction.clickElement(By.xpath("//staff-details/div/staff-header/div/div[2]/button"));
-        PerformAction.clickElement(By.xpath("//button[@role='menuitem']["+ menuItem +"]"));
+    public void openEmployeeMenu(int menuItem) throws InterruptedException {
+        performAction.clickElement(By.xpath("//staff-details/div/staff-header/div/div[2]/button"));
+        performAction.clickElement(By.xpath("//button[@role='menuitem']["+ menuItem +"]"));
     }
 }

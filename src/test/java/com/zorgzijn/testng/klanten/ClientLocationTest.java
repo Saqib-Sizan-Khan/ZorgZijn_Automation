@@ -13,9 +13,12 @@ public class ClientLocationTest extends ZorgzijnBaseTest {
     int locationCount;
     Random random = new Random();
 
+    PerformAction performAction = new PerformAction();
+
+
     @Test(groups = "client-location-management")
     public void testNavigateToKlantenMenu() throws InterruptedException {
-        PerformAction.tabNavigation(4);
+        performAction.tabNavigation(4);
     }
 
     @Test(groups = "client-location-management", dependsOnMethods = "testNavigateToKlantenMenu")
@@ -29,17 +32,17 @@ public class ClientLocationTest extends ZorgzijnBaseTest {
 
         for (int i = 0; i < locationCount; i++) {
 
-            PerformAction.clickElement(By.xpath("//client-location/div/div/button"));
+            performAction.clickElement(By.xpath("//client-location/div/div/button"));
 
-            PerformAction.typeField(By.id("Naam"), "Location "+ (i+1));//Enter location name
-            PerformAction.typeField(By.id("autocompleteInput"), RandomInput.streetName()); //Give Street Name
-            PerformAction.typeField(By.id("Huisnummer"), RandomInput.threeDigit()); //Give House No
-            PerformAction.typeField(By.id("Postcode"), RandomInput.postCode()); //Give Postcode
-            PerformAction.typeField(By.id("Plaats"), RandomInput.place()); //Give Place
+            performAction.typeField(By.id("Naam"), "Location "+ (i+1));//Enter location name
+            performAction.typeField(By.id("autocompleteInput"), RandomInput.streetName()); //Give Street Name
+            performAction.typeField(By.id("Huisnummer"), RandomInput.threeDigit()); //Give House No
+            performAction.typeField(By.id("Postcode"), RandomInput.postCode()); //Give Postcode
+            performAction.typeField(By.id("Plaats"), RandomInput.place()); //Give Place
 
             //Click submit button
-            PerformAction.clickElement(By.xpath("//submit-button/button"));
-            PerformAction.shortWait();
+            performAction.clickElement(By.xpath("//submit-button/button"));
+            performAction.shortWait();
         }
     }
 
@@ -51,19 +54,19 @@ public class ClientLocationTest extends ZorgzijnBaseTest {
             int location = 2 + random.nextInt(locationCount);
 
             //Activate location modification
-            PerformAction.clickElement(By.xpath("//div["+ location +"]/client-location-detail/div/div[1]/button"));
-            PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(1)"));
+            performAction.clickElement(By.xpath("//div["+ location +"]/client-location-detail/div/div[1]/button"));
+            performAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(1)"));
 
             //Change location info
-            PerformAction.typeField(By.id("Naam"), "Location " + RandomInput.threeDigit());//Enter location name
-            PerformAction.typeField(By.id("autocompleteInput"), RandomInput.streetName()); //Give Street Name
-            PerformAction.typeField(By.id("Huisnummer"), RandomInput.threeDigit()); //Give House No
-            PerformAction.typeField(By.id("Postcode"), RandomInput.postCode()); //Give Postcode
-            PerformAction.typeField(By.id("Plaats"), RandomInput.place()); //Give Place
+            performAction.typeField(By.id("Naam"), "Location " + RandomInput.threeDigit());//Enter location name
+            performAction.typeField(By.id("autocompleteInput"), RandomInput.streetName()); //Give Street Name
+            performAction.typeField(By.id("Huisnummer"), RandomInput.threeDigit()); //Give House No
+            performAction.typeField(By.id("Postcode"), RandomInput.postCode()); //Give Postcode
+            performAction.typeField(By.id("Plaats"), RandomInput.place()); //Give Place
 
             //Submit Changes
-            PerformAction.clickElement(By.xpath("//submit-button/button"));
-            PerformAction.shortWait();
+            performAction.clickElement(By.xpath("//submit-button/button"));
+            performAction.shortWait();
         }
     }
 
@@ -75,13 +78,13 @@ public class ClientLocationTest extends ZorgzijnBaseTest {
             int location = 2 + random.nextInt(locationCount);
 
             //Open location delete dialog
-            PerformAction.clickElement(By.xpath("//div["+ location +"]/client-location-detail/div/div[1]/button"));
-            PerformAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(2)"));
+            performAction.clickElement(By.xpath("//div["+ location +"]/client-location-detail/div/div[1]/button"));
+            performAction.clickElement(By.cssSelector(".mat-mdc-menu-content > button:nth-child(2)"));
 
             //Confirm delete
-            PerformAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
+            performAction.clickElement(By.xpath("//delete-dialog//div[3]/button[1]"));
             locationCount-=1;
-            PerformAction.longWait();
+            performAction.longWait();
         }
     }
 }
