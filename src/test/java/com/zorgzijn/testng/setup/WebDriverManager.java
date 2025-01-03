@@ -13,8 +13,6 @@ public class WebDriverManager {
             io.github.bonigarcia.wdm.WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
             driver.manage().window().maximize();
-        } else {
-            System.out.println("Using existing WebDriver instance.");
         }
         return driver;
     }

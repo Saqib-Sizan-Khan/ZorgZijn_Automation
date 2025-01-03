@@ -1,15 +1,13 @@
 package com.zorgzijn.testng.klanten;
 
 import com.zorgzijn.testng.setup.PerformAction;
+import lombok.Getter;
 import org.openqa.selenium.By;
 
 public class Klanten {
 
+    @Getter
     private static String clientName;
-
-    public static String getClientName() {
-        return clientName;
-    }
 
     public static void setClientName(String clientName) {
         Klanten.clientName = clientName;
