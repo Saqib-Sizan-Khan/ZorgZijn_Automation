@@ -19,6 +19,8 @@
                 <include name="create-shift" />
                 <include name="shift-register" />
                 <include name="shift-invoice" />
+                <include name="notification-test" />
+                <include name="profiletype-test" />
             </run>
         </groups>
         <classes>
@@ -32,6 +34,8 @@
             <class name="com.zorgzijn.testng.facturen.EmployeeShiftTest" />
             <class name="com.zorgzijn.testng.facturen.EmployeeShiftHoursTest" />
             <class name="com.zorgzijn.testng.facturen.EmployeeInvoiceTest" />
+            <class name="com.zorgzijn.testng.settings.NotificationTest" />
+            <class name="com.zorgzijn.testng.settings.ProfileTypeTest" />
         </classes>
     </test>
 </suite>
