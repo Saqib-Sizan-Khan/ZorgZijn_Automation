@@ -46,6 +46,17 @@ public class PerformAction {
         Thread.sleep(VERY_SHORT_WAIT);
     }
 
+    public static void inputTime(By locator, String time) throws InterruptedException {
+        WebDriver driver = WebDriverManager.getDriver();
+        if (driver == null) {
+            throw new RuntimeException("WebDriver is not initialized in PerformAction.");
+        }
+        WebElement element = driver.findElement(locator);
+        Thread.sleep(VERY_SHORT_WAIT);
+        element.sendKeys(time);
+        Thread.sleep(VERY_SHORT_WAIT);
+    }
+
     public static void clearField(By locator) throws InterruptedException {
         WebDriver driver = WebDriverManager.getDriver();
         if (driver == null) {

@@ -10,7 +10,7 @@
         <groups>
             <run>
                 <include name="login" />
-                <include name="create-shift" />
+                <include name="shift-management" />
                 <include name="shift-register" />
                 <include name="shift-invoice" />
             </run>

@@ -16,7 +16,7 @@
                 <include name="client-management" />
                 <include name="client-location-management" />
                 <include name="client-employee-management" />
-                <include name="create-shift" />
+                <include name="shift-management" />
                 <include name="shift-register" />
                 <include name="shift-invoice" />
                 <include name="notification-test" />

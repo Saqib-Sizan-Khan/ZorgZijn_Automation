@@ -17,6 +17,7 @@ public class EmployeeTimelineTest extends ZorgzijnBaseTest {
     @Test(groups = "employee-timeline-management")
     public void testNavigateToPersoneelMenu() throws InterruptedException {
         PerformAction.tabNavigation(5);
+        PerformAction.shortWait();
     }
 
     @Test(groups = "employee-timeline-management", dependsOnMethods = "testNavigateToPersoneelMenu")
