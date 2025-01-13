@@ -9,11 +9,6 @@ import org.testng.annotations.Test;
 public class ProfileTypeTest extends ZorgzijnBaseTest {
 
     @Test(groups = "profiletype-test")
-    public void testNavigateToSettingsMenu() throws InterruptedException {
-        PerformAction.tabNavigation(7);
-    }
-
-    @Test(groups = "profiletype-test", dependsOnMethods = "testNavigateToSettingsMenu")
     public void testNavigateToProfileTypeTab() throws InterruptedException {
         PerformAction.clickElement(By.xpath("//li[5]/a"));
     }

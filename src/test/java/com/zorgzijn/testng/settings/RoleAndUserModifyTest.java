@@ -58,7 +58,7 @@ public class RoleAndUserModifyTest extends ZorgzijnBaseTest {
         User.setLastName("User");
         PerformAction.typeField(By.id("Voornaam"), User.getUserFirstName());
         PerformAction.typeField(By.id("Tussenvoegsel"), User.getUserMiddleName());
-        PerformAction.typeField(By.id("Achternaam"), User.getUserLastName());
+        PerformAction.typeField(By.id("achternaam"), User.getUserLastName());
 
         //Change DOB
         PerformAction.typeField(By.id("Geboortedatum"), RandomInput.birthday());
@@ -67,24 +67,4 @@ public class RoleAndUserModifyTest extends ZorgzijnBaseTest {
         PerformAction.clickElement(By.xpath("//button[@type='submit']"));
         PerformAction.longWait();
     }
-
-//    private void openDeleteDialog() throws InterruptedException {
-//        clickElement(By.xpath("//div[2]/div/button"));
-//        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)"));
-//    }
-//
-//    @Test(priority = 7, dependsOnMethods = "giveRoleAllAccess")
-//    public void deleteRole() throws InterruptedException {
-//        // Cancel the delete action
-//        openDeleteDialog();
-//        clickElement(By.xpath("//div[2]/div/div/div[1]/button"));
-//
-//        //Close the delete action
-//        openDeleteDialog();
-//        clickElement(By.xpath("//div[2]/div/div/div[3]/button[2]"));
-//
-//        // Confirm the delete action
-//        openDeleteDialog();
-//        clickElement(By.xpath("//button[@type='submit']"));
-//    }
 }

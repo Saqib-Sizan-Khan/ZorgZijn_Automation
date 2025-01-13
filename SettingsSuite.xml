@@ -10,18 +10,20 @@
         <groups>
             <run>
                 <include name="login" />
-<!--                <include name="notification-test" />-->
-<!--                <include name="profiletype-test" />-->
+                <include name="notification-test" />
+                <include name="profiletype-test" />
                 <include name="role-user-creation" />
                 <include name="role-user-modification" />
+                <include name="role-user-deletion" />
             </run>
         </groups>
         <classes>
             <class name="com.zorgzijn.testng.auth.LoginTest" />
-<!--            <class name="com.zorgzijn.testng.settings.NotificationTest" />-->
-<!--            <class name="com.zorgzijn.testng.settings.ProfileTypeTest" />-->
+            <class name="com.zorgzijn.testng.settings.NotificationTest" />
+            <class name="com.zorgzijn.testng.settings.ProfileTypeTest" />
             <class name="com.zorgzijn.testng.settings.RoleAndUserCreateTest" />
             <class name="com.zorgzijn.testng.settings.RoleAndUserModifyTest" />
+            <class name="com.zorgzijn.testng.settings.RoleAndUserDeleteTest" />
         </classes>
     </test>
 </suite>
