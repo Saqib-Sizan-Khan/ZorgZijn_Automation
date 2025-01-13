@@ -70,64 +70,64 @@ public class UserAutomation extends ZorgzijnBaseTest {
         clickElement(By.xpath("//button[@type='submit']"));
     }
 
-//    @Test(priority = 4, dependsOnMethods = "createRole")
-//    public void searchRole() throws InterruptedException {
-//        sendKeysToElement(By.xpath("//input[@type='search']"), "Automation");
-//        Thread.sleep(3000); // Simulate search delay
-//
-//        // Clear the search field
-//        driver.findElement(By.xpath("//input[@type='search']")).clear();
-//        Thread.sleep(2000);
-//    }
-//
-//    @Test(priority = 5, dependsOnMethods = "searchRole")
-//    public void modifyRole() throws InterruptedException {
-//        clickElement(By.xpath("//div[2]/div/button"));
-//        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)"));
-//
-//        sendKeysToElement(By.xpath("//div/div/input"), "Role Automation");
-//
-//        // Update permissions
-//        clickElement(By.xpath("//li[2]/div/input"));
-//        clickElement(By.xpath("//li[4]/div/input"));
-//        clickElement(By.xpath("//li[5]/div/input"));
-//        clickElement(By.xpath("//li[7]/div/input"));
-//
-//        // Submit changes
-//        clickElement(By.xpath("//button[@type='submit']"));
-//    }
-//
-//    @Test(priority = 6, dependsOnMethods = "modifyRole")
-//    public void giveRoleAllAccess() throws InterruptedException {
-//        clickElement(By.xpath("//div[2]/div/button"));
-//        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)"));
-//
-//        sendKeysToElement(By.xpath("//div/div/input"), "Role Automation with all access");
-//
-//        // Grant all permissions
-//        clickElement(By.id("ALL"));
-//
-//        // Submit changes
-//        clickElement(By.xpath("//button[@type='submit']"));
-//    }
-//
-//    private void openDeleteDialog() throws InterruptedException {
-//        clickElement(By.xpath("//div[2]/div/button"));
-//        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)"));
-//    }
-//
-//    @Test(priority = 7, dependsOnMethods = "giveRoleAllAccess")
-//    public void deleteRole() throws InterruptedException {
-//        // Cancel the delete action
-//        openDeleteDialog();
-//        clickElement(By.xpath("//div[2]/div/div/div[1]/button"));
-//
-//        //Close the delete action
-//        openDeleteDialog();
-//        clickElement(By.xpath("//div[2]/div/div/div[3]/button[2]"));
-//
-//        // Confirm the delete action
-//        openDeleteDialog();
-//        clickElement(By.xpath("//button[@type='submit']"));
-//    }
+    @Test(priority = 4, dependsOnMethods = "createRole")
+    public void searchRole() throws InterruptedException {
+        sendKeysToElement(By.xpath("//input[@type='search']"), "Automation");
+        Thread.sleep(3000); // Simulate search delay
+
+        // Clear the search field
+        driver.findElement(By.xpath("//input[@type='search']")).clear();
+        Thread.sleep(2000);
+    }
+
+    @Test(priority = 5, dependsOnMethods = "searchRole")
+    public void modifyRole() throws InterruptedException {
+        clickElement(By.xpath("//div[2]/div/button"));
+        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)"));
+
+        sendKeysToElement(By.xpath("//div/div/input"), "Role Automation");
+
+        // Update permissions
+        clickElement(By.xpath("//li[2]/div/input"));
+        clickElement(By.xpath("//li[4]/div/input"));
+        clickElement(By.xpath("//li[5]/div/input"));
+        clickElement(By.xpath("//li[7]/div/input"));
+
+        // Submit changes
+        clickElement(By.xpath("//button[@type='submit']"));
+    }
+
+    @Test(priority = 6, dependsOnMethods = "modifyRole")
+    public void giveRoleAllAccess() throws InterruptedException {
+        clickElement(By.xpath("//div[2]/div/button"));
+        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(1)"));
+
+        sendKeysToElement(By.xpath("//div/div/input"), "Role Automation with all access");
+
+        // Grant all permissions
+        clickElement(By.id("ALL"));
+
+        // Submit changes
+        clickElement(By.xpath("//button[@type='submit']"));
+    }
+
+    private void openDeleteDialog() throws InterruptedException {
+        clickElement(By.xpath("//div[2]/div/button"));
+        clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type(2)"));
+    }
+
+    @Test(priority = 7, dependsOnMethods = "giveRoleAllAccess")
+    public void deleteRole() throws InterruptedException {
+        // Cancel the delete action
+        openDeleteDialog();
+        clickElement(By.xpath("//div[2]/div/div/div[1]/button"));
+
+        //Close the delete action
+        openDeleteDialog();
+        clickElement(By.xpath("//div[2]/div/div/div[3]/button[2]"));
+
+        // Confirm the delete action
+        openDeleteDialog();
+        clickElement(By.xpath("//button[@type='submit']"));
+    }
 }

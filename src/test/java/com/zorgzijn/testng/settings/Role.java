@@ -2,7 +2,6 @@ package com.zorgzijn.testng.settings;
 
 import com.zorgzijn.testng.setup.PerformAction;
 import lombok.Getter;
-import lombok.Setter;
 import org.openqa.selenium.By;
 
 public class Role {
@@ -18,8 +17,8 @@ public class Role {
         PerformAction.clickElement(By.xpath("//li["+ roleNum +"]/div/input"));
     }
 
-    public static void openClientMenu(int menuItem) throws InterruptedException {
-        PerformAction.clickElement(By.xpath("//client-details/div/client-header/div/div[2]/button"));
-        PerformAction.clickElement(By.xpath("//button[@role='menuitem']["+ menuItem +"]"));
+    public static void openRoleMenu(int menuItem) throws InterruptedException {
+        PerformAction.clickElement(By.xpath("//div[2]/div/button"));
+        PerformAction.clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type("+ menuItem +")"));
     }
 }

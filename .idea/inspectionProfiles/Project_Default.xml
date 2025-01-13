@@ -4,7 +4,7 @@
     <inspection_tool class="groupsTestNG" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="groups">
         <value>
-          <list size="16">
+          <list size="17">
             <item index="0" class="java.lang.String" itemvalue="client-management" />
             <item index="1" class="java.lang.String" itemvalue="login" />
             <item index="2" class="java.lang.String" itemvalue="login-test" />
@@ -21,6 +21,7 @@
             <item index="13" class="java.lang.String" itemvalue="profiletype-test" />
             <item index="14" class="java.lang.String" itemvalue="shift-management" />
             <item index="15" class="java.lang.String" itemvalue="role-user-creation" />
+            <item index="16" class="java.lang.String" itemvalue="role-user-modification" />
           </list>
         </value>
       </option>

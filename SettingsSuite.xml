@@ -13,6 +13,7 @@
 <!--                <include name="notification-test" />-->
 <!--                <include name="profiletype-test" />-->
                 <include name="role-user-creation" />
+                <include name="role-user-modification" />
             </run>
         </groups>
         <classes>
@@ -20,6 +21,7 @@
 <!--            <class name="com.zorgzijn.testng.settings.NotificationTest" />-->
 <!--            <class name="com.zorgzijn.testng.settings.ProfileTypeTest" />-->
             <class name="com.zorgzijn.testng.settings.RoleAndUserCreateTest" />
+            <class name="com.zorgzijn.testng.settings.RoleAndUserModifyTest" />
         </classes>
     </test>
 </suite>

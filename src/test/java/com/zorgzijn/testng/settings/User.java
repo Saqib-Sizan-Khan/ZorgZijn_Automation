@@ -29,8 +29,8 @@ public class User {
         PerformAction.clickElement(By.xpath("//li["+ roleNum +"]/div/input"));
     }
 
-    public static void openClientMenu(int menuItem) throws InterruptedException {
-        PerformAction.clickElement(By.xpath("//client-details/div/client-header/div/div[2]/button"));
-        PerformAction.clickElement(By.xpath("//button[@role='menuitem']["+ menuItem +"]"));
+    public static void openUserMenu(int menuItem) throws InterruptedException {
+        PerformAction.clickElement(By.xpath("//tr[1]/td[4]/button"));
+        PerformAction.clickElement(By.cssSelector("button.mat-mdc-menu-item:nth-of-type("+ menuItem +")"));
     }
 }
