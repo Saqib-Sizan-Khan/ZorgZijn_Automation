@@ -11,7 +11,7 @@ import java.util.Random;
 public class EmployeeShiftTest extends ZorgzijnBaseTest {
 
     int location = 1;
-    int column = 5;
+    int column = 2;
     int startRow = 7;
     int endRow = 10;
 

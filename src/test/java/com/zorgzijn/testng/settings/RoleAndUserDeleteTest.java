@@ -41,7 +41,7 @@ public class RoleAndUserDeleteTest extends ZorgzijnBaseTest {
     public void testDeleteRole() throws InterruptedException {
         Role.openRoleMenu(2);
 
-        // Submit changes
+        // Confirm Delete
         PerformAction.clickElement(By.xpath("//button[@type='submit']"));
         PerformAction.longWait();
     }
