@@ -24,6 +24,7 @@
                 <include name="role-user-creation" />
                 <include name="role-user-modification" />
                 <include name="role-user-deletion" />
+                <include name="logout" />
             </run>
         </groups>
         <classes>
@@ -42,6 +43,7 @@
             <class name="com.zorgzijn.testng.settings.RoleAndUserCreateTest" />
             <class name="com.zorgzijn.testng.settings.RoleAndUserModifyTest" />
             <class name="com.zorgzijn.testng.settings.RoleAndUserDeleteTest" />
+            <class name="com.zorgzijn.testng.auth.LogoutTest" />
         </classes>
     </test>
 </suite>

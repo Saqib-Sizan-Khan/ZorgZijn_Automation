@@ -51,6 +51,7 @@ public class RoleAndUserModifyTest extends ZorgzijnBaseTest {
     @Test(groups = "role-user-modification", dependsOnMethods = "testSearchUser")
     public void testModifyUser() throws InterruptedException {
         User.openUserMenu(1);
+        PerformAction.shortWait();
 
         //Change username
         User.setFirstName("Modified");
